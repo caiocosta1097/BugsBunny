@@ -1,0 +1,423 @@
+@font-face{
+    
+    font-family: font-kenyan;
+    src: url('../fonts/kenyan_coffee_rg.ttf');
+    
+}
+
+
+@font-face{
+    
+    font-family: font-kenyan-negrito;
+    src: url('../fonts/kenyan_coffee_bd.ttf');
+    
+}
+
+body{
+    
+    margin: 0px;
+    padding: 0px;
+    background-color: #f2eff2;
+    
+}
+
+header{
+    
+    width: 1200px;
+    height: 300px;
+    margin-top: 25px;
+    background-color: #3b5998;
+    margin-left: auto;
+    margin-right: auto;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+    
+}
+
+#caixa_cabecalho{
+    
+    width: 100%;
+    height: 160px;
+    
+}
+
+#caixa_menu{
+    
+    width: 100%;
+    height: 140px;
+    background-color: #4666a8;
+    
+}
+
+#titulo_pagina{
+    
+    width: 55%;
+    height: 160px;
+    float: left;
+    font-family: font-kenyan;
+    font-size: 50px;
+    display: flex;
+    align-items: center;
+    padding-left: 10%;
+    color: #fff;
+    
+}
+
+#negrito{
+    
+    font-family: font-kenyan-negrito;
+    
+}
+
+#logo_pagina{
+    
+    width: 35%;
+    height: 160px;
+    background-image: url(../imagens/logo.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    float: left;
+    
+}
+
+#menu_principal{
+    
+    width: 65%;
+    height: 140px;
+    margin-left: 5%;
+    text-align: center;
+    float: left;
+    
+}
+
+.itens_menu{
+    
+    width: 160px;
+    height: 135px;
+    margin-top: 5px;
+    margin-left: 20px;
+    float: left;
+    
+}
+
+.imagens_menu{
+    
+    width: 100px;
+    height: 100px;
+    
+}
+
+.imagens_menu:hover{
+    
+    transform: scale(1.1);
+    
+}
+
+.titulo_menu{
+    
+    width: 160px;
+    height: 35px;
+    margin-top: 5px;
+    font-family: font-kenyan;
+    font-size: 20px;
+    color: #fff;
+    
+}
+
+#area_logout{
+    
+    width: 30%;
+    height: 140px;
+    float: left;
+    color: #fff;
+    
+}
+
+#boas_vindas{
+    
+    width: 100%;
+    margin-top: 20px;
+    font-family: font-kenyan;
+    font-size: 22px;
+    text-align: center;
+    
+}
+
+#logout{
+    
+    width: 95%;
+    margin-top: 50px;
+    font-family: font-kenyan;
+    font-size: 22px;
+    text-align: right;
+    padding-right: 5%;
+    
+}
+
+#principal_index{
+    
+    width: 1200px;
+    height: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #fff;
+    
+}
+
+#principal_formulario_celebridade{
+    
+    width: 1200px;
+    height: auto;
+    padding-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #fff;
+    padding-bottom: 30px;
+    
+}
+
+h1{
+    
+    padding: 0;
+    margin: 0;
+    font-family: font-kenyan;
+    font-size: 100px;
+    padding-top: 14%;
+    text-align: center;
+    
+}
+
+#principal_adm_fale_conosco{
+    
+    width: 1200px;
+    height: 450px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 50px;
+    
+}
+
+#titulo_adm_fale_conosco, #titulo_adm_nivel_usuario{
+    
+    width: 1200px;
+    font-family: font-kenyan;
+    font-size: 50px;
+    text-align: center;
+    
+}
+
+#registros_fale_conosco{
+    
+    width: 1000px;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    max-height: 350px;
+    overflow: auto;
+    
+    
+}
+
+#registros_nivel_usuario, #registros_bancas{
+    
+    width: 500px;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    max-height: 200px;
+    overflow: auto;
+    margin-bottom: 30px;
+    
+    
+}
+
+#registros_lista_usuarios{
+    
+    width: 800px;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    max-height: 200px;
+    overflow: auto;
+    margin-bottom: 30px;
+    
+}
+
+#caixa_usuario{
+    
+    width: 1000px;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    max-height: 200px;
+    overflow: auto;
+    margin-bottom: 30px; 
+    
+}
+
+#caixa_noticias{
+    
+    width: 1000px;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    height: auto;
+    margin-bottom: 30px; 
+    
+}
+
+
+#area_botao{
+    
+    width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    height: auto;
+    text-align: center;
+    
+}
+
+
+#tabela{
+    
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    
+}
+
+#tabela td, #tabela thead th {
+    
+    border: 1px solid #ddd;
+    padding: 8px;
+    
+}
+
+#tabela tbody tr:nth-child(even){background-color: #f2f2f2;}
+
+#tabela tr:hover {background-color: #ddd;}
+
+#tabela thead tr th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color:  #4666a8;
+    color: white;
+}
+
+
+#td_imagens{
+    
+    text-align: center;
+    
+}
+
+
+#principal_adm_conteudo, #principal_adm_usuarios{
+    
+    width: 1200px;
+    height: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    
+}
+
+#opcoes_conteudo{
+    
+    width: auto;
+    height: 160px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    
+}
+
+.itens_opcoes{
+    
+    width: 160px;
+    height: 160px;
+    margin-left: 20px;
+    float: left;
+    
+}
+
+.imagens_opcoes{
+    
+    width: 128px;
+    height: 128px;
+    
+}
+
+.imagens_opcoes:hover{
+    
+    transform: scale(1.1);
+    
+}
+
+.titulo_opcoes{
+    
+    width: 160px;
+    height: 35px;
+    margin-top: 5px;
+    font-family: font-kenyan;
+    font-size: 20px;
+    
+}
+
+#principal_adm_niveis{
+    
+    width: 1200px;
+    height: 450px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #fff;
+    padding-top: 50px;
+    
+}
+
+
+a{
+                
+    color: inherit;
+    text-decoration: none;
+                
+}
+
+
+.button {
+    
+    background-color: #4666a8;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    font-weight: bold;
+    transition-duration: 0.4s;
+    border-radius: 5px;
+    
+}
+
+.button:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+footer{
+    
+    width: 1200px;
+    height: 75px;
+    margin-left: auto;
+    margin-right: auto;
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+    background-color: #3b5998;
+    margin-bottom: 25px;
+    
+}
