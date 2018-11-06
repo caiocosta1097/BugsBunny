@@ -1,34 +1,34 @@
-@font-face{
-    
+@font-face {
+
     font-family: font-kenyan;
     src: url('../fonts/kenyan_coffee_rg.ttf');
-    
+
 }
 
-@font-face{
-    
+@font-face {
+
     font-family: font-kenyan-negrito;
     src: url('../fonts/kenyan_coffee_bd.ttf');
-    
+
 }
 
-@font-face{
-    
+@font-face {
+
     font-family: font-caviarDreams;
     src: url('../fonts/CaviarDreams_Bold.ttf');
-    
+
 }
 
-body{
-    
+body {
+
     margin: 0px;
     padding: 0px;
     background-color: #f2eff2;
-    
+
 }
 
-header{
-    
+header {
+
     width: 1200px;
     height: 300px;
     margin-top: 25px;
@@ -37,26 +37,26 @@ header{
     margin-right: auto;
     border-top-left-radius: 50px;
     border-top-right-radius: 50px;
-    
+
 }
 
-#caixa_cabecalho{
-    
+#caixa_cabecalho {
+
     width: 100%;
     height: 160px;
-    
+
 }
 
-#caixa_menu{
-    
+#caixa_menu {
+
     width: 100%;
     height: 140px;
     background-color: #4666a8;
-    
+
 }
 
-#titulo_pagina{
-    
+#titulo_pagina {
+
     width: 55%;
     height: 160px;
     float: left;
@@ -66,112 +66,112 @@ header{
     align-items: center;
     padding-left: 10%;
     color: #fff;
-    
+
 }
 
-#negrito{
-    
+#negrito {
+
     font-family: font-kenyan-negrito;
-    
+
 }
 
-#logo_pagina{
-    
+#logo_pagina {
+
     width: 35%;
     height: 160px;
     background-image: url(../imagens/logo.png);
     background-repeat: no-repeat;
     background-position: center;
     float: left;
-    
+
 }
 
-#menu_principal{
-    
+#menu_principal {
+
     width: 65%;
     height: 140px;
     margin-left: 5%;
     text-align: center;
     float: left;
-    
+
 }
 
-.itens_menu{
-    
+.itens_menu {
+
     width: 160px;
     height: 135px;
     margin-top: 5px;
     margin-left: 20px;
     float: left;
-    
+
 }
 
-.imagens_menu{
-    
+.imagens_menu {
+
     width: 100px;
     height: 100px;
-    
+
 }
 
-.imagens_menu:hover{
-    
+.imagens_menu:hover {
+
     transform: scale(1.1);
-    
+
 }
 
-.titulo_menu{
-    
+.titulo_menu {
+
     width: 160px;
     height: 35px;
     margin-top: 5px;
     font-family: font-kenyan;
     font-size: 20px;
     color: #fff;
-    
+
 }
 
-#area_logout{
-    
+#area_logout {
+
     width: 30%;
     height: 140px;
     float: left;
     color: #fff;
-    
+
 }
 
-#boas_vindas{
-    
+#boas_vindas {
+
     width: 100%;
     margin-top: 20px;
     font-family: font-kenyan;
     font-size: 22px;
     text-align: center;
-    
+
 }
 
-#logout{
-    
+#logout {
+
     width: 95%;
     margin-top: 50px;
     font-family: font-kenyan;
     font-size: 22px;
     text-align: right;
     padding-right: 5%;
-    
+
 }
 
-#principal_index{
-    
+#principal_index {
+
     width: 1200px;
     height: 500px;
     margin-left: auto;
     margin-right: auto;
     background-color: #fff;
-    
+
 }
 
-#principal_formulario_celebridade{
-    
+#principal_formulario_celebridade {
+
     width: 1200px;
     height: auto;
     padding-top: 50px;
@@ -179,53 +179,56 @@ header{
     margin-right: auto;
     background-color: #fff;
     padding-bottom: 30px;
-    
+
 }
 
-h1{
-    
+h1 {
+
     padding: 0;
     margin: 0;
     font-family: font-kenyan;
     font-size: 100px;
     padding-top: 14%;
     text-align: center;
-    
+
 }
 
-#principal_adm_fale_conosco{
-    
+#principal_adm_fale_conosco {
+
     width: 1200px;
     height: 450px;
     margin-left: auto;
     margin-right: auto;
     padding-top: 50px;
-    
+    background-color: #fff;
+
 }
 
-#titulo_adm_fale_conosco, #titulo_adm_nivel_usuario{
-    
+#titulo_adm_fale_conosco,
+#titulo_adm_nivel_usuario {
+
     width: 1200px;
     font-family: font-kenyan;
     font-size: 50px;
     text-align: center;
-    
+
 }
 
-#registros_fale_conosco{
-    
+#registros_fale_conosco {
+
     width: 1000px;
     margin-top: 50px;
     margin-left: auto;
     margin-right: auto;
     max-height: 350px;
     overflow: auto;
-    
-    
+
+
 }
 
-#registros_nivel_usuario, #registros_bancas{
-    
+#registros_nivel_usuario,
+#registros_bancas {
+
     width: 500px;
     margin-top: 50px;
     margin-left: auto;
@@ -233,12 +236,12 @@ h1{
     max-height: 200px;
     overflow: auto;
     margin-bottom: 30px;
-    
-    
+
+
 }
 
-#registros_lista_usuarios{
-    
+#registros_lista_usuarios {
+
     width: 800px;
     margin-top: 50px;
     margin-left: auto;
@@ -246,81 +249,88 @@ h1{
     max-height: 200px;
     overflow: auto;
     margin-bottom: 30px;
-    
+
 }
 
-#caixa_usuario{
-    
+#caixa_usuario {
+
     width: 1000px;
     margin-top: 50px;
     margin-left: auto;
     margin-right: auto;
     max-height: 200px;
     overflow: auto;
-    margin-bottom: 30px; 
-    
+    margin-bottom: 30px;
+
 }
 
-#caixa_noticias{
-    
+#caixa_noticias,
+#caixa_celebridade {
+
     width: 1000px;
     margin-top: 50px;
     margin-left: auto;
     margin-right: auto;
     height: auto;
-    margin-bottom: 30px; 
-    
+    margin-bottom: 30px;
+
 }
 
 
-#area_botao{
-    
+#area_botao {
+
     width: 500px;
     margin-left: auto;
     margin-right: auto;
     height: auto;
     text-align: center;
-    
+
 }
 
 
-#tabela{
-    
+#tabela {
+
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
     border-collapse: collapse;
     width: 100%;
-    
+
 }
 
-#tabela td, #tabela thead th {
-    
+#tabela td,
+#tabela thead th {
+
     border: 1px solid #ddd;
     padding: 8px;
-    
+
 }
 
-#tabela tbody tr:nth-child(even){background-color: #f2f2f2;}
+#tabela tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
 
-#tabela tr:hover {background-color: #ddd;}
+#tabela tr:hover {
+    background-color: #ddd;
+}
 
 #tabela thead tr th {
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: left;
-    background-color:  #4666a8;
+    background-color: #4666a8;
     color: white;
 }
 
 
-#td_imagens{
-    
+#td_imagens {
+
     text-align: center;
-    
+
 }
 
 
-#principal_adm_conteudo, #principal_adm_usuarios{
-    
+#principal_adm_conteudo,
+#principal_adm_usuarios {
+
     width: 1200px;
     height: 500px;
     margin-left: auto;
@@ -328,73 +338,73 @@ h1{
     background-color: #fff;
     display: flex;
     align-items: center;
-    
+
 }
 
-#opcoes_conteudo{
-    
+#opcoes_conteudo {
+
     width: auto;
     height: 160px;
     margin-left: auto;
     margin-right: auto;
     text-align: center;
-    
+
 }
 
-.itens_opcoes{
-    
+.itens_opcoes {
+
     width: 160px;
     height: 160px;
     margin-left: 20px;
     float: left;
-    
+
 }
 
-.imagens_opcoes{
-    
+.imagens_opcoes {
+
     width: 128px;
     height: 128px;
-    
+
 }
 
-.imagens_opcoes:hover{
-    
+.imagens_opcoes:hover {
+
     transform: scale(1.1);
-    
+
 }
 
-.titulo_opcoes{
-    
+.titulo_opcoes {
+
     width: 160px;
     height: 35px;
     margin-top: 5px;
     font-family: font-kenyan;
     font-size: 20px;
-    
+
 }
 
-#principal_adm_niveis{
-    
+#principal_adm_niveis {
+
     width: 1200px;
     height: 450px;
     margin-left: auto;
     margin-right: auto;
     background-color: #fff;
     padding-top: 50px;
-    
+
 }
 
 
-a{
-                
+a {
+
     color: inherit;
     text-decoration: none;
-                
+
 }
 
 
 .button {
-    
+
     background-color: #4666a8;
     border: none;
     color: white;
@@ -408,33 +418,41 @@ a{
     font-weight: bold;
     transition-duration: 0.4s;
     border-radius: 5px;
-    
+
 }
 
 .button:hover {
-    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+
 }
 
-.dados{
+.dados {
 
-            width: 300px;
-            height: 30px;
-            display: inline-block;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-            background-color: #f2eff2;
-            font-size: 18px;
-    
+    width: 300px;
+    height: 30px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: #f2eff2;
+    font-size: 18px;
+
 }
 
-.tabela_formulario td{
+#caixa_celebridade .dados {
+
+    width: 400px;
+
+}
+
+.tabela_formulario td {
 
     padding-top: 15px;
 
 }
 
- .tabela_formulario .td_esquerda{
+.tabela_formulario .td_esquerda {
 
     width: 55%;
     font-size: 20px;
@@ -443,8 +461,77 @@ a{
 
 }
 
-footer{
-    
+#txtTelefone {
+
+    width: 140px;
+
+}
+
+.tabela_formulario #txtData {
+
+    width: auto;
+
+}
+
+#txtBiografia, #txtHistoria{
+
+    height: 100px;
+    max-width: 400px;
+    max-height: 100px;
+
+}
+
+#fotoCelebridade,
+#fotoCelebridade img {
+
+    width: 300px;
+    height: 250px;
+    border-radius: 15px;
+    background-color: #f2eff2;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+#fotoNoticia,
+#fotoNoticia img {
+
+    width: 250px;
+    height: 180px;
+    border-radius: 15px;
+    background-color: #f2eff2;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+#fotoPromocao,
+#fotoPromocao img {
+
+    width: 250px;
+    height: 180px;
+    border-radius: 15px;
+    background-color: #f2eff2;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+#fotoSobre,
+#fotoSobre img {
+
+    width: 250px;
+    height: 180px;
+    border-radius: 15px;
+    background-color: #f2eff2;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+
+footer {
+
     width: 1200px;
     height: 75px;
     margin-left: auto;
@@ -453,5 +540,5 @@ footer{
     border-bottom-right-radius: 50px;
     background-color: #3b5998;
     margin-bottom: 25px;
-    
+
 }

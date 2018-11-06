@@ -34,6 +34,8 @@
         
     }
 
+    $tituloPagina = "Cadastrar promoção";
+
     $botao = "Salvar";
 
     $caixa_foto = "hidden";
@@ -41,6 +43,8 @@
     if(isset($_GET['id'])){
         
         $idPromocao = $_GET['id'];
+        
+        $tituloPagina = "Atualizar promoção";
         
         $botao = "Atualizar";
         
@@ -103,59 +107,6 @@
     <script src="js/jquery.min.js"></script>
     <script src="js/jquery.form.js"></script>
 
-    <style>
-
-        @font-face{
-    
-            font-family: font-caviarDreams;
-            src: url('../fonts/CaviarDreams_Bold.ttf');
-    
-        }
-        
-        
-        .dados{
-
-            width: 400px;
-            height: 30px;
-            display: inline-block;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-            background-color: #f2eff2;
-            font-size: 18px;
-    
-        }
-        
-
-        td{
-
-            padding-top: 15px;
-
-        }
-            
-
-        .td_esquerda{
-
-            width: 55%;
-            font-size: 20px;
-            font-family: font-caviarDreams;
-            text-align: center;
-
-        }
-        
-        #visualizar, #visualizar img{
-                
-            width: 250px;
-            height: 180px;
-            border-radius: 15px;
-            background-color: #f2eff2;
-            margin-left: auto;
-            margin-right: auto;
-                
-        }
-        
-    </style>
-
     <script>
 
         $(document).ready(function(){
@@ -172,7 +123,7 @@
                     // formulário, deverá ser descarregada na div visualizar.
                     // Para isso usamos o atributo target do ajaxForm (isso é
                     // conhecido como CallBack)
-                        target:'#visualizar'
+                        target:'#fotoPromocao'
                         
                     }).submit();  
                 
@@ -218,41 +169,42 @@
                 </div>
             </nav>
             <div id="area_logout">
-                    <div id="boas_vindas">Bem vindo, <?= $nome ?></div>
-                    <div id="logout"><a href="index.php?logout">Logout</a></div>
+                <div id="boas_vindas">Bem vindo,
+                    <?= $nome ?>
                 </div>
+                <div id="logout"><a href="index.php?logout">Logout</a></div>
+            </div>
         </div>
     </header>
     <div id="principal_adm_niveis">
         <div id="titulo_adm_nivel_usuario">
-            Cadastrar Promoção
+            <?= $tituloPagina ?>
         </div>
-        <div id="caixa_noticias">
-            <table>
+        <div id="caixa_celebridade">
+            <table class="tabela_formulario">
                 <tr>
-                    <form id="frmFoto" name="frmFotos" action="upload.php" method="post" enctype="multipart/form-data">
+                    <form id="frmFoto" action="upload.php" method="post" enctype="multipart/form-data">
                         <td class="td_esquerda">
                             <label>Imagem</label>
                         </td>
                         <td>
-                            <input name="fileFoto" id="txtUpload" class="dados" type="file">
+                            <input name="fileFoto" id="txtUpload" class="dados" type="file" required>
                         </td>
                     </form>
                     <td rowspan="2" width="50%">
-                        <div id="visualizar">
+                        <div id="fotoPromocao">
                             <img src="<?= $foto ?>" <?=$caixa_foto ?>>
                         </div>
                     </td>
                 </tr>
-                <form name="frm_formulario_noticias" action="formulario_promocoes.php" method="post">
+                <form name="frm_conteudo" action="formulario_promocoes.php" method="post">
                     <tr>
-
                         <td class="td_esquerda">
                             <label>Promoção</label>
                         </td>
 
                         <td>
-                            <input name="txtPromocao" class="dados" type="text" value="<?= @$promocao ?>">
+                            <input maxlength="30" name="txtPromocao" class="dados" type="text" value="<?= @$promocao ?>" required>
                             <input name="txtFoto" id="txtFoto" class="dados" type="hidden">
                         </td>
                     </tr>

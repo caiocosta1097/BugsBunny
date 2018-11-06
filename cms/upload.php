@@ -50,7 +50,7 @@
                     
                     echo 
                         "<script>
-                            frm_formulario_noticias.txtFoto.value = '".$foto."';
+                            frm_conteudo.txtFoto.value = '".$foto."';
                         </script>";
                     
                     

@@ -34,13 +34,15 @@
         
     }
 
-    $conexao = conexaoBD();
+    $tituloPagina = "Cadastrar banca";
 
     $botao = "Salvar";
 
     if(isset($_GET['id'])){
         
         $idBanca = $_GET['id'];
+        
+        $tituloPagina = "Atualizar banca";
         
         $botao = "Atualizar";
 
@@ -111,54 +113,6 @@
         
         </script>
         
-        <style>
-    
-        @font-face{
-    
-            font-family: font-caviarDreams;
-            src: url('../fonts/CaviarDreams_Bold.ttf');
-    
-        }
-        
-        
-        .dados{
-
-            width: 300px;
-            height: 30px;
-            display: inline-block;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-            background-color: #f2eff2;
-            font-size: 18px;
-    
-        }
-        
-
-        td{
-
-            padding-top: 15px;
-
-        }
-            
-            
-        #txtTelefone{
-    
-            width: 140px;
-    
-        }    
-
-        .td_esquerda{
-
-            width: 55%;
-            font-size: 20px;
-            font-family: font-caviarDreams;
-            text-align: center;
-
-        }
-        
-    </style>
-        
     </head>
     <body>
         <header>
@@ -201,24 +155,24 @@
         </header>
         <div id="principal_adm_niveis">
             <div id="titulo_adm_nivel_usuario">
-                Cadastrar banca
+                <?= $tituloPagina ?>
             </div>
-            <form name="frm_formulario_bancas" action="formulario_bancas.php" method="post">
+            <form action="formulario_bancas.php" method="post">
                 <div id="caixa_usuario">
-                    <table>
+                    <table class="tabela_formulario">
                         <tr>
                             <td class="td_esquerda">
                                 <label>Local</label>
                             </td>
                             
                             <td>
-                                <input name="txtLocal" class="dados" type="text" value="<?= @$local ?>">
+                                <input maxlength="50" name="txtLocal" class="dados" type="text" value="<?= @$local ?>" required>
                             </td>
                             <td class="td_esquerda">
                                 <label>Logradouro</label>
                             </td>
                             <td>
-                               <input name="txtLogradouro" class="dados" type="text" value="<?= @$logradouro ?>"> 
+                               <input maxlength="100" name="txtLogradouro" class="dados" type="text" value="<?= @$logradouro ?>" required> 
                             </td>
                         </tr>
                         <tr>
@@ -226,13 +180,13 @@
                                 <label>Bairro</label>
                             </td>
                             <td>
-                                <input name="txtBairro" class="dados" type="text" value="<?= @$bairro ?>">
+                                <input maxlength="50" name="txtBairro" class="dados" type="text" value="<?= @$bairro ?>" required>
                             </td>
                             <td class="td_esquerda">
                                 <label>Telefone</label>
                             </td>
                             <td>
-                                <input name="txtTelefone" id="txtTelefone" class="dados" type="text" value="<?= @$telefone ?>">
+                                <input name="txtTelefone" id="txtTelefone" class="dados" type="text" value="<?= @$telefone ?>" required>
                             </td>
                         </tr>
                     </table>

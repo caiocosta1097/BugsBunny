@@ -40,7 +40,7 @@
 
     if(isset($_GET['id'])){
         
-        $idUsuario = $_GET['id'];
+        $id = $_GET['id'];
         
         $botao = "Atualizar";
         $lblSenha = "Nova senha";
@@ -48,9 +48,9 @@
         $txtNovaSenha = "password";
         $required = "";
         
-        $_SESSION['idUsuario'] = $idUsuario;
+        $_SESSION['idUser'] = $id;
     
-        $sql = "SELECT * FROM tbl_usuario WHERE idUsuario =".$idUsuario;
+        $sql = "SELECT * FROM tbl_usuario WHERE idUsuario =".$id;
 
         $select  = mysqli_query($conexao, $sql);
 
@@ -73,7 +73,7 @@
         $nomeUsuario = $_POST['txtNome'];
         $nivelUsuario = $_POST['slt_nivel'];
         $login = $_POST['txtLogin'];
-        $senha = $_POST['txtSenha'];
+        $senha = md5($_POST['txtSenha']);
         $email = $_POST['txtEmail'];
         
         if($_POST['btnSalvar'] == "Salvar"){
@@ -83,7 +83,7 @@
             
         }else {
             
-            if($senha == "")
+            if($senha == md5(""))
                 $senha = $_SESSION['senhaUsuario'];
             
             
@@ -92,7 +92,7 @@
                     senha = '".$senha."', 
                     email = '".$email."', 
                     idNivel = '".$nivelUsuario."' 
-                    WHERE idUsuario =".$_SESSION['idUsuario']; 
+                    WHERE idUsuario =".$_SESSION['idUser']; 
             
         }
             
@@ -100,6 +100,7 @@
             echo "Erro no envio!";
         
         header('location:adm_lista_usuarios.php');
+        
         
     }
 
@@ -150,9 +151,11 @@
                 </div>
             </nav>
             <div id="area_logout">
-                    <div id="boas_vindas">Bem vindo, <?= $nome ?></div>
-                    <div id="logout"><a href="index.php?logout">Logout</a></div>
+                <div id="boas_vindas">Bem vindo,
+                    <?= $nome ?>
                 </div>
+                <div id="logout"><a href="index.php?logout">Logout</a></div>
+            </div>
         </div>
     </header>
     <div id="principal_adm_niveis">
@@ -180,6 +183,7 @@
                                         $sql = "SELECT * FROM tbl_nivel_usuario WHERE status = 0";
 
                                         $select  = mysqli_query($conexao, $sql);
+                        
 
                                         while($rsNivel = mysqli_fetch_array($select)){
                                             
@@ -187,10 +191,14 @@
                                          
                                             $selected = "selected";
                                             
-                                        }    
+                                        }else{
+                                            
+                                            $selected = "";
+                                            
+                                        }  
 
                                     ?>
-                                <option value="<?= $rsNivel['idNivel'] ?>" <?= @$selected ?>>
+                                <option value="<?= $rsNivel['idNivel'] ?>" <?=@$selected ?>>
                                     <?= $rsNivel['nomeNivel'] ?>
                                 </option>
                                 <?php } ?>
@@ -205,11 +213,10 @@
                             <input maxlength="30" name="txtLogin" class="dados" type="text" value="<?= @$login ?>" required>
                         </td>
                         <td class="td_esquerda">
-                            <label>
-                                <?= $lblSenha ?></label>
+                            <label><?= $lblSenha ?></label>
                         </td>
                         <td>
-                            <input maxlength="45" name="txtSenha" class="dados" type="password" <?= $required ?>>
+                            <input maxlength="45" name="txtSenha" class="dados" type="password" <?=$required ?>>
                         </td>
                     </tr>
                     <tr>

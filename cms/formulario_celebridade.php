@@ -34,6 +34,8 @@
         
     }
 
+    $tituloPagina = "Cadastrar celebridade";
+
     $botao = "Salvar";
 
     $caixa_foto = "hidden";
@@ -42,6 +44,8 @@
     if(isset($_GET['id'])){
         
         $idCelebridade = $_GET['id'];
+        
+        $tituloPagina = "Atualizar banca";
         
         $botao = "Atualizar";
         
@@ -86,7 +90,7 @@
                             '".$naturalidade."',
                             '".$profissao."', 
                             '".$biografia."',
-                            0)";
+                            1)";
             
         } else{
             
@@ -125,73 +129,6 @@
     <script src="js/jquery.min.js"></script>
     <script src="js/jquery.form.js"></script>
 
-    <style>
-
-        @font-face{
-    
-            font-family: font-caviarDreams;
-            src: url('../fonts/CaviarDreams_Bold.ttf');
-    
-        }
-        
-        
-        .dados{
-
-            width: 400px;
-            height: 30px;
-            display: inline-block;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-            background-color: #f2eff2;
-            font-size: 18px;
-    
-        }
-        
-        #txtData{
-            
-            width: auto;
-            
-        }
-        
-        #txtBiografia{
-            
-            height: 100px;
-            max-width: 400px;
-            max-height: 100px;
-            
-        }
-        
-
-        td{
-
-            padding-top: 20px;
-
-        }
-            
-
-        .td_esquerda{
-
-            width: 55%;
-            font-size: 20px;
-            font-family: font-caviarDreams;
-            text-align: center;
-
-        }
-        
-        #visualizar, #visualizar img{
-                
-            width: 300px;
-            height: 250px;
-            border-radius: 15px;
-            background-color: #f2eff2;
-            margin-left: auto;
-            margin-right: auto;
-                
-        }
-        
-    </style>
-
     <script>
 
         $(document).ready(function(){
@@ -208,7 +145,7 @@
                     // formulário, deverá ser descarregada na div visualizar.
                     // Para isso usamos o atributo target do ajaxForm (isso é
                     // conhecido como CallBack)
-                        target:'#visualizar'
+                        target:'#fotoCelebridade'
                         
                     }).submit();  
                 
@@ -216,7 +153,7 @@
                 
             });
             
-        </script>
+    </script>
 
 </head>
 
@@ -261,26 +198,26 @@
     </header>
     <div id="principal_formulario_celebridade">
         <div id="titulo_adm_nivel_usuario">
-            Cadastrar celebridade
+            <?= $tituloPagina ?>
         </div>
-        <div id="caixa_noticias">
-            <table>
+        <div id="caixa_celebridade">
+            <table class="tabela_formulario">
                 <tr>
-                    <form id="frmFoto" name="frmFotos" action="upload.php" method="post" enctype="multipart/form-data">
+                    <form id="frmFoto" action="upload.php" method="post" enctype="multipart/form-data">
                         <td class="td_esquerda">
                             <label>Imagem</label>
                         </td>
                         <td>
-                            <input name="fileFoto" id="txtUpload" class="dados" type="file">
+                            <input name="fileFoto" id="txtUpload" class="dados" type="file" required>
                         </td>
                     </form>
                     <td rowspan="6" width="50%">
-                        <div id="visualizar">
+                        <div id="fotoCelebridade">
                             <img src="<?= $foto ?>" <?= $caixa_foto?>>
                         </div>
                     </td>
                 </tr>
-                <form name="frm_formulario_noticias" action="formulario_celebridade.php" method="post">
+                <form name="frm_conteudo" action="formulario_celebridade.php" method="post">
                     <tr>
 
                         <td class="td_esquerda">
@@ -288,7 +225,7 @@
                         </td>
 
                         <td>
-                            <input name="txtNome" class="dados" type="text" value="<?= @$nomeCelebridade ?>">
+                            <input maxlength="100" name="txtNome" class="dados" type="text" value="<?= @$nomeCelebridade ?>" required>
                             <input name="txtFoto" id="txtFoto" class="dados" type="hidden">
                         </td>
                     </tr>
@@ -299,7 +236,7 @@
                         </td>
 
                         <td>
-                            <input name="txtData" class="dados" id="txtData" type="date" value="<?= @$dtNasc ?>">
+                            <input name="txtData" class="dados" id="txtData" type="date" value="<?= @$dtNasc ?>" required>
                         </td>
                     </tr>
                     <tr>
@@ -309,7 +246,7 @@
                         </td>
 
                         <td>
-                            <input name="txtProfissao" class="dados" type="text" value="<?= @$profissao ?>">
+                            <input maxlength="50" name="txtProfissao" class="dados" type="text" value="<?= @$profissao ?>" required>
                         </td>
                     </tr>
                     <tr>
@@ -319,7 +256,7 @@
                         </td>
 
                         <td>
-                            <input name="txtNaturalidade" class="dados" type="text" value="<?= @$naturalidade ?>">
+                            <input maxlength="50" name="txtNaturalidade" class="dados" type="text" value="<?= @$naturalidade ?>" required>
                         </td>
                     </tr>
                     <tr>
@@ -329,7 +266,7 @@
                         </td>
 
                         <td>
-                            <textarea name="txtBiografia" id="txtBiografia" class="dados"><?= @$biografia ?></textarea>
+                            <textarea name="txtBiografia" id="txtBiografia" class="dados" required><?= @$biografia ?></textarea>
                         </td>
                     </tr>
                     <tr>

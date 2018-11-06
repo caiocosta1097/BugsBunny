@@ -406,6 +406,7 @@ footer {
 #principal_sobre {
 
     width: 1500px;
+    min-height: 500px;
     height: auto;
     margin-left: auto;
     margin-right: auto;
@@ -502,7 +503,7 @@ footer {
 #produtos_promocao {
 
     width: 98%;
-    min-height: 740px;
+    min-height: 348px;
     height: auto;
 
 }

@@ -144,7 +144,7 @@
                 <table id="tabela">
                     <thead>
                     <tr>
-                        <th>Versão</th>
+                        <th>Data da versão</th>
                         <th>Opções</th>
                     </tr>
                     </thead>
@@ -159,7 +159,7 @@
                 
                     ?>        
                     <tr>
-                        <td><?= $rsContatos['idSobre'].".0" ?></td>
+                        <td><?= $rsContatos['dataVersao'] ?></td>
                         <td id="td_imagens">
                             <a href="formulario_sobre.php?id=<?= $rsContatos['idSobre'] ?>">
                                 <img src="imagens/editar.png">

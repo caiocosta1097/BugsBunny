@@ -81,11 +81,11 @@
             #modal{
 
                 width: 750px;
-                height: 770px;
+                height: 750px;
                 background-color: #fff;
                 margin-left: auto;
                 margin-right: auto;
-                margin-top: 50px;
+                margin-top: 20px;
                 border-radius: 25px;
 
             }

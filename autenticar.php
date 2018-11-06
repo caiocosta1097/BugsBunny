@@ -21,7 +21,7 @@
             $loginBanco = $rsUsuarios['login'];
             $senhaBanco = $rsUsuarios['senha'];
             
-            if($login == $loginBanco and $senha == $senhaBanco){
+            if($login == $loginBanco and md5($senha) == $senhaBanco){
                 
                 $autenticar = true;
                 
