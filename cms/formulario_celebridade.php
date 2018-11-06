@@ -6,6 +6,34 @@
 
     $conexao = conexaoBD();
 
+    if(isset($_SESSION['idUsuario'])){
+        
+        $idUsuario = $_SESSION['idUsuario'];
+
+        $sql = "SELECT * FROM tbl_usuario WHERE idUsuario =".$idUsuario;
+
+        $select  = mysqli_query($conexao, $sql);
+
+            if($rsUsuario = mysqli_fetch_array($select)){
+
+                $nome = $rsUsuario['nome'];
+
+            }
+
+            if(isset($_GET['logout'])){
+
+                session_destroy();
+
+                header('location:../index.php');
+
+            }
+        
+    }else{
+        
+        header('location:../index.php');   
+        
+    }
+
     $botao = "Salvar";
 
     $caixa_foto = "hidden";
@@ -28,7 +56,7 @@
         if($rsConsulta = mysqli_fetch_array($select)){
             
             $foto = $rsConsulta['foto'];
-            $nome = $rsConsulta['nome'];
+            $nomeCelebridade = $rsConsulta['nome'];
             $dtNasc = $rsConsulta['dtNasci'];
             $naturalidade = $rsConsulta['naturalidade'];
             $profissao = $rsConsulta['profissao'];
@@ -43,7 +71,7 @@
     if(isset($_POST['btnSalvar'])){
         
         $foto = $_POST['txtFoto'];
-        $nome = $_POST['txtNome'];
+        $nomeCelebridade = $_POST['txtNome'];
         $dtNasc = $_POST['txtData'];
         $naturalidade = $_POST['txtNaturalidade'];
         $profissao = $_POST['txtProfissao'];
@@ -53,7 +81,7 @@
          
             $sql = "INSERT INTO tbl_celebridade (foto, nome, dtNasci, naturalidade, profissao, biografia, status) 
                     VALUES ('".$foto."', 
-                            '".$nome."',
+                            '".$nomeCelebridade."',
                             '".$dtNasc."', 
                             '".$naturalidade."',
                             '".$profissao."', 
@@ -68,7 +96,7 @@
             
             $sql = "UPDATE tbl_celebridade 
                     SET foto = '".$foto."', 
-                    nome = '".$nome."',
+                    nome = '".$nomeCelebridade."',
                     dtNasci = '".$dtNasc."',
                     naturalidade = '".$naturalidade."',
                     profissao = '".$profissao."',
@@ -226,8 +254,8 @@
                 </div>
             </nav>
             <div id="area_logout">
-                <div id="boas_vindas">Bem vindo, Caio</div>
-                <div id="logout">Logout</div>
+                <div id="boas_vindas">Bem vindo, <?= $nome ?></div>
+                <div id="logout"><a href="index.php?logout">Logout</a></div>
             </div>
         </div>
     </header>
@@ -260,7 +288,7 @@
                         </td>
 
                         <td>
-                            <input name="txtNome" class="dados" type="text" value="<?= @$nome ?>">
+                            <input name="txtNome" class="dados" type="text" value="<?= @$nomeCelebridade ?>">
                             <input name="txtFoto" id="txtFoto" class="dados" type="hidden">
                         </td>
                     </tr>

@@ -6,6 +6,36 @@
 
     $conexao = conexaoBD();
 
+    if(isset($_SESSION['idUsuario'])){
+        
+        $idUsuario = $_SESSION['idUsuario'];
+
+        $sql = "SELECT * FROM tbl_usuario WHERE idUsuario =".$idUsuario;
+
+        $select  = mysqli_query($conexao, $sql);
+
+            if($rsUsuario = mysqli_fetch_array($select)){
+
+                $nome = $rsUsuario['nome'];
+
+            }
+
+            if(isset($_GET['logout'])){
+
+                session_destroy();
+
+                header('location:../index.php');
+
+            }
+        
+    }else{
+        
+        header('location:../index.php');   
+        
+    }
+
+    $tituloPagina = "Cadastrar nível de usuário";
+
     $botao = "Salvar";
 
     if(isset($_GET['id'])){
@@ -13,6 +43,8 @@
         $idNivel = $_GET['id'];
         
         $botao = "Atualizar";
+        
+        $tituloPagina = "Atualizar nível de usuário";
 
         $_SESSION['idNivel'] = $idNivel;
 
@@ -20,8 +52,8 @@
 
         $select  = mysqli_query($conexao, $sql);
 
-        if($rsConsulta = mysqli_fetch_array($select))
-            $nivel = $rsConsulta['nomeNivel'];
+        if($rsNivel = mysqli_fetch_array($select))
+            $nivel = $rsNivel['nomeNivel'];
         
     }
 
@@ -52,47 +84,6 @@
 <head>
     <title>CMS</title>
     <link rel="stylesheet" type="text/css" href="css/style.css">
-
-    <style>
-
-        @font-face{
-    
-            font-family: font-caviarDreams;
-            src: url('../fonts/CaviarDreams_Bold.ttf');
-    
-        }
-        
-        
-        .dados{
-
-            width: 300px;
-            height: 30px;
-            display: inline-block;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-            background-color: #f2eff2;
-            font-size: 18px;
-    
-        }
-        
-
-        td{
-
-            padding-top: 15px;
-
-        }
-
-        .td_esquerda{
-
-            width: 55%;
-            font-size: 20px;
-            font-family: font-caviarDreams;
-            text-align: center;
-
-        }
-        
-    </style>
 
 </head>
 
@@ -130,24 +121,24 @@
                 </div>
             </nav>
             <div id="area_logout">
-                <div id="boas_vindas">Bem vindo, Caio</div>
-                <div id="logout">Logout</div>
+                    <div id="boas_vindas">Bem vindo, <?= $nome ?></div>
+                    <div id="logout"><a href="index.php?logout">Logout</a></div>
             </div>
         </div>
     </header>
     <div id="principal_adm_niveis">
         <div id="titulo_adm_nivel_usuario">
-            Cadastrar nível de usuário
+            <?= $tituloPagina ?>
         </div>
-        <form name="frm_formulario_nivel" action="formulario_nivel.php" method="post">
+        <form action="formulario_nivel.php" method="post">
             <div id="registros_nivel_usuario">
-                <table>
+                <table class="tabela_formulario">
                     <tr>
                         <td class="td_esquerda">
                             <label>Nível usuário</label>
                         </td>
                         <td>
-                            <input name="txtNivel" class="dados" type="text" value="<?= @$nivel ?>">
+                            <input maxlength="30" name="txtNivel" class="dados" type="text" value="<?= @$nivel ?>" required>
                         </td>
                     </tr>
                 </table>

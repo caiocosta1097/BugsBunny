@@ -1,8 +1,38 @@
 <?php
 
+    session_start();
+
     require_once('conexao.php');
 
     $conexao = conexaoBD();
+
+    if(isset($_SESSION['idUsuario'])){
+        
+        $idUsuario = $_SESSION['idUsuario'];
+
+        $sql = "SELECT * FROM tbl_usuario WHERE idUsuario =".$idUsuario;
+
+        $select  = mysqli_query($conexao, $sql);
+
+            if($rsUsuario = mysqli_fetch_array($select)){
+
+                $nome = $rsUsuario['nome'];
+
+            }
+
+            if(isset($_GET['logout'])){
+
+                session_destroy();
+
+                header('location:../index.php');
+
+            }
+        
+    }else{
+        
+        header('location:../index.php');   
+        
+    }
 
     if(isset($_GET['modo'])){
         
@@ -96,8 +126,8 @@
                     </div>
                 </nav>
                 <div id="area_logout">
-                    <div id="boas_vindas">Bem vindo, Caio</div>
-                    <div id="logout">Logout</div>
+                    <div id="boas_vindas">Bem vindo, <?= $nome ?></div>
+                    <div id="logout"><a href="index.php?logout">Logout</a></div>
                 </div>
             </div>
         </header>
@@ -120,31 +150,31 @@
 
                         $select  = mysqli_query($conexao, $sql);
 
-                        while($rsContatos = mysqli_fetch_array($select)){
+                        while($rsNivel = mysqli_fetch_array($select)){
                 
                     ?>
                     <tr>
-                        <td><?= $rsContatos['nomeNivel'] ?></td>
+                        <td><?= $rsNivel['nomeNivel'] ?></td>
                         <td id="td_imagens">
-                            <a href="formulario_nivel.php?id=<?= $rsContatos['idNivel'] ?>">
+                            <a href="formulario_nivel.php?id=<?= $rsNivel['idNivel'] ?>">
                                 <img src="imagens/editar.png">
                             </a>
-                            <a href="adm_nivel_usuario.php?modo=excluir&id=<?= $rsContatos['idNivel'] ?>">
+                            <a href="adm_nivel_usuario.php?modo=excluir&id=<?= $rsNivel['idNivel'] ?>">
                                 <img src="imagens/deletar.png">
                             </a>
                             <?php 
                             
-                                $status = $rsContatos['status'];
+                                $status = $rsNivel['status'];
                             
                                 if($status == 0){
                                     
                                     
                             ?>
-                            <a href="adm_nivel_usuario.php?status=ativado&id=<?= $rsContatos['idNivel'] ?>">
+                            <a href="adm_nivel_usuario.php?status=ativado&id=<?= $rsNivel['idNivel'] ?>">
                                 <img src="imagens/ativado.png">
                             </a>
                             <?php } else { ?>
-                            <a href="adm_nivel_usuario.php?status=desativado&id=<?= $rsContatos['idNivel'] ?>">
+                            <a href="adm_nivel_usuario.php?status=desativado&id=<?= $rsNivel['idNivel'] ?>">
                                 <img src="imagens/desativado.png">
                             </a>
                             <?php } ?>  

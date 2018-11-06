@@ -1,9 +1,41 @@
 <?php
 
+    session_start();
+
     require_once('conexao.php');
 
     $conexao = conexaoBD();
-//
+
+    if(isset($_SESSION['idUsuario'])){
+        
+        $idUsuario = $_SESSION['idUsuario'];
+        
+        $usuario = "ativo";
+
+        $sql = "SELECT * FROM tbl_usuario WHERE idUsuario =".$idUsuario;
+
+        $select  = mysqli_query($conexao, $sql);
+
+            if($rsUsuario = mysqli_fetch_array($select)){
+
+                $nome = $rsUsuario['nome'];
+
+            }
+
+            if(isset($_GET['logout'])){
+
+                session_destroy();
+
+                header('location:../index.php');
+
+            }
+        
+    }else{
+        
+        header('location:../index.php');   
+        
+    }
+
     if(isset($_GET['modo'])){
         
         $modo = $_GET['modo'];
@@ -12,12 +44,22 @@
             
             $id = $_GET['id'];
             
-            $sql = "DELETE FROM tbl_usuario WHERE idUsuario =".$id;
-        
-            if(!mysqli_query($conexao, $sql))
-                echo "Erro ao excluir registro";
+            if($idUsuario == $id){
+                
+                echo "<script>alert('Não é possível excluir o usuário logado!')</script>";
+                
+            }else {
             
-            header('location:adm_lista_usuarios.php');
+                $sql = "DELETE FROM tbl_usuario WHERE idUsuario =".$id;
+
+                if(!mysqli_query($conexao, $sql))
+                    echo "Erro ao excluir registro";
+
+                header('location:adm_lista_usuarios.php'); 
+                
+            }
+            
+            
             
         }
         
@@ -67,8 +109,8 @@
                     </div>
                 </nav>
                 <div id="area_logout">
-                    <div id="boas_vindas">Bem vindo, Caio</div>
-                    <div id="logout">Logout</div>
+                    <div id="boas_vindas">Bem vindo, <?= $nome ?></div>
+                    <div id="logout"><a href="index.php?logout">Logout</a></div>
                 </div>
             </div>
         </header>

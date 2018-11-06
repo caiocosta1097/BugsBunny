@@ -97,21 +97,21 @@
                 </nav>
                 <!--  Área de login  -->
                 <div id="login">
-                    <form>
-                        <div class="formulario">
-                            <label>Usuário</label>
-                            <br>
-                            <input class="caixa_login" name="txtUSuario" type="text">
-                        </div>
-                        <div class="formulario">
-                            <label>Senha</label>
-                            <br>
-                            <input class="caixa_login" name="txtSenha" type="text">
-                        </div>
-                        <div class="formulario">
-                            <input class="caixa_login" name="btnLogin" type="button" value="OK">
-                        </div>
-                    </form>
+                    <form name="frm_login" action="autenticar.php" method="post">
+                    <div class="formulario">
+                        <label>Usuário</label>
+                        <br>
+                        <input class="caixa_login" name="txtUsuario" type="text">
+                    </div>
+                    <div class="formulario">
+                        <label>Senha</label>
+                        <br>
+                        <input class="caixa_login" name="txtSenha" type="password">
+                    </div>
+                    <div class="formulario">
+                        <input name="btnLogin" type="submit" value="OK">
+                    </div>
+                </form>
                 </div>
                 <!--  Redes sociais  -->
                 <div id="social">

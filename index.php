@@ -28,7 +28,7 @@
             </nav>
             <!-- Área do login -->
             <div id="login">
-                <form name="frm_login" action="index.php" method="post">
+                <form name="frm_login" action="autenticar.php" method="post">
                     <div class="formulario">
                         <label>Usuário</label>
                         <br>

@@ -1,10 +1,38 @@
 <?php
 
-    require_once('conexao.php');
-
     session_start();
 
+    require_once('conexao.php');
+
     $conexao = conexaoBD();
+
+    if(isset($_SESSION['idUsuario'])){
+        
+        $idUsuario = $_SESSION['idUsuario'];
+
+        $sql = "SELECT * FROM tbl_usuario WHERE idUsuario =".$idUsuario;
+
+        $select  = mysqli_query($conexao, $sql);
+
+            if($rsUsuario = mysqli_fetch_array($select)){
+
+                $nome = $rsUsuario['nome'];
+
+            }
+
+            if(isset($_GET['logout'])){
+
+                session_destroy();
+
+                header('location:../index.php');
+
+            }
+        
+    }else{
+        
+        header('location:../index.php');   
+        
+    }
 
     if(isset($_GET['modo'])){
         
@@ -154,8 +182,8 @@
                     </div>
                 </nav>
                 <div id="area_logout">
-                    <div id="boas_vindas">Bem vindo, Caio</div>
-                    <div id="logout">Logout</div>
+                    <div id="boas_vindas">Bem vindo, <?= $nome ?></div>
+                    <div id="logout"><a href="index.php?logout">Logout</a></div>
                 </div>
             </div>
         </header>

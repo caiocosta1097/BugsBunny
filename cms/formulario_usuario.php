@@ -6,8 +6,37 @@
 
     $conexao = conexaoBD();
 
+    if(isset($_SESSION['idUsuario'])){
+        
+        $idUsuario = $_SESSION['idUsuario'];
+
+        $sql = "SELECT * FROM tbl_usuario WHERE idUsuario =".$idUsuario;
+
+        $select  = mysqli_query($conexao, $sql);
+
+            if($rsUsuario = mysqli_fetch_array($select)){
+
+                $nome = $rsUsuario['nome'];
+
+            }
+
+            if(isset($_GET['logout'])){
+
+                session_destroy();
+
+                header('location:../index.php');
+
+            }
+        
+    }else{
+        
+        header('location:../index.php');   
+        
+    }
+
     $botao = "Salvar";
     $lblSenha = "Senha";
+    $required = "required";
 
     if(isset($_GET['id'])){
         
@@ -17,6 +46,7 @@
         $lblSenha = "Nova senha";
         $lblNovaSenha = "";
         $txtNovaSenha = "password";
+        $required = "";
         
         $_SESSION['idUsuario'] = $idUsuario;
     
@@ -24,13 +54,13 @@
 
         $select  = mysqli_query($conexao, $sql);
 
-        if($rsConsulta = mysqli_fetch_array($select)){
+        if($rsUsuarioForm = mysqli_fetch_array($select)){
 
-            $nome = $rsConsulta['nome'];
-            $login = $rsConsulta['login'];
-            $email = $rsConsulta['email'];
-            $senha = $rsConsulta['senha'];
-            $idNivel = $rsConsulta['idNivel'];
+            $nomeUsuario = $rsUsuarioForm['nome'];
+            $login = $rsUsuarioForm['login'];
+            $email = $rsUsuarioForm['email'];
+            $senha = $rsUsuarioForm['senha'];
+            $idNivel = $rsUsuarioForm['idNivel'];
             
             $_SESSION['senhaUsuario'] = $senha;
 
@@ -40,7 +70,7 @@
 
     if(isset($_POST['btnSalvar'])){
         
-        $nome = $_POST['txtNome'];
+        $nomeUsuario = $_POST['txtNome'];
         $nivelUsuario = $_POST['slt_nivel'];
         $login = $_POST['txtLogin'];
         $senha = $_POST['txtSenha'];
@@ -49,7 +79,7 @@
         if($_POST['btnSalvar'] == "Salvar"){
             
             $sql = "INSERT INTO tbl_usuario (nome, login, senha, email, idNivel) 
-                    VALUES ('".$nome."', '".$login."', '".$senha."', '".$email."', '".$nivelUsuario."')";
+                    VALUES ('".$nomeUsuario."', '".$login."', '".$senha."', '".$email."', '".$nivelUsuario."')";
             
         }else {
             
@@ -57,7 +87,7 @@
                 $senha = $_SESSION['senhaUsuario'];
             
             
-            $sql = "UPDATE tbl_usuario SET nome = '".$nome."', 
+            $sql = "UPDATE tbl_usuario SET nome = '".$nomeUsuario."', 
                     login = '".$login."', 
                     senha = '".$senha."', 
                     email = '".$email."', 
@@ -83,47 +113,6 @@
 <head>
     <title>CMS</title>
     <link rel="stylesheet" type="text/css" href="css/style.css">
-
-    <style>
-
-        @font-face{
-    
-            font-family: font-caviarDreams;
-            src: url('../fonts/CaviarDreams_Bold.ttf');
-    
-        }
-        
-        
-        .dados{
-
-            width: 300px;
-            height: 30px;
-            display: inline-block;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-            background-color: #f2eff2;
-            font-size: 18px;
-    
-        }
-        
-
-        td{
-
-            padding-top: 15px;
-
-        }
-
-        .td_esquerda{
-
-            width: 55%;
-            font-size: 20px;
-            font-family: font-caviarDreams;
-            text-align: center;
-
-        }
-        
-    </style>
 
 </head>
 
@@ -161,25 +150,25 @@
                 </div>
             </nav>
             <div id="area_logout">
-                <div id="boas_vindas">Bem vindo, Caio</div>
-                <div id="logout">Logout</div>
-            </div>
+                    <div id="boas_vindas">Bem vindo, <?= $nome ?></div>
+                    <div id="logout"><a href="index.php?logout">Logout</a></div>
+                </div>
         </div>
     </header>
     <div id="principal_adm_niveis">
         <div id="titulo_adm_nivel_usuario">
             Cadastrar usuário
         </div>
-        <form name="frm_formulario_usuario" action="formulario_usuario.php" method="post">
+        <form action="formulario_usuario.php" method="post">
             <div id="caixa_usuario">
-                <table>
+                <table class="tabela_formulario">
                     <tr>
                         <td class="td_esquerda">
                             <label>Nome</label>
                         </td>
 
                         <td>
-                            <input name="txtNome" class="dados" type="text" value="<?= @$nome ?>">
+                            <input maxlength="100" name="txtNome" class="dados" type="text" value="<?= @$nomeUsuario ?>" required>
                         </td>
                         <td class="td_esquerda">
                             <label>Nível usuário</label>
@@ -192,11 +181,17 @@
 
                                         $select  = mysqli_query($conexao, $sql);
 
-                                        while($rsContatos = mysqli_fetch_array($select)){
+                                        while($rsNivel = mysqli_fetch_array($select)){
+                                            
+                                        if($rsNivel['idNivel'] == $idNivel ){
+                                         
+                                            $selected = "selected";
+                                            
+                                        }    
 
                                     ?>
-                                <option value="<?= $rsContatos['idNivel'] ?>">
-                                    <?= $rsContatos['nomeNivel'] ?>
+                                <option value="<?= $rsNivel['idNivel'] ?>" <?= @$selected ?>>
+                                    <?= $rsNivel['nomeNivel'] ?>
                                 </option>
                                 <?php } ?>
                             </select>
@@ -207,14 +202,14 @@
                             <label>Login</label>
                         </td>
                         <td>
-                            <input name="txtLogin" class="dados" type="text" value="<?= @$login ?>">
+                            <input maxlength="30" name="txtLogin" class="dados" type="text" value="<?= @$login ?>" required>
                         </td>
                         <td class="td_esquerda">
                             <label>
                                 <?= $lblSenha ?></label>
                         </td>
                         <td>
-                            <input name="txtSenha" class="dados" type="password">
+                            <input maxlength="45" name="txtSenha" class="dados" type="password" <?= $required ?>>
                         </td>
                     </tr>
                     <tr>
@@ -222,7 +217,7 @@
                             <label>Email</label>
                         </td>
                         <td>
-                            <input name="txtEmail" class="dados" type="text" value="<?= @$email ?>">
+                            <input maxlength="100" name="txtEmail" class="dados" type="text" value="<?= @$email ?>" required>
                         </td>
                     </tr>
                 </table>

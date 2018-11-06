@@ -5,11 +5,17 @@
     
 }
 
-
 @font-face{
     
     font-family: font-kenyan-negrito;
     src: url('../fonts/kenyan_coffee_bd.ttf');
+    
+}
+
+@font-face{
+    
+    font-family: font-caviarDreams;
+    src: url('../fonts/CaviarDreams_Bold.ttf');
     
 }
 
@@ -407,6 +413,34 @@ a{
 
 .button:hover {
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.dados{
+
+            width: 300px;
+            height: 30px;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            background-color: #f2eff2;
+            font-size: 18px;
+    
+}
+
+.tabela_formulario td{
+
+    padding-top: 15px;
+
+}
+
+ .tabela_formulario .td_esquerda{
+
+    width: 55%;
+    font-size: 20px;
+    font-family: font-caviarDreams;
+    text-align: center;
+
 }
 
 footer{
