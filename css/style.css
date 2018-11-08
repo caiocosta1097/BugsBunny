@@ -25,8 +25,6 @@ body {
 
 }
 
-
-
 /* Cabeçalho */
 
 header {
@@ -180,8 +178,6 @@ label {
 
 }
 
-
-
 /* Rodapé */
 
 footer {
@@ -203,9 +199,6 @@ footer {
     color: #fff;
 
 }
-
-
-
 
 /* Página Index */
 
@@ -317,8 +310,6 @@ footer {
 
 }
 
-
-
 /* Página notícias */
 
 #principal_noticias {
@@ -399,8 +390,6 @@ footer {
 
 }
 
-
-
 /* Página Sobre */
 
 #principal_sobre {
@@ -476,8 +465,6 @@ footer {
     text-align: justify;
 
 }
-
-
 
 /* Página Promoções */
 
@@ -571,12 +558,9 @@ footer {
 
     background-color: #3b5998;
     transition: 0.5s;
-    border: 1px;
     color: #fff;
 
 }
-
-
 
 /* Página Nossas Bancas */
 
@@ -646,8 +630,6 @@ footer {
     font-size: 25px;
 
 }
-
-
 
 /* Página Celebridade */
 
@@ -735,8 +717,6 @@ footer {
     padding-left: 15px;
 
 }
-
-
 
 /* Página Fale conosco */
 

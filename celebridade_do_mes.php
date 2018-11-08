@@ -1,7 +1,9 @@
 <?php
 
-    require_once('conexao.php');
+    // Importando o arquivo de conexão
+    require_once('cms/conexao.php');
 
+	// Variável que recebe o função com a conexão
     $conexao = conexaoBD();
 
 ?>
@@ -36,16 +38,16 @@
             </nav>
             <!--  Área de login  -->
             <div id="login">
-                <form name="frm_login" action="autenticar.php" method="post">
+                <form action="autenticar.php" method="post">
                     <div class="formulario">
                         <label>Usuário</label>
                         <br>
-                        <input class="caixa_login" name="txtUsuario" type="text">
+                        <input class="caixa_login" name="txtUsuario" type="text" required>
                     </div>
                     <div class="formulario">
                         <label>Senha</label>
                         <br>
-                        <input class="caixa_login" name="txtSenha" type="password">
+                        <input class="caixa_login" name="txtSenha" type="password" required>
                     </div>
                     <div class="formulario">
                         <input name="btnLogin" type="submit" value="OK">
@@ -87,47 +89,53 @@
             <div class="titulo_pagina">Celebridade do Mês</div>
             <?php
                 
+				// Variável que recebe o SELECT do banco onde o status = 0 (ativado)
                 $sql = "SELECT * FROM tbl_celebridade WHERE status = 0";
 
+				// Variável que executa o SELECT
                 $select  = mysqli_query($conexao, $sql);
 
-                if($rsContatos = mysqli_fetch_array($select)){
+				// Verifica se retorna algum registro e coloca em um array
+                if($rsCelebridade = mysqli_fetch_array($select)){
                     
-                    $dtNasc = $rsContatos['dtNasci'];
-                    $data = explode("-", $dtNasc);
-                    $dtNasc = $data[2]."/".$data[1]."/".$data[0];
+					// Pega a data do banco
+                    $dtNasc = $rsCelebridade['dtNasci'];
+					
+                    // Separa em ano, mês e dia
+                    list($ano, $mes, $dia) = explode('-', $dtNasc);
+					
+					 // Converte a data de nascimento no formato mktime
+                    $dtNasc = mktime( 0, 0, 0, $mes, $dia, $ano);
    
-                    // Separa em dia, mês e ano
-                    list($dia, $mes, $ano) = explode('/', $dtNasc);
-   
-                    // Descobre que dia é hoje e retorna a unix timestamp
-                    $hoje = mktime(0, 0, 0, date('m'), date('d'), date('Y'));
-                    // Descobre a unix timestamp da data de nascimento
-                    $nascimento = mktime( 0, 0, 0, $mes, $dia, $ano);
+                    // Pega a data atual no formato mktime
+                    $dtAtual = mktime(0, 0, 0, date('m'), date('d'), date('Y'));
 
-                    // Depois apenas fazemos o cálculo já citado :)
-                    $idade = floor((((($hoje - $nascimento) / 60) / 60) / 24) / 365.25);
+                    // Calcula a idade
+                    $idade = floor((((($dtAtual - $dtNasc) / 60) / 60) / 24) / 365.25);
+					
+					// Tranforma a data em String
+					$dtNasc = $dia."/".$mes."/".$ano;
                 
             ?>    
-            <div id="subtitulo_nome"><?= $rsContatos['nome'] ?></div>
+            <div id="subtitulo_nome"><?= $rsCelebridade['nome'] ?></div>
             <!--  Imagem da celebridade  -->
             <div id="caixa_imagem_celebridade">
-                <img id="imagem_celebridade" src="cms/<?= $rsContatos['foto'] ?>" alt="<?= $rsContatos['nome'] ?>">
+                <img id="imagem_celebridade" src="cms/<?= $rsCelebridade['foto'] ?>" alt="<?= $rsCelebridade['nome'] ?>" title="<?= $rsCelebridade['nome'] ?>">
             </div>
             <!--  Informações da celebridade  -->
             <div id="caixa_informacoes_celebridade">
                 <ul>
                     <li class="informacoes"><b> Data de nascimento:</b> <?= $dtNasc ?></li>
                     <li class="informacoes"><b>Idade:</b> <?= $idade ?> anos</li>
-                    <li class="informacoes"><b>Profissão:</b> <?= $rsContatos['profissao'] ?></li>
-                    <li class="informacoes"><b>Naturalidade:</b> <?= $rsContatos['naturalidade'] ?></li>
+                    <li class="informacoes"><b>Profissão:</b> <?= $rsCelebridade['profissao'] ?></li>
+                    <li class="informacoes"><b>Naturalidade:</b> <?= $rsCelebridade['naturalidade'] ?></li>
                 </ul>
             </div>
             <!--  Biografia  -->
             <div id="caixa_biografia">
                 <div class="titulo_pagina">Biografia</div>
                 <p>
-                   <?= $rsContatos['biografia'] ?>
+                   <?= $rsCelebridade['biografia'] ?>
                 </p>
             </div>
             <?php } ?>

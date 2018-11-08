@@ -1,3 +1,5 @@
+/* Fontes */
+
 @font-face {
 
     font-family: font-kenyan;
@@ -19,6 +21,8 @@
 
 }
 
+/* Corpo do site */
+
 body {
 
     margin: 0px;
@@ -26,6 +30,150 @@ body {
     background-color: #f2eff2;
 
 }
+
+#opcoes_conteudo {
+
+    width: auto;
+    height: 160px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+
+}
+
+.itens_opcoes {
+
+    width: 160px;
+    height: 160px;
+    margin-left: 20px;
+    float: left;
+
+}
+
+.imagens_opcoes {
+
+    width: 128px;
+    height: 128px;
+
+}
+
+.imagens_opcoes:hover {
+
+    transform: scale(1.1);
+
+}
+
+.titulo_opcoes {
+
+    width: 160px;
+    height: 35px;
+    margin-top: 5px;
+    font-family: font-kenyan;
+    font-size: 20px;
+
+}
+
+#tabela {
+
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+
+}
+
+#tabela td, #tabela thead th {
+
+    border: 1px solid #ddd;
+    padding: 8px;
+
+}
+
+#tabela tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+#tabela tr:hover {
+    background-color: #ddd;
+}
+
+#tabela thead tr th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4666a8;
+    color: white;
+}
+
+#area_botao {
+
+    width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    height: auto;
+    text-align: center;
+
+}
+
+.button {
+
+    background-color: #4666a8;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    font-weight: bold;
+    transition-duration: 0.4s;
+    border-radius: 5px;
+
+}
+
+.button:hover {
+
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+
+}
+
+a{
+                
+	color: inherit;
+	text-decoration: none;
+                
+}
+
+.dados {
+
+    width: 300px;
+    height: 30px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: #f2eff2;
+    font-size: 18px;
+
+}
+
+.tabela_formulario td {
+
+    padding-top: 15px;
+
+}
+
+.tabela_formulario .td_esquerda {
+
+    width: 55%;
+    font-size: 20px;
+    font-family: font-caviarDreams;
+    text-align: center;
+
+}
+
+/* Cabeçalho */
 
 header {
 
@@ -160,6 +308,8 @@ header {
 
 }
 
+/* Página Index */
+
 #principal_index {
 
     width: 1200px;
@@ -167,18 +317,6 @@ header {
     margin-left: auto;
     margin-right: auto;
     background-color: #fff;
-
-}
-
-#principal_formulario_celebridade {
-
-    width: 1200px;
-    height: auto;
-    padding-top: 50px;
-    margin-left: auto;
-    margin-right: auto;
-    background-color: #fff;
-    padding-bottom: 30px;
 
 }
 
@@ -193,143 +331,9 @@ h1 {
 
 }
 
-#principal_adm_fale_conosco {
+/* Página ADM Contéudo */
 
-    width: 1200px;
-    height: 450px;
-    margin-left: auto;
-    margin-right: auto;
-    padding-top: 50px;
-    background-color: #fff;
-
-}
-
-#titulo_adm_fale_conosco,
-#titulo_adm_nivel_usuario {
-
-    width: 1200px;
-    font-family: font-kenyan;
-    font-size: 50px;
-    text-align: center;
-
-}
-
-#registros_fale_conosco {
-
-    width: 1000px;
-    margin-top: 50px;
-    margin-left: auto;
-    margin-right: auto;
-    max-height: 350px;
-    overflow: auto;
-
-
-}
-
-#registros_nivel_usuario,
-#registros_bancas {
-
-    width: 500px;
-    margin-top: 50px;
-    margin-left: auto;
-    margin-right: auto;
-    max-height: 200px;
-    overflow: auto;
-    margin-bottom: 30px;
-
-
-}
-
-#registros_lista_usuarios {
-
-    width: 800px;
-    margin-top: 50px;
-    margin-left: auto;
-    margin-right: auto;
-    max-height: 200px;
-    overflow: auto;
-    margin-bottom: 30px;
-
-}
-
-#caixa_usuario {
-
-    width: 1000px;
-    margin-top: 50px;
-    margin-left: auto;
-    margin-right: auto;
-    max-height: 200px;
-    overflow: auto;
-    margin-bottom: 30px;
-
-}
-
-#caixa_noticias,
-#caixa_celebridade {
-
-    width: 1000px;
-    margin-top: 50px;
-    margin-left: auto;
-    margin-right: auto;
-    height: auto;
-    margin-bottom: 30px;
-
-}
-
-
-#area_botao {
-
-    width: 500px;
-    margin-left: auto;
-    margin-right: auto;
-    height: auto;
-    text-align: center;
-
-}
-
-
-#tabela {
-
-    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-
-}
-
-#tabela td,
-#tabela thead th {
-
-    border: 1px solid #ddd;
-    padding: 8px;
-
-}
-
-#tabela tbody tr:nth-child(even) {
-    background-color: #f2f2f2;
-}
-
-#tabela tr:hover {
-    background-color: #ddd;
-}
-
-#tabela thead tr th {
-    padding-top: 12px;
-    padding-bottom: 12px;
-    text-align: left;
-    background-color: #4666a8;
-    color: white;
-}
-
-
-#td_imagens {
-
-    text-align: center;
-
-}
-
-
-#principal_adm_conteudo,
-#principal_adm_usuarios {
+#principal_adm_conteudo {
 
     width: 1200px;
     height: 500px;
@@ -341,47 +345,286 @@ h1 {
 
 }
 
-#opcoes_conteudo {
+/* Página ADM Notícias */
 
-    width: auto;
-    height: 160px;
+#principal_adm_noticias {
+
+    width: 1200px;
+    height: 450px;
     margin-left: auto;
     margin-right: auto;
+    background-color: #fff;
+    padding-top: 50px;
+
+}
+
+#titulo_adm_noticias {
+
+    width: 1200px;
+    font-family: font-kenyan;
+    font-size: 50px;
     text-align: center;
 
 }
 
-.itens_opcoes {
+#registros_adm_noticias {
 
-    width: 160px;
-    height: 160px;
-    margin-left: 20px;
-    float: left;
-
-}
-
-.imagens_opcoes {
-
-    width: 128px;
-    height: 128px;
+    width: 800px;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    max-height: 200px;
+    overflow: auto;
+    margin-bottom: 30px;
 
 }
 
-.imagens_opcoes:hover {
+/* Página ADM Sobre a Banca */
 
-    transform: scale(1.1);
+#principal_adm_sobre {
+
+    width: 1200px;
+    height: 450px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #fff;
+    padding-top: 50px;
 
 }
 
-.titulo_opcoes {
+#titulo_adm_sobre {
 
-    width: 160px;
-    height: 35px;
-    margin-top: 5px;
+    width: 1200px;
     font-family: font-kenyan;
-    font-size: 20px;
+    font-size: 50px;
+    text-align: center;
 
 }
+
+#registros_adm_sobre{
+
+    width: 500px;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    max-height: 200px;
+    overflow: auto;
+    margin-bottom: 30px;
+
+
+}
+
+/* Página ADM Promoções */
+
+#principal_adm_promocoes {
+
+    width: 1200px;
+    height: 450px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #fff;
+    padding-top: 50px;
+
+}
+
+#titulo_adm_promocoes {
+
+    width: 1200px;
+    font-family: font-kenyan;
+    font-size: 50px;
+    text-align: center;
+
+}
+
+#registros_adm_promocoes {
+
+    width: 800px;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    max-height: 200px;
+    overflow: auto;
+    margin-bottom: 30px;
+
+}
+
+/* Página ADM Bancas */
+
+#principal_adm_bancas {
+
+    width: 1200px;
+    height: 450px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #fff;
+    padding-top: 50px;
+
+}
+
+#titulo_adm_bancas {
+
+    width: 1200px;
+    font-family: font-kenyan;
+    font-size: 50px;
+    text-align: center;
+
+}
+
+#registros_adm_bancas {
+
+    width: 500px;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    max-height: 200px;
+    overflow: auto;
+    margin-bottom: 30px;
+
+
+}
+
+/* Página ADM Celebridade */
+
+#principal_adm_celebridade {
+
+    width: 1200px;
+    height: 450px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #fff;
+    padding-top: 50px;
+
+}
+
+#titulo_adm_celebridade {
+
+    width: 1200px;
+    font-family: font-kenyan;
+    font-size: 50px;
+    text-align: center;
+
+}
+
+#registros_adm_celebridade {
+
+    width: 500px;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    max-height: 200px;
+    overflow: auto;
+    margin-bottom: 30px;
+
+
+}
+
+/* Página ADM Fale Conosco */
+
+#principal_adm_fale_conosco {
+
+    width: 1200px;
+    height: 450px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 50px;
+    background-color: #fff;
+
+}
+
+#titulo_adm_fale_conosco {
+
+    width: 1200px;
+    font-family: font-kenyan;
+    font-size: 50px;
+    text-align: center;
+
+}
+
+#registros_adm_fale_conosco {
+
+    width: 1000px;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    max-height: 350px;
+    overflow: auto;
+
+
+}
+
+#container{
+    
+    width: 100%;
+    height: 100%;
+    margin-top: -25px;
+    background-color: rgba(0,0,0,0.5);
+    position: fixed;
+    z-index: 999;
+   display: none;
+
+}
+
+#modal{
+
+    width: 750px;
+    height: 750px;
+    background-color: #fff;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    border-radius: 25px;
+
+}
+
+/* Página ADM Users */
+
+#principal_adm_users {
+
+    width: 1200px;
+    height: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+
+}
+
+/* Página ADM Usuários */
+
+#principal_adm_usuarios {
+
+    width: 1200px;
+    height: 450px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #fff;
+    padding-top: 50px;
+
+}
+
+#titulo_adm_usuarios {
+
+    width: 1200px;
+    font-family: font-kenyan;
+    font-size: 50px;
+    text-align: center;
+
+}
+
+#registros_adm_usuarios {
+
+    width: 800px;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    max-height: 200px;
+    overflow: auto;
+    margin-bottom: 30px;
+
+}
+
+/* Página ADM Níveis */
 
 #principal_adm_niveis {
 
@@ -394,86 +637,118 @@ h1 {
 
 }
 
+#titulo_adm_nivel_usuario {
 
-a {
-
-    color: inherit;
-    text-decoration: none;
-
-}
-
-
-.button {
-
-    background-color: #4666a8;
-    border: none;
-    color: white;
-    padding: 15px 32px;
+    width: 1200px;
+    font-family: font-kenyan;
+    font-size: 50px;
     text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-    font-weight: bold;
-    transition-duration: 0.4s;
-    border-radius: 5px;
 
 }
 
-.button:hover {
+#registros_adm_nivel_usuario {
 
-    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+    width: 500px;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    max-height: 200px;
+    overflow: auto;
+    margin-bottom: 30px;
 
-}
-
-.dados {
-
-    width: 300px;
-    height: 30px;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    background-color: #f2eff2;
-    font-size: 18px;
 
 }
 
-#caixa_celebridade .dados {
+/* Formulário ADM Notícias */
+
+#principal_form_adm_noticias {
+
+    width: 1200px;
+    height: 450px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #fff;
+    padding-top: 50px;
+
+}
+
+#titulo_form_adm_noticias {
+
+    width: 1200px;
+    font-family: font-kenyan;
+    font-size: 50px;
+    text-align: center;
+
+}
+
+#caixa_form_adm_noticias {
+
+    width: 1000px;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    height: auto;
+    margin-bottom: 30px;
+
+}
+
+#caixa_form_adm_noticias .dados {
 
     width: 400px;
 
 }
 
-.tabela_formulario td {
+#fotoNoticia, #fotoNoticia img {
 
-    padding-top: 15px;
+    width: 250px;
+    height: 180px;
+    border-radius: 15px;
+    background-color: #f2eff2;
+    margin-left: auto;
+    margin-right: auto;
 
 }
 
-.tabela_formulario .td_esquerda {
+/* Formulário ADM Sobre */
 
-    width: 55%;
-    font-size: 20px;
-    font-family: font-caviarDreams;
+#principal_form_adm_sobre {
+
+    width: 1200px;
+    height: 450px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #fff;
+    padding-top: 50px;
+
+}
+
+#titulo_form_adm_sobre {
+
+    width: 1200px;
+    font-family: font-kenyan;
+    font-size: 50px;
     text-align: center;
 
 }
 
-#txtTelefone {
+#caixa_form_adm_sobre {
 
-    width: 140px;
+    width: 1000px;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    height: auto;
+    margin-bottom: 30px;
 
 }
 
-.tabela_formulario #txtData {
+#caixa_form_adm_sobre .dados {
 
-    width: auto;
+    width: 400px;
 
 }
 
-#txtBiografia, #txtHistoria{
+#caixa_form_adm_sobre #txtHistoria{
 
     height: 100px;
     max-width: 400px;
@@ -481,8 +756,168 @@ a {
 
 }
 
-#fotoCelebridade,
-#fotoCelebridade img {
+#fotoSobre, #fotoSobre img {
+
+    width: 250px;
+    height: 180px;
+    border-radius: 15px;
+    background-color: #f2eff2;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+/* Formulário ADM Promoções */
+
+#principal_form_adm_promocoes {
+
+    width: 1200px;
+    height: 450px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #fff;
+    padding-top: 50px;
+
+}
+
+#titulo_form_adm_promocoes {
+
+    width: 1200px;
+    font-family: font-kenyan;
+    font-size: 50px;
+    text-align: center;
+
+}
+
+#caixa_form_adm_promocoes {
+
+    width: 1000px;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    height: auto;
+    margin-bottom: 30px;
+
+}
+
+#caixa_form_adm_promocoes .dados {
+
+    width: 400px;
+
+}
+
+#fotoPromocao, #fotoPromocao img {
+
+    width: 250px;
+    height: 180px;
+    border-radius: 15px;
+    background-color: #f2eff2;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+/* Formulário ADM Bancas */
+
+#principal_form_adm_bancas {
+
+    width: 1200px;
+    height: 450px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #fff;
+    padding-top: 50px;
+
+}
+
+#titulo_form_adm_bancas {
+
+    width: 1200px;
+    font-family: font-kenyan;
+    font-size: 50px;
+    text-align: center;
+
+}
+
+#caixa_form_adm_bancas {
+
+    width: 1000px;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    height: auto;
+    margin-bottom: 30px;
+
+}
+
+#caixa_form_adm_bancas .dados {
+
+    width: 300px;
+
+}
+
+#caixa_form_adm_bancas #txtTelefone {
+
+    width: 140px;
+
+}
+
+/* Formulário ADM Celebridade */
+
+#principal_form_celebridade {
+	
+
+    width: 1200px;
+    height: auto;
+    padding-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #fff;
+    padding-bottom: 30px;
+
+}
+
+#titulo_form_adm_celebridade {
+
+    width: 1200px;
+    font-family: font-kenyan;
+    font-size: 50px;
+    text-align: center;
+
+}
+
+#caixa_form_adm_celebridade {
+
+    width: 1000px;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    height: auto;
+    margin-bottom: 30px;
+
+}
+
+#caixa_form_adm_celebridade .dados {
+
+    width: 400px;
+
+}
+
+#caixa_form_adm_celebridade #txtData {
+
+    width: auto;
+
+}
+
+#caixa_form_adm_celebridade #txtBiografia{
+
+    height: 100px;
+    max-width: 400px;
+    max-height: 100px;
+
+}
+
+#fotoCelebridade, #fotoCelebridade img {
 
     width: 300px;
     height: 250px;
@@ -493,42 +928,86 @@ a {
 
 }
 
-#fotoNoticia,
-#fotoNoticia img {
+/* Formulário ADM Usuários */
 
-    width: 250px;
-    height: 180px;
-    border-radius: 15px;
-    background-color: #f2eff2;
+#principal_form_adm_usuarios {
+
+    width: 1200px;
+    height: 450px;
     margin-left: auto;
     margin-right: auto;
+    background-color: #fff;
+    padding-top: 50px;
 
 }
 
-#fotoPromocao,
-#fotoPromocao img {
+#titulo_form_adm_usuarios {
 
-    width: 250px;
-    height: 180px;
-    border-radius: 15px;
-    background-color: #f2eff2;
-    margin-left: auto;
-    margin-right: auto;
+    width: 1200px;
+    font-family: font-kenyan;
+    font-size: 50px;
+    text-align: center;
 
 }
 
-#fotoSobre,
-#fotoSobre img {
+#caixa_form_adm_usuarios {
 
-    width: 250px;
-    height: 180px;
-    border-radius: 15px;
-    background-color: #f2eff2;
+    width: 1000px;
+    margin-top: 50px;
     margin-left: auto;
     margin-right: auto;
+    height: auto;
+    margin-bottom: 30px;
 
 }
 
+#caixa_form_adm_usuarios .dados {
+
+    width: 300px;
+
+}
+
+/* Formulário ADM Níveis */
+
+#principal_form_adm_niveis {
+
+    width: 1200px;
+    height: 450px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #fff;
+    padding-top: 50px;
+
+}
+
+#titulo_form_adm_niveis {
+
+    width: 1200px;
+    font-family: font-kenyan;
+    font-size: 50px;
+    text-align: center;
+
+}
+
+#caixa_form_adm_niveis {
+
+    width: 1000px;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    height: auto;
+    margin-bottom: 30px;
+
+}
+
+#caixa_form_adm_niveis .dados {
+
+    width: 300px;
+
+}
+
+
+/* Rodapé */
 
 footer {
 

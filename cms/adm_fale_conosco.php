@@ -1,25 +1,31 @@
 <?php
 
+    // Iniciando uma sessão
     session_start();
 
+	// Importando o arquivo de conexão
     require_once('conexao.php');
 
+	// Variável que recebe o função com a conexão
     $conexao = conexaoBD();
 
-    if(isset($_SESSION['idUsuario'])){
+	// Verifica se a variável de sessão existe, senão redireciona para home
+    if(isset($_SESSION['idUser'])){
         
-        $idUsuario = $_SESSION['idUsuario'];
+		// Variável que recebe o id do user
+        $idUser = $_SESSION['idUser'];
 
-        $sql = "SELECT * FROM tbl_usuario WHERE idUsuario =".$idUsuario;
+		// Variável que recebe o user do banco
+        $sql = "SELECT * FROM tbl_usuario WHERE idUsuario =".$idUser;
 
+		// Variável que executa o SELECT
         $select  = mysqli_query($conexao, $sql);
+			
+			// Verifica se retorna algum registro e coloca em um array
+            if($rsUser = mysqli_fetch_array($select))
+                $nomeUser = $rsUser['nome'];
 
-            if($rsUsuario = mysqli_fetch_array($select)){
-
-                $nome = $rsUsuario['nome'];
-
-            }
-
+			// Verifica se logout existe, encerra a variável de sessão e redireciona para home
             if(isset($_GET['logout'])){
 
                 session_destroy();
@@ -28,28 +34,29 @@
 
             }
         
-    }else{
-        
-        header('location:../index.php');   
-        
-    }
-
+    }else
+        header('location:../index.php');
+	
+	// Verifica se modo existe
     if(isset($_GET['modo'])){
         
+		// Variável que recebe o modo
         $modo = $_GET['modo'];
         
+		// Verifica se o modo = 'excluir' e deleta o registro
         if($modo == 'excluir'){
             
             $id = $_GET['id'];
             
             $sql = "DELETE FROM tbl_fale_conosco WHERE id =".$id;
         
-            if(!mysqli_query($conexao, $sql))
-                echo "Erro ao excluir contato";
+            // Verifica se QUERY não pôde ser executada e exibe um erro, senão atualiza a página
+			if(!mysqli_query($conexao, $sql))
+				echo "Erro: ".mysqli_errno($conexao)." - ".mysqli_error($conexao);
+			else
+				header('location:adm_fale_conosco.php');     
             
-            header('location:adm_fale_conosco.php');
-            
-        }
+        } 
         
     }
 
@@ -63,41 +70,7 @@
         <title>CMS</title>
         <link rel="stylesheet" type="text/css" href="css/style.css">
         <script src="js/jquery.js"></script>
-        <style>
-        
-            #container{
-    
-    
-                width: 100%;
-                height: 100%;
-                margin-top: -25px;
-                background-color: rgba(0,0,0,0.5);
-                position: fixed;
-                z-index: 999;
-                display: none;
-
-            }
-
-            #modal{
-
-                width: 750px;
-                height: 750px;
-                background-color: #fff;
-                margin-left: auto;
-                margin-right: auto;
-                margin-top: 20px;
-                border-radius: 25px;
-
-            }
-            
-            a{
-                
-                color: inherit;
-                text-decoration: none;
-                
-            }
-        
-        </style>
+       
         <script>
     
         $(document).ready(function(){
@@ -111,29 +84,17 @@
             
         });
         
-        // Função para receber o ID do registro e descarregar na modal
-        function modal(idContato){
+        // Função para receber o ID do registro e fazer o callback na modal
+        function modal(idRegistro){
             
-            // Somente o ajax consegue forçar um POST ou GET sem atualizar a página
             $.ajax({
-                
-                /*
-                
-                    type - serve especificar se é GET ou POST
-                    url - serve para especificar a página requisitada
-                    data - serve para criar variáveis que serão submetidas (GET ou POST)
-                            para a página requisitada
-                    success - caso toda a requisição seja realizada com exito, então
-                                a function do success será chamada e através do paramêtro dados,
-                                iremos desgarregar na div (modal) o contéudo de dados
-                
-                */
+   
                 type: "POST",
                 url: "modal_fale_conosco.php",
-                data: {idRegistro:idContato},
-                success: function(dados){
+                data: {idRegistro:idRegistro},
+                success: function(callback){
                     
-                    $('#modal').html(dados);
+                    $('#modal').html(callback);
                     
                 }
                 
@@ -149,15 +110,20 @@
 
             </div>
         </div>
+        <!--  Cabeçalho  -->
         <header>
             <div id="caixa_cabecalho">
+				<!--  Título do CMS  -->
                 <div id="titulo_pagina">
                     <span id="negrito">CMS</span> - Sistema de Gerenciamento do Site
                 </div>
+				<!--  Logo  -->
                 <div id="logo_pagina"></div>
             </div>
+			<!--  Menu  -->
             <div id="caixa_menu">
                 <nav id="menu_principal">
+					<!--  Itens do menu  -->
                     <div class="itens_menu">
                         <a href="adm_conteudo.php">
                             <img class="imagens_menu" src="imagens/adm_conteudo.png">
@@ -175,23 +141,25 @@
                        <div class="titulo_menu">Adm. Produtos</div>
                     </div>
                     <div class="itens_menu">
-                        <a href="adm_usuarios.php">
+                        <a href="adm_users.php">
                             <img class="imagens_menu" src="imagens/adm_usuarios.png">
                         </a>
                        <div class="titulo_menu">Adm. Usuários</div>
                     </div>
                 </nav>
+				<!--  Área de logout  -->
                 <div id="area_logout">
-                    <div id="boas_vindas">Bem vindo, <?= $nome ?></div>
+                    <div id="boas_vindas">Bem vindo, <?= $nomeUser ?></div>
                     <div id="logout"><a href="index.php?logout">Logout</a></div>
                 </div>
             </div>
         </header>
+		<!--  Div principal da página  -->
         <div id="principal_adm_fale_conosco">
             <div id="titulo_adm_fale_conosco">
                 Registros do Fale Conosco
             </div>
-            <div id="registros_fale_conosco">
+            <div id="registros_adm_fale_conosco">
                 <table id="tabela">
                     <thead>
                     <tr>
@@ -203,23 +171,26 @@
                     </thead>
                     <tbody>
                     <?php
-                
+					
+						// Variável que recebe o SELECT do banco
                         $sql = "SELECT * FROM tbl_fale_conosco ORDER BY id";
 
+						// Variável que executa o SELECT
                         $select  = mysqli_query($conexao, $sql);
-
-                        while($rsContatos = mysqli_fetch_array($select)){
+				
+						// Loop para pegar cada registro no SELECT e colocar em um array
+                        while($rsFaleConosco = mysqli_fetch_array($select)){
                 
                     ?>
                     <tr>
-                        <td><?= $rsContatos['nome'] ?></td>
-                        <td><?= $rsContatos['email'] ?></td>
-                        <td><?= $rsContatos['profissao'] ?> </td>
+                        <td><?= $rsFaleConosco['nome'] ?></td>
+                        <td><?= $rsFaleConosco['email'] ?></td>
+                        <td><?= $rsFaleConosco['profissao'] ?> </td>
                         <td id="td_imagens">
-                            <a href="#" class="visualizar" onclick="modal(<?php echo($rsContatos['id']);?>)">
+                            <a href="#" class="visualizar" onclick="modal(<?= $rsFaleConosco['id'] ?>)">
                                 <img src="imagens/visualizar.png">
                             </a>
-                            <a href="adm_fale_conosco.php?modo=excluir&id=<?php echo($rsContatos['id']);?>">
+                            <a href="adm_fale_conosco.php?modo=excluir&id=<?= $rsFaleConosco['id'] ?>">
                                 <img src="imagens/deletar.png">
                             </a>
                         </td>
@@ -229,6 +200,7 @@
                 </table>
             </div>
         </div>
+		<!-- Rodapé -->
         <footer></footer>
     </body>
 </html>

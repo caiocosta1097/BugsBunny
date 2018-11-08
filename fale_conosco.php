@@ -1,16 +1,16 @@
 <?php
 
-    $host = "localhost";
-    $user = "root";
-    $password = "bcd127";
-    $database = "db_banca_inf3m";
+    // Importando o arquivo de conexão
+    require_once('cms/conexao.php');
 
-    if(!$conexao = mysqli_connect($host, $user, $password, $database))
-        echo "Erro ao conectar com Banco de Dados!";
+	// Variável que recebe o função com a conexão
+    $conexao = conexaoBD();
 
 
+	// Verifica se o submit foi clicado
     if(isset($_POST['btnEnviar'])){
         
+		// Pega todos os valores inseridos no formulário e coloca em variáveis
         $nome = $_POST['txtNome'];
         $telefone = $_POST['txtTelefone'];
         $celular = $_POST['txtCelular'];
@@ -22,13 +22,15 @@
         $sexo = $_POST['sltSexo'];
         $profissao = $_POST['txtProfissao'];
         
+		// Variável que recebe o INSERT
         $sql = "INSERT INTO tbl_fale_conosco (nome, telefone, celular, email, homePage, facebook, sugestao, infoProdutos, sexo, profissao)
                 VALUES ('".$nome."', '".$telefone."', '".$celular."', '".$email."', '".$homePage."', '".$facebook."', '".$sugestao."', '".$infProdutos."', '".$sexo."', '".$profissao."')";
         
+		// Verifica se QUERY não pôde ser executada e exibe um erro, senão atualiza a página
         if(!mysqli_query($conexao, $sql))
-            echo "Erro no envio!";
-        
-        header('location:fale_conosco.php');
+            echo "Erro: ".mysqli_errno($conexao)." - ".mysqli_error($conexao);
+		else
+			header('location:fale_conosco.php');
         
     }
 
@@ -97,21 +99,21 @@
                 </nav>
                 <!--  Área de login  -->
                 <div id="login">
-                    <form name="frm_login" action="autenticar.php" method="post">
-                    <div class="formulario">
-                        <label>Usuário</label>
-                        <br>
-                        <input class="caixa_login" name="txtUsuario" type="text">
-                    </div>
-                    <div class="formulario">
-                        <label>Senha</label>
-                        <br>
-                        <input class="caixa_login" name="txtSenha" type="password">
-                    </div>
-                    <div class="formulario">
-                        <input name="btnLogin" type="submit" value="OK">
-                    </div>
-                </form>
+                    <form action="autenticar.php" method="post">
+						<div class="formulario">
+							<label>Usuário</label>
+							<br>
+							<input class="caixa_login" name="txtUsuario" type="text" required>
+						</div>
+						<div class="formulario">
+							<label>Senha</label>
+							<br>
+							<input class="caixa_login" name="txtSenha" type="password" required>
+						</div>
+						<div class="formulario">
+							<input name="btnLogin" type="submit" value="OK">
+						</div>
+					</form>
                 </div>
                 <!--  Redes sociais  -->
                 <div id="social">

@@ -1,7 +1,9 @@
 <?php
 
-    require_once('conexao.php');
+    // Importando o arquivo de conexão
+    require_once('cms/conexao.php');
 
+	// Variável que recebe o função com a conexão
     $conexao = conexaoBD();
 
 ?>
@@ -36,16 +38,16 @@
             </nav>
             <!-- Área do login -->
             <div id="login">
-                <form name="frm_login" action="autenticar.php" method="post">
+                <form action="autenticar.php" method="post">
                     <div class="formulario">
                         <label>Usuário</label>
                         <br>
-                        <input class="caixa_login" name="txtUsuario" type="text">
+                        <input class="caixa_login" name="txtUsuario" type="text" required>
                     </div>
                     <div class="formulario">
                         <label>Senha</label>
                         <br>
-                        <input class="caixa_login" name="txtSenha" type="password">
+                        <input class="caixa_login" name="txtSenha" type="password" required>
                     </div>
                     <div class="formulario">
                         <input name="btnLogin" type="submit" value="OK">
@@ -84,23 +86,26 @@
         <!-- Área de conteúdo -->
         <div id="conteudo_promocoes" class="clearfix">
             <div id="produtos_promocao">
-                <!-- Caixas com os produtos em promoção -->
                 <?php
                 
+					// Variável que recebe o SELECT do banco onde o status = 0 (ativado)
                     $sql = "SELECT * FROM tbl_promocoes WHERE status = 0";
 
+					// Variável que executa o SELECT
                     $select  = mysqli_query($conexao, $sql);
 
-                    while($rsContatos = mysqli_fetch_array($select)){
+					// Loop para pegar cada registro no SELECT e colocar em um array
+                    while($rsPromocoes = mysqli_fetch_array($select)){
                 
-                ?>    
+                ?>
+				<!-- Caixas com os produtos em promoção -->
                 <div class="caixa_produtos_promocao">
                     <div class="imagem_produto_promocao">
-                        <img src="cms/<?= $rsContatos['foto'] ?>" alt="primeira guerra" class="imagens_promocao">
+                        <img src="cms/<?= $rsPromocoes['foto'] ?>" alt="<?= $rsPromocoes['promocao'] ?>" title="<?= $rsPromocoes['promocao'] ?>" class="imagens_promocao">
                     </div>
                     <div class="desconto">
                         <p>
-                            <?= $rsContatos['promocao'] ?>
+                            <?= $rsPromocoes['promocao'] ?>
                         </p>
                     </div>
                     <div class="detalhes_promocao">

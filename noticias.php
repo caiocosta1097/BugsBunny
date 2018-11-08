@@ -1,7 +1,9 @@
 <?php
 
-    require_once('conexao.php');
+	// Importando o arquivo de conexão
+    require_once('cms/conexao.php');
 
+	// Variável que recebe o função com a conexão
     $conexao = conexaoBD();
 
 ?>
@@ -36,16 +38,16 @@
             </nav>
             <!-- Área do login -->
             <div id="login">
-                <form name="frm_login" action="autenticar.php" method="post">
+                <form action="autenticar.php" method="post">
                     <div class="formulario">
                         <label>Usuário</label>
                         <br>
-                        <input class="caixa_login" name="txtUsuario" type="text">
+                        <input class="caixa_login" name="txtUsuario" type="text" required>
                     </div>
                     <div class="formulario">
                         <label>Senha</label>
                         <br>
-                        <input class="caixa_login" name="txtSenha" type="password">
+                        <input class="caixa_login" name="txtSenha" type="password" required>
                     </div>
                     <div class="formulario">
                         <input name="btnLogin" type="submit" value="OK">
@@ -83,22 +85,25 @@
         <script src="engine1/script.js"></script>
         <!-- Área de conteúdo -->
         <div id="conteudo_noticias" class="clearfix">
-            <!-- Caixa com as notícias -->
             <?php
                 
+				// Variável que recebe o SELECT do banco onde o status = 0 (ativado)
                 $sql = "SELECT * FROM tbl_noticias WHERE status = 0";
 
+				// Variável que executa o SELECT
                 $select  = mysqli_query($conexao, $sql);
 
-                while($rsContatos = mysqli_fetch_array($select)){
+				// Loop para pegar cada registro no SELECT e colocar em um array
+                while($rsNoticias = mysqli_fetch_array($select)){
                 
-            ?>    
+            ?>
+			<!-- Caixa com as notícias -->
             <div class="noticia">
                 <div class="imagens_noticia">
-                    <img src="cms/<?= $rsContatos['foto'] ?>" class="imagens_conteudo" alt="Noticia">
+                    <img src="cms/<?= $rsNoticias['foto'] ?>" class="imagens_conteudo" alt="<?= $rsNoticias['titulo'] ?>" title="<?= $rsNoticias['titulo'] ?>">
                 </div>
                 <div class="titulo_noticia">
-                    <?= $rsContatos['titulo'] ?>
+                    <?= $rsNoticias['titulo'] ?>
                 </div>
             </div>
             <?php } ?>

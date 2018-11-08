@@ -1,7 +1,9 @@
 <?php
 
-    require_once('conexao.php');
+    // Importando o arquivo de conexão
+    require_once('cms/conexao.php');
 
+	// Variável que recebe o função com a conexão
     $conexao = conexaoBD();
 
 ?>
@@ -36,16 +38,16 @@
             </nav>
             <!--  Área do login   -->
             <div id="login">
-                <form name="frm_login" action="autenticar.php" method="post">
+                <form action="autenticar.php" method="post">
                     <div class="formulario">
                         <label>Usuário</label>
                         <br>
-                        <input class="caixa_login" name="txtUsuario" type="text">
+                        <input class="caixa_login" name="txtUsuario" type="text" required>
                     </div>
                     <div class="formulario">
                         <label>Senha</label>
                         <br>
-                        <input class="caixa_login" name="txtSenha" type="password">
+                        <input class="caixa_login" name="txtSenha" type="password" required>
                     </div>
                     <div class="formulario">
                         <input name="btnLogin" type="submit" value="OK">
@@ -89,23 +91,26 @@
             <p class="subtitulo">
                 Aqui está a localização das nossas bancas espalhadas pela cidade de São Paulo:
             </p>
-            <!--  Caixa com os endereços das bancas   -->
             <?php
                 
+				// Variável que recebe o SELECT do banco onde o status = 0 (ativado)
                 $sql = "SELECT * FROM tbl_nossas_bancas WHERE status = 0";
 
+				// Variável que executa o SELECT
                 $select  = mysqli_query($conexao, $sql);
 
-                while($rsContatos = mysqli_fetch_array($select)){
+				// Loop para pegar cada registro no SELECT e colocar em um array
+                while($rsBancas = mysqli_fetch_array($select)){
                 
-            ?>    
+            ?>  
+			<!--  Caixa com os endereços das bancas   -->
             <div class="caixa_bancas">
-                <div class="localizacao"><?= $rsContatos['local'] ?></div>
+                <div class="localizacao"><?= $rsBancas['local'] ?></div>
                 <p class="endereco">
-                    <?= $rsContatos['logradouro']." - ".$rsContatos['bairro']." - "."São Paulo" ?>
+                    <?= $rsBancas['logradouro']." - ".$rsBancas['bairro']." - "."São Paulo" ?>
                 </p>
                 <p class="telefone">
-                    <?= $rsContatos['telefone'] ?>
+                    <?= $rsBancas['telefone'] ?>
                 </p>
             </div>
             <?php } ?>

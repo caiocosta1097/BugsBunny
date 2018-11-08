@@ -35,7 +35,7 @@
             }
         
     }else
-        header('location:../index.php');   
+        header('location:../index.php');
 
 ?>
 
@@ -92,37 +92,19 @@
             </div>
         </header>
 		<!--  Div principal da página  -->
-        <div id="principal_adm_conteudo">
+        <div id="principal_adm_users">
             <div id="opcoes_conteudo">
                 <div class="itens_opcoes">
-                    <a href="adm_noticias.php">
-                        <img class="imagens_opcoes" src="imagens/adm_noticias.png">
+                    <a href="adm_usuarios.php">
+                        <img class="imagens_opcoes" src="imagens/adm_usuario.png">
                     </a>
-                    <div class="titulo_opcoes">Adm. Notícias</div>
+                    <div class="titulo_opcoes">Adm. Usuário</div>
                 </div>
                 <div class="itens_opcoes">
-                    <a href="adm_sobre.php">
-                        <img class="imagens_opcoes" src="imagens/adm_sobre.png">
+                    <a href="adm_nivel_usuario.php">
+                        <img class="imagens_opcoes" src="imagens/adm_nivel_usuario.png">
                     </a>
-                    <div class="titulo_opcoes">Adm. Sobre</div>
-                </div>
-                <div class="itens_opcoes">
-                    <a href="adm_promocoes.php">
-                        <img class="imagens_opcoes" src="imagens/adm_promocoes.png">
-                    </a>
-                    <div class="titulo_opcoes">Adm. Promoções</div>
-                </div>
-                <div class="itens_opcoes">
-                    <a href="adm_bancas.php">
-                        <img class="imagens_opcoes" src="imagens/adm_bancas.png">
-                    </a>
-                    <div class="titulo_opcoes">Adm. Bancas</div>
-                </div>
-                <div class="itens_opcoes">
-                    <a href="adm_celebridade.php">
-                        <img class="imagens_opcoes" src="imagens/adm_celebridade.png">
-                    </a>
-                    <div class="titulo_opcoes">Adm. Celebridade</div>
+                    <div class="titulo_opcoes">Nível Usuário</div>
                 </div>
             </div>
         </div>

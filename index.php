@@ -28,16 +28,16 @@
             </nav>
             <!-- Área do login -->
             <div id="login">
-                <form name="frm_login" action="autenticar.php" method="post">
+                <form action="autenticar.php" method="post">
                     <div class="formulario">
                         <label>Usuário</label>
                         <br>
-                        <input class="caixa_login" name="txtUsuario" type="text">
+                        <input class="caixa_login" name="txtUsuario" type="text" required>
                     </div>
                     <div class="formulario">
                         <label>Senha</label>
                         <br>
-                        <input class="caixa_login" name="txtSenha" type="password">
+                        <input class="caixa_login" name="txtSenha" type="password" required>
                     </div>
                     <div class="formulario">
                         <input name="btnLogin" type="submit" value="OK">

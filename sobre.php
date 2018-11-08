@@ -1,7 +1,9 @@
 <?php
 
-    require_once('conexao.php');
+    // Importando o arquivo de conexão
+    require_once('cms/conexao.php');
 
+	// Variável que recebe o função com a conexão
     $conexao = conexaoBD();
 
 ?>
@@ -36,16 +38,16 @@
             </nav>
             <!-- Área do login -->
             <div id="login">
-                <form name="frm_login" action="autenticar.php" method="post">
+                <form action="autenticar.php" method="post">
                     <div class="formulario">
                         <label>Usuário</label>
                         <br>
-                        <input class="caixa_login" name="txtUsuario" type="text">
+                        <input class="caixa_login" name="txtUsuario" type="text" required>
                     </div>
                     <div class="formulario">
                         <label>Senha</label>
                         <br>
-                        <input class="caixa_login" name="txtSenha" type="password">
+                        <input class="caixa_login" name="txtSenha" type="password" required>
                     </div>
                     <div class="formulario">
                         <input name="btnLogin" type="submit" value="OK">
@@ -86,33 +88,29 @@
             <div class="titulo_pagina">Sobre a Banca</div>
             <?php
                 
+				// Variável que recebe o SELECT do banco onde o status = 0 (ativado)
                 $sql = "SELECT * FROM tbl_sobre WHERE status = 0";
 
+				// Variável que executa o SELECT
                 $select  = mysqli_query($conexao, $sql);
 
-                while($rsContatos = mysqli_fetch_array($select)){
+				// Loop para pegar cada registro no SELECT e colocar em um array
+                while($rsSobre = mysqli_fetch_array($select)){
                 
             ?>    
             <!-- Imagem da banca -->
             <div id="imagem_banca">
-                <img src="cms/<?= $rsContatos['foto'] ?>" alt="Banca" id="imagemBanca">
+                <img src="cms/<?= $rsSobre['foto'] ?>" alt="Sobre a banca" title="Sobre a banca" id="imagemBanca">
             </div>
             <!-- História da banca -->
             <div id="historia_banca">
                 
                 <p class="paragrafo">
-                    <?= $rsContatos['historia'] ?>
+                    <?= $rsSobre['historia'] ?>
                 </p>
             </div>
             <?php } ?>
         </div>
-        <script>
-            
-            var alturaDiv = document.getElementById("historia_banca").offsetHeight;
-            
-            document.getElementById("imagem_banca").style.height = alturaDiv + "px";
-
-        </script>
     </div>
     <!-- Rodapé -->
     <footer>

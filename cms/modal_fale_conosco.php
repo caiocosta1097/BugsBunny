@@ -1,15 +1,20 @@
 <?php
 
+    // Importando o arquivo de conexão
     require_once('conexao.php');
 
+	// Variável que recebe o função com a conexão
     $conexao = conexaoBD();
-
+	
+	// Variável que recebe o SELECT do banco
     $sql = "SELECT * FROM tbl_fale_conosco WHERE id =".$_POST['idRegistro'];
-            
+
+	// Variável que executa o SELECT
     $select  = mysqli_query($conexao, $sql);
-            
+    
+	// Verifica se retorna algum registro e coloca em um array
     if($rsConsulta = mysqli_fetch_array($select)){
-                
+          
         $nome = $rsConsulta['nome'];
         $telefone = $rsConsulta['telefone'];
         $celular = $rsConsulta['celular'];
@@ -21,6 +26,7 @@
         $sexo = $rsConsulta['sexo'];
         $profissao = $rsConsulta['profissao'];
         
+		// Verifica se o sexo é masculino ou feminino
         if($sexo == "M")
             $sexo = "Masculino";
         else
