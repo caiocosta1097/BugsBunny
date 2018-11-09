@@ -17,7 +17,7 @@
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="engine1/style.css" />
-    <script type="text/javascript" src="engine1/jquery.js"></script>
+    <script src="engine1/jquery.js"></script>
 </head>
 
 <body>
@@ -116,8 +116,10 @@
 					// Tranforma a data em String
 					$dtNasc = $dia."/".$mes."/".$ano;
                 
-            ?>    
-            <div id="subtitulo_nome"><?= $rsCelebridade['nome'] ?></div>
+            ?>
+            <div id="subtitulo_nome">
+                <?= $rsCelebridade['nome'] ?>
+            </div>
             <!--  Imagem da celebridade  -->
             <div id="caixa_imagem_celebridade">
                 <img id="imagem_celebridade" src="cms/<?= $rsCelebridade['foto'] ?>" alt="<?= $rsCelebridade['nome'] ?>" title="<?= $rsCelebridade['nome'] ?>">
@@ -125,17 +127,24 @@
             <!--  Informações da celebridade  -->
             <div id="caixa_informacoes_celebridade">
                 <ul>
-                    <li class="informacoes"><b> Data de nascimento:</b> <?= $dtNasc ?></li>
-                    <li class="informacoes"><b>Idade:</b> <?= $idade ?> anos</li>
-                    <li class="informacoes"><b>Profissão:</b> <?= $rsCelebridade['profissao'] ?></li>
-                    <li class="informacoes"><b>Naturalidade:</b> <?= $rsCelebridade['naturalidade'] ?></li>
+                    <li class="informacoes"><b> Data de nascimento:</b>
+                        <?= $dtNasc ?>
+                    </li>
+                    <li class="informacoes"><b>Idade:</b>
+                        <?= $idade ?> anos</li>
+                    <li class="informacoes"><b>Profissão:</b>
+                        <?= $rsCelebridade['profissao'] ?>
+                    </li>
+                    <li class="informacoes"><b>Naturalidade:</b>
+                        <?= $rsCelebridade['naturalidade'] ?>
+                    </li>
                 </ul>
             </div>
             <!--  Biografia  -->
             <div id="caixa_biografia">
                 <div class="titulo_pagina">Biografia</div>
                 <p>
-                   <?= $rsCelebridade['biografia'] ?>
+                    <?= $rsCelebridade['biografia'] ?>
                 </p>
             </div>
             <?php } ?>

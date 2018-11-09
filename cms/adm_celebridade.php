@@ -3,39 +3,17 @@
     // Iniciando uma sessão
     session_start();
 
-	// Importando o arquivo de conexão
+	// Importando o arquivo de autenticação
+    require_once('../verificar_autenticacao.php');
+
+    // Importando o arquivo de conexão
     require_once('conexao.php');
 
-	// Variável que recebe o função com a conexão
+	// Variável que recebe o função com o usuário autenticado
+    $rsUser = verificarAutentica();
+
+    // Variável que recebe o função com a conexão
     $conexao = conexaoBD();
-
-	// Verifica se a variável de sessão existe, senão redireciona para home
-    if(isset($_SESSION['idUser'])){
-        
-		// Variável que recebe o id do user
-        $idUser = $_SESSION['idUser'];
-
-		// Variável que recebe o user do banco
-        $sql = "SELECT * FROM tbl_usuario WHERE idUsuario =".$idUser;
-
-		// Variável que executa o SELECT
-        $select  = mysqli_query($conexao, $sql);
-			
-			// Verifica se retorna algum registro e coloca em um array
-            if($rsUser = mysqli_fetch_array($select))
-                $nomeUser = $rsUser['nome'];
-
-			// Verifica se logout existe, encerra a variável de sessão e redireciona para home
-            if(isset($_GET['logout'])){
-
-                session_destroy();
-
-                header('location:../index.php');
-
-            }
-        
-    }else
-        header('location:../index.php');
 	
 	// Verifica se modo existe
     if(isset($_GET['modo'])){
@@ -145,7 +123,7 @@
                 </nav>
 				<!--  Área de logout  -->
                 <div id="area_logout">
-                    <div id="boas_vindas">Bem vindo, <?= $nomeUser ?></div>
+                    <div id="boas_vindas">Bem vindo, <?= $rsUser['nome'] ?></div>
                     <div id="logout"><a href="index.php?logout">Logout</a></div>
                 </div>
             </div>
@@ -180,10 +158,10 @@
                         <td><?= $rsCelebridades['nome'] ?></td>
                         <td id="td_imagens">
                             <a href="formulario_celebridade.php?id=<?= $rsCelebridades['idCelebridade'] ?>">
-                                <img src="imagens/editar.png">
+                                <img src="imagens/editar.png" title="Editar">
                             </a>
                             <a href="adm_celebridade.php?modo=excluir&id=<?= $rsCelebridades['idCelebridade'] ?>">
-                                <img src="imagens/deletar.png">
+                                <img src="imagens/deletar.png" title="Excluir">
                             </a>
                             <?php 
                             
@@ -195,11 +173,11 @@
                                                                         
                             ?>
                             <a href="adm_celebridade.php?status=<?= $rsCelebridades['status'] ?>&id=<?= $rsCelebridades['idCelebridade'] ?>">
-                                <img src="imagens/ativado.png">
+                                <img src="imagens/ativado.png" title="Deativar">
                             </a>
                             <?php } else { ?>
                             <a href="adm_celebridade.php?status=<?= $rsCelebridades['status'] ?>&id=<?= $rsCelebridades['idCelebridade'] ?>">
-                                <img src="imagens/desativado.png">
+                                <img src="imagens/desativado.png" title="Ativar">
                             </a>
                             <?php } ?>  
                         </td>

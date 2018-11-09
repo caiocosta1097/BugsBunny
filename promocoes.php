@@ -17,7 +17,7 @@
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="engine1/style.css" />
-    <script type="text/javascript" src="engine1/jquery.js"></script>
+    <script src="engine1/jquery.js"></script>
 </head>
 
 <body>
@@ -98,7 +98,7 @@
                     while($rsPromocoes = mysqli_fetch_array($select)){
                 
                 ?>
-				<!-- Caixas com os produtos em promoção -->
+                <!-- Caixas com os produtos em promoção -->
                 <div class="caixa_produtos_promocao">
                     <div class="imagem_produto_promocao">
                         <img src="cms/<?= $rsPromocoes['foto'] ?>" alt="<?= $rsPromocoes['promocao'] ?>" title="<?= $rsPromocoes['promocao'] ?>" class="imagens_promocao">

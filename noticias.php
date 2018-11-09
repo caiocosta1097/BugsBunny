@@ -17,7 +17,7 @@
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="engine1/style.css" />
-    <script type="text/javascript" src="engine1/jquery.js"></script>
+    <script src="engine1/jquery.js"></script>
 </head>
 
 <body>
@@ -97,7 +97,7 @@
                 while($rsNoticias = mysqli_fetch_array($select)){
                 
             ?>
-			<!-- Caixa com as notícias -->
+            <!-- Caixa com as notícias -->
             <div class="noticia">
                 <div class="imagens_noticia">
                     <img src="cms/<?= $rsNoticias['foto'] ?>" class="imagens_conteudo" alt="<?= $rsNoticias['titulo'] ?>" title="<?= $rsNoticias['titulo'] ?>">

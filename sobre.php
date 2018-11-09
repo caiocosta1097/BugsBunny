@@ -17,7 +17,7 @@
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="engine1/style.css" />
-    <script type="text/javascript" src="engine1/jquery.js"></script>
+    <script src="engine1/jquery.js"></script>
 </head>
 
 <body>
@@ -97,14 +97,14 @@
 				// Loop para pegar cada registro no SELECT e colocar em um array
                 while($rsSobre = mysqli_fetch_array($select)){
                 
-            ?>    
+            ?>
             <!-- Imagem da banca -->
             <div id="imagem_banca">
                 <img src="cms/<?= $rsSobre['foto'] ?>" alt="Sobre a banca" title="Sobre a banca" id="imagemBanca">
             </div>
             <!-- História da banca -->
             <div id="historia_banca">
-                
+
                 <p class="paragrafo">
                     <?= $rsSobre['historia'] ?>
                 </p>

@@ -3,10 +3,16 @@
     // Iniciando uma sessão
     session_start();
 
-	// Importando o arquivo de conexão
+	// Importando o arquivo de autenticação
+    require_once('../verificar_autenticacao.php');
+
+    // Importando o arquivo de conexão
     require_once('conexao.php');
 
-	// Variável que recebe o função com a conexão
+	// Variável que recebe o função com o usuário autenticado
+    $rsUser = verificarAutentica();
+
+    // Variável que recebe o função com a conexão
     $conexao = conexaoBD();
 
 	// Verifica se a variável de sessão existe, senão redireciona para home
@@ -148,7 +154,7 @@
                 </nav>
 				<!--  Área de logout  -->
                 <div id="area_logout">
-                    <div id="boas_vindas">Bem vindo, <?= $nomeUser ?></div>
+                    <div id="boas_vindas">Bem vindo, <?= $rsUser['nome'] ?></div>
                     <div id="logout"><a href="index.php?logout">Logout</a></div>
                 </div>
             </div>

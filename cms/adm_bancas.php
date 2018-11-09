@@ -3,39 +3,17 @@
     // Iniciando uma sessão
     session_start();
 
-	// Importando o arquivo de conexão
+	// Importando o arquivo de autenticação
+    require_once('../verificar_autenticacao.php');
+
+    // Importando o arquivo de conexão
     require_once('conexao.php');
 
-	// Variável que recebe o função com a conexão
+	// Variável que recebe o função com o usuário autenticado
+    $rsUser = verificarAutentica();
+
+    // Variável que recebe o função com a conexão
     $conexao = conexaoBD();
-
-	// Verifica se a variável de sessão existe, senão redireciona para home
-    if(isset($_SESSION['idUser'])){
-        
-		// Variável que recebe o id do user
-        $idUser = $_SESSION['idUser'];
-
-		// Variável que recebe o user do banco
-        $sql = "SELECT * FROM tbl_usuario WHERE idUsuario =".$idUser;
-
-		// Variável que executa o SELECT
-        $select  = mysqli_query($conexao, $sql);
-			
-			// Verifica se retorna algum registro e coloca em um array
-            if($rsUser = mysqli_fetch_array($select))
-                $nomeUser = $rsUser['nome'];
-
-			// Verifica se logout existe, encerra a variável de sessão e redireciona para home
-            if(isset($_GET['logout'])){
-
-                session_destroy();
-
-                header('location:../index.php');
-
-            }
-        
-    }else
-        header('location:../index.php');
 
 	// Verifica se modo existe
     if(isset($_GET['modo'])){
@@ -95,70 +73,74 @@
 <!DOCTYPE html>
 
 <html>
-    <head>
-        <title>CMS</title>
-        <link rel="stylesheet" type="text/css" href="css/style.css">
-    </head>
-    <body>
-        <!--  Cabeçalho  -->
-        <header>
-            <div id="caixa_cabecalho">
-				<!--  Título do CMS  -->
-                <div id="titulo_pagina">
-                    <span id="negrito">CMS</span> - Sistema de Gerenciamento do Site
+
+<head>
+    <title>CMS</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+
+<body>
+    <!--  Cabeçalho  -->
+    <header>
+        <div id="caixa_cabecalho">
+            <!--  Título do CMS  -->
+            <div id="titulo_pagina">
+                <span id="negrito">CMS</span> - Sistema de Gerenciamento do Site
+            </div>
+            <!--  Logo  -->
+            <div id="logo_pagina"></div>
+        </div>
+        <!--  Menu  -->
+        <div id="caixa_menu">
+            <nav id="menu_principal">
+                <!--  Itens do menu  -->
+                <div class="itens_menu">
+                    <a href="adm_conteudo.php">
+                        <img class="imagens_menu" src="imagens/adm_conteudo.png">
+                    </a>
+                    <div class="titulo_menu">Adm. Conteúdo</div>
                 </div>
-				<!--  Logo  -->
-                <div id="logo_pagina"></div>
-            </div>
-			<!--  Menu  -->
-            <div id="caixa_menu">
-                <nav id="menu_principal">
-					<!--  Itens do menu  -->
-                    <div class="itens_menu">
-                        <a href="adm_conteudo.php">
-                            <img class="imagens_menu" src="imagens/adm_conteudo.png">
-                        </a>
-                        <div class="titulo_menu">Adm. Conteúdo</div>
-                    </div>
-                    <div class="itens_menu">
-                        <a href="adm_fale_conosco.php">
-                            <img class="imagens_menu" src="imagens/adm_fale_conosco.png">
-                        </a>    
-                        <div class="titulo_menu">Adm. Fale Conosco</div>
-                    </div>
-                    <div class="itens_menu">
-                        <img class="imagens_menu" src="imagens/adm_produtos.png">
-                       <div class="titulo_menu">Adm. Produtos</div>
-                    </div>
-                    <div class="itens_menu">
-                        <a href="adm_users.php">
-                            <img class="imagens_menu" src="imagens/adm_usuarios.png">
-                        </a>
-                       <div class="titulo_menu">Adm. Usuários</div>
-                    </div>
-                </nav>
-				<!--  Área de logout  -->
-                <div id="area_logout">
-                    <div id="boas_vindas">Bem vindo, <?= $nomeUser ?></div>
-                    <div id="logout"><a href="index.php?logout">Logout</a></div>
+                <div class="itens_menu">
+                    <a href="adm_fale_conosco.php">
+                        <img class="imagens_menu" src="imagens/adm_fale_conosco.png">
+                    </a>
+                    <div class="titulo_menu">Adm. Fale Conosco</div>
                 </div>
+                <div class="itens_menu">
+                    <img class="imagens_menu" src="imagens/adm_produtos.png">
+                    <div class="titulo_menu">Adm. Produtos</div>
+                </div>
+                <div class="itens_menu">
+                    <a href="adm_users.php">
+                        <img class="imagens_menu" src="imagens/adm_usuarios.png">
+                    </a>
+                    <div class="titulo_menu">Adm. Usuários</div>
+                </div>
+            </nav>
+            <!--  Área de logout  -->
+            <div id="area_logout">
+                <div id="boas_vindas">Bem vindo,
+                    <?= $rsUser['nome'] ?>
+                </div>
+                <div id="logout"><a href="index.php?logout">Logout</a></div>
             </div>
-        </header>
-		<!--  Div principal da página  -->
-        <div id="principal_adm_bancas">
-            <div id="titulo_adm_bancas">
-                Registros das Bancas
-            </div>
-            <div id="registros_adm_bancas">
-                <table id="tabela">
-                    <thead>
+        </div>
+    </header>
+    <!--  Div principal da página  -->
+    <div id="principal_adm_bancas">
+        <div id="titulo_adm_bancas">
+            Registros das Bancas
+        </div>
+        <div id="registros_adm_bancas">
+            <table id="tabela">
+                <thead>
                     <tr>
                         <th>Local</th>
                         <th>Telefone</th>
                         <th>Opções</th>
                     </tr>
-                    </thead>
-                    <tbody>
+                </thead>
+                <tbody>
                     <?php
                 
 						// Variável que recebe o SELECT do banco
@@ -170,16 +152,20 @@
 						// Loop para pegar cada registro no SELECT e colocar em um array
                         while($rsBancas = mysqli_fetch_array($select)){
                 
-                    ?>    
+                    ?>
                     <tr>
-                        <td><?= $rsBancas['local'] ?></td>
-                        <td><?= $rsBancas['telefone'] ?></td>
+                        <td>
+                            <?= $rsBancas['local'] ?>
+                        </td>
+                        <td>
+                            <?= $rsBancas['telefone'] ?>
+                        </td>
                         <td id="td_imagens">
                             <a href="formulario_bancas.php?id=<?= $rsBancas['idBanca'] ?>">
-                                <img src="imagens/editar.png">
+                                <img src="imagens/editar.png" title="Editar">
                             </a>
                             <a href="adm_bancas.php?modo=excluir&id=<?= $rsBancas['idBanca'] ?>">
-                                <img src="imagens/deletar.png">
+                                <img src="imagens/deletar.png" title="Excluir">
                             </a>
                             <?php 
 							
@@ -191,29 +177,30 @@
                                     
                             ?>
                             <a href="adm_bancas.php?status=<?= $rsBancas['status'] ?>&id=<?= $rsBancas['idBanca'] ?>">
-                                <img src="imagens/ativado.png">
+                                <img src="imagens/ativado.png" title="Desativar">
                             </a>
                             <?php } else { ?>
                             <a href="adm_bancas.php?status=<?= $rsBancas['status'] ?>&id=<?= $rsBancas['idBanca'] ?>">
-                                <img src="imagens/desativado.png">
+                                <img src="imagens/desativado.png" title="Ativar">
                             </a>
-                            <?php } ?>  
+                            <?php } ?>
                         </td>
                     </tr>
-                    <?php } ?>    
-                    <tbody>
-                </table>
-            </div>
-			<!-- Área do botão -->
-            <div id="area_botao">
-                <form>
-                    <a href="formulario_bancas.php">
-                        <input type="button" value="Nova Banca" class="button">
-                    </a>    
-                </form> 
-            </div>   
+                    <?php } ?>
+                <tbody>
+            </table>
         </div>
-		<!-- Rodapé -->
-        <footer></footer>
-    </body>
+        <!-- Área do botão -->
+        <div id="area_botao">
+            <form>
+                <a href="formulario_bancas.php">
+                    <input type="button" value="Nova Banca" class="button">
+                </a>
+            </form>
+        </div>
+    </div>
+    <!-- Rodapé -->
+    <footer></footer>
+</body>
+
 </html>

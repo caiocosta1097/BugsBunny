@@ -6,8 +6,8 @@
     <title>Bugs Bunny - A banca digital</title>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="css/style.css">
-    <link rel="stylesheet" type="text/css" href="engine1/style.css"/>
-    <script type="text/javascript" src="engine1/jquery.js"></script>
+    <link rel="stylesheet" type="text/css" href="engine1/style.css" />
+    <script src="engine1/jquery.js"></script>
 </head>
 
 <body>
@@ -59,15 +59,15 @@
             <div class="ws_images">
                 <ul>
                     <li><img src="data1/images/imagem1.png" alt="" title="" id="wows1_0" /></li>
-                    <li><a href="http://wowslider.net"><img src="data1/images/imagem2.jpg" alt="bootstrap slideshow" title="imagem2" id="wows1_1"/></a></li>
+                    <li><a href="http://wowslider.net"><img src="data1/images/imagem2.jpg" alt="bootstrap slideshow" title="imagem2" id="wows1_1" /></a></li>
                     <li><img src="data1/images/imagem3.jpg" alt="imagem3" title="imagem3" id="wows1_2" /></li>
                 </ul>
             </div>
             <div class="ws_bullets">
                 <div>
-                    <a href="#" title=""><span><img src="data1/tooltips/imagem1.png" alt=""/>1</span></a>
-                    <a href="#" title="imagem2"><span><img src="data1/tooltips/imagem2.jpg" alt="imagem2"/>2</span></a>
-                    <a href="#" title="imagem3"><span><img src="data1/tooltips/imagem3.jpg" alt="imagem3"/>3</span></a>
+                    <a href="#" title=""><span><img src="data1/tooltips/imagem1.png" alt="" />1</span></a>
+                    <a href="#" title="imagem2"><span><img src="data1/tooltips/imagem2.jpg" alt="imagem2" />2</span></a>
+                    <a href="#" title="imagem3"><span><img src="data1/tooltips/imagem3.jpg" alt="imagem3" />3</span></a>
                 </div>
             </div>
         </div>
