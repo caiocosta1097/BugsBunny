@@ -126,6 +126,7 @@
     <head>
         <title>CMS</title>
         <link rel="stylesheet" type="text/css" href="css/style.css">
+        <meta charset="utf-8">
         <script src="js/jquery-1.10.1.min.js"></script>
         <script src="js/jquery.maskedinput.js"></script>
         <script>

@@ -76,8 +76,47 @@
         <!-- Menu lateral -->
         <nav id="menu_lateral_index">
             <ul id="lista_menu_lateral">
-                <li class="itens_lista">Item 1</li>
-                <li class="itens_lista">Item 2</li>
+                <li class="itens_lista">Livros
+                    <ul class="subMenu">
+                        <li class="subMenu_itens">Informática</li>
+                        <li class="subMenu_itens">Eletrônica</li>
+                        <li class="subMenu_itens">Mecânica</li>
+                        <li class="subMenu_itens">Eletricista</li>
+                        <li class="subMenu_itens">Arquitetura</li>
+                        <li class="subMenu_itens">Construção</li>
+                    </ul>
+                </li>
+                <li class="itens_lista">Revistas
+                    <ul class="subMenu">
+                        <li class="subMenu_itens">Automóveis</li>
+                        <li class="subMenu_itens">Games</li>
+                        <li class="subMenu_itens">Esportes</li>
+                        <li class="subMenu_itens">Negócios</li>
+                        <li class="subMenu_itens">Automóveis</li>
+                    </ul>
+                </li>
+                <li class="itens_lista">Jornais
+                    <ul class="subMenu">
+                        <li class="subMenu_itens">Geral</li>
+                        <li class="subMenu_itens">Esportes</li>
+                        <li class="subMenu_itens">Empregos</li>
+                        <li class="subMenu_itens">Classificados</li>
+                    </ul>
+                </li>
+                <li class="itens_lista">Brinquedos
+                    <ul class="subMenu">
+                        <li class="subMenu_itens">Jogos</li>
+                        <li class="subMenu_itens">Colecionáveis</li>
+                        <li class="subMenu_itens">Educativos</li>
+                    </ul>
+                </li>
+                <li class="itens_lista">Midias
+                    <ul class="subMenu">
+                        <li class="subMenu_itens">CDs</li>
+                        <li class="subMenu_itens">Blu-Rays</li>
+                        <li class="subMenu_itens">Games</li>
+                    </ul>
+                </li>
             </ul>
         </nav>
         <!-- Área de conteúdo -->

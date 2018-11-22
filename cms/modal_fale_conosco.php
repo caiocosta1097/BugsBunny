@@ -43,6 +43,7 @@
 <head>
     <title>Modal</title>
     <script src="js/jquery.js"></script>
+    <meta charset="utf-8">
     <style>
     
         @font-face{

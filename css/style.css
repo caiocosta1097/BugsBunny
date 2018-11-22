@@ -230,15 +230,51 @@ footer {
 
 }
 
-.itens_lista {
+.itens_lista, .subMenu_itens{
 
     list-style-type: none;
-    width: 95%;
+    width: 97%;
     text-align: center;
     height: 25px;
     border-left: 6px solid #3b5998;
     background-color: lightgrey;
+    border-bottom: 3px solid #3b5998;
+    cursor: pointer;
 
+}
+
+.itens_lista:hover, .subMenu_itens:hover{
+    
+    background-color: #3b5998;
+    color: #fff;
+    
+}
+
+.subMenu{
+    
+    opacity: 0;
+   
+    overflow: hidden;
+    width: 0;
+    height: auto;
+    padding: 0px;
+    z-index: 999;
+    position: relative;
+    transition: 0.5s;
+    margin-left: 145px;
+    margin-top: -21px;
+    color: #000;
+    
+}
+
+.itens_lista:hover .subMenu{
+    
+    width: 100%;
+    opacity: 1;
+    
+    overflow: visible;
+    transition: 1s;
+    
 }
 
 #conteudo_produtos {
@@ -248,7 +284,6 @@ footer {
     float: left;
     border-left: 6px solid #3b5998;
     margin-top: 50px;
-
 }
 
 .caixa_produtos {
