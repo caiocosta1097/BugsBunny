@@ -1,6 +1,6 @@
-<?php 
+<?php
 
-	// Iniciando uma sessão
+    // Iniciando uma sessão
     session_start();
 
 	// Importando o arquivo de autenticação
@@ -8,7 +8,7 @@
 
 	// Variável que recebe o função com o usuário autenticado
     $rsUser = verificarAutentica();
-       
+
 ?>
 
 <!DOCTYPE html>
@@ -20,7 +20,7 @@
         <meta charset="utf-8">
     </head>
     <body>
-		<!--  Cabeçalho  -->
+        <!--  Cabeçalho  -->
         <header>
             <div id="caixa_cabecalho">
 				<!--  Título do CMS  -->
@@ -67,10 +67,27 @@
             </div>
         </header>
 		<!--  Div principal da página  -->
-        <div id="principal_index">
-            <h1>
-                Bem vindo ao CMS
-            </h1>
+        <div id="principal_adm_produtos">
+            <div id="opcoes_conteudo">
+                <div class="itens_opcoes">
+                    <a href="adm_lista_produtos.php">
+                        <img class="imagens_opcoes" src="imagens/adm_usuario.png">
+                    </a>
+                    <div class="titulo_opcoes">Adm. Produtos</div>
+                </div>
+                <div class="itens_opcoes">
+                    <a href="adm_categoria.php">
+                        <img class="imagens_opcoes" src="imagens/adm_nivel_usuario.png">
+                    </a>
+                    <div class="titulo_opcoes">Categorias</div>
+                </div>
+				<div class="itens_opcoes">
+                    <a href="adm_subcategoria.php">
+                        <img class="imagens_opcoes" src="imagens/adm_usuario.png">
+                    </a>
+                    <div class="titulo_opcoes">Subcategorias</div>
+                </div>
+            </div>
         </div>
 		<!-- Rodapé -->
         <footer></footer>

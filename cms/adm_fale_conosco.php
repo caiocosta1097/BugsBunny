@@ -44,111 +44,118 @@
 <!DOCTYPE html>
 
 <html lang="pt">
-    <head>
-        <title>CMS</title>
-        <link rel="stylesheet" type="text/css" href="css/style.css">
-        <meta charset="utf-8">
-        <script src="js/jquery.js"></script>
-       
-        <script>
-    
-        $(document).ready(function(){
-            
+
+<head>
+    <title>CMS</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <meta charset="utf-8">
+    <script src="js/jquery.js"></script>
+
+    <script>
+        $(document).ready(function() {
+
             // Function para abrir a janela modal     
-            $(".visualizar").click(function(){
-                
-                $("#container").fadeIn(1100);    
-                
+            $(".visualizar").click(function() {
+
+                $("#container").fadeIn(1100);
+
             });
-            
+
         });
-        
+
         // Função para receber o ID do registro e fazer o callback na modal
-        function modal(idRegistro){
-            
+        function modal(idRegistro) {
+
             $.ajax({
-   
+
                 type: "POST",
                 url: "modal_fale_conosco.php",
-                data: {idRegistro:idRegistro},
-                success: function(callback){
-                    
-                    $('#modal').html(callback);
-                    
-                }
-                
-            })
-            
-        };
-        
-    </script>
-    </head>
-    <body>
-        <div id="container">
-            <div id="modal">
+                data: {
+                    idRegistro: idRegistro
+                },
+                success: function(callback) {
 
+                    $('#modal').html(callback);
+
+                }
+
+            })
+
+        };
+
+    </script>
+</head>
+
+<body>
+    <div id="container">
+        <div id="modal">
+
+        </div>
+    </div>
+    <!--  Cabeçalho  -->
+    <header>
+        <div id="caixa_cabecalho">
+            <!--  Título do CMS  -->
+            <div id="titulo_pagina">
+                <span id="negrito">CMS</span> - Sistema de Gerenciamento do Site
+            </div>
+            <!--  Logo  -->
+            <div id="logo_pagina"></div>
+        </div>
+        <!--  Menu  -->
+        <div id="caixa_menu">
+            <nav id="menu_principal">
+                <!--  Itens do menu  -->
+                <div class="itens_menu">
+                    <a href="adm_conteudo.php">
+                        <img class="imagens_menu" src="imagens/adm_conteudo.png">
+                    </a>
+                    <div class="titulo_menu">Adm. Conteúdo</div>
+                </div>
+                <div class="itens_menu">
+                    <a href="adm_fale_conosco.php">
+                        <img class="imagens_menu" src="imagens/adm_fale_conosco.png">
+                    </a>
+                    <div class="titulo_menu">Adm. Fale Conosco</div>
+                </div>
+                <div class="itens_menu">
+                    <a href="adm_produtos.php">
+                        <img class="imagens_menu" src="imagens/adm_produtos.png">
+                    </a>
+                    <div class="titulo_menu">Adm. Produtos</div>
+                </div>
+                <div class="itens_menu">
+                    <a href="adm_users.php">
+                        <img class="imagens_menu" src="imagens/adm_usuarios.png">
+                    </a>
+                    <div class="titulo_menu">Adm. Usuários</div>
+                </div>
+            </nav>
+            <!--  Área de logout  -->
+            <div id="area_logout">
+                <div id="boas_vindas">Bem vindo,
+                    <?= $rsUser['nome'] ?>
+                </div>
+                <div id="logout"><a href="index.php?logout">Logout</a></div>
             </div>
         </div>
-        <!--  Cabeçalho  -->
-        <header>
-            <div id="caixa_cabecalho">
-				<!--  Título do CMS  -->
-                <div id="titulo_pagina">
-                    <span id="negrito">CMS</span> - Sistema de Gerenciamento do Site
-                </div>
-				<!--  Logo  -->
-                <div id="logo_pagina"></div>
-            </div>
-			<!--  Menu  -->
-            <div id="caixa_menu">
-                <nav id="menu_principal">
-					<!--  Itens do menu  -->
-                    <div class="itens_menu">
-                        <a href="adm_conteudo.php">
-                            <img class="imagens_menu" src="imagens/adm_conteudo.png">
-                        </a>
-                        <div class="titulo_menu">Adm. Conteúdo</div>
-                    </div>
-                    <div class="itens_menu">
-                        <a href="adm_fale_conosco.php">
-                            <img class="imagens_menu" src="imagens/adm_fale_conosco.png">
-                        </a>    
-                        <div class="titulo_menu">Adm. Fale Conosco</div>
-                    </div>
-                    <div class="itens_menu">
-                        <img class="imagens_menu" src="imagens/adm_produtos.png">
-                       <div class="titulo_menu">Adm. Produtos</div>
-                    </div>
-                    <div class="itens_menu">
-                        <a href="adm_users.php">
-                            <img class="imagens_menu" src="imagens/adm_usuarios.png">
-                        </a>
-                       <div class="titulo_menu">Adm. Usuários</div>
-                    </div>
-                </nav>
-				<!--  Área de logout  -->
-                <div id="area_logout">
-                    <div id="boas_vindas">Bem vindo, <?= $rsUser['nome'] ?></div>
-                    <div id="logout"><a href="index.php?logout">Logout</a></div>
-                </div>
-            </div>
-        </header>
-		<!--  Div principal da página  -->
-        <div id="principal_adm_fale_conosco">
-            <div id="titulo_adm_fale_conosco">
-                Registros do Fale Conosco
-            </div>
-            <div id="registros_adm_fale_conosco">
-                <table id="tabela">
-                    <thead>
+    </header>
+    <!--  Div principal da página  -->
+    <div id="principal_adm_fale_conosco">
+        <div id="titulo_adm_fale_conosco">
+            Registros do Fale Conosco
+        </div>
+        <div id="registros_adm_fale_conosco">
+            <table id="tabela">
+                <thead>
                     <tr>
                         <th>Nome</th>
                         <th>Email</th>
                         <th>Profissão</th>
                         <th>Opções</th>
                     </tr>
-                    </thead>
-                    <tbody>
+                </thead>
+                <tbody>
                     <?php
 					
 						// Variável que recebe o SELECT do banco
@@ -162,9 +169,15 @@
                 
                     ?>
                     <tr>
-                        <td><?= $rsFaleConosco['nome'] ?></td>
-                        <td><?= $rsFaleConosco['email'] ?></td>
-                        <td><?= $rsFaleConosco['profissao'] ?> </td>
+                        <td>
+                            <?= $rsFaleConosco['nome'] ?>
+                        </td>
+                        <td>
+                            <?= $rsFaleConosco['email'] ?>
+                        </td>
+                        <td>
+                            <?= $rsFaleConosco['profissao'] ?>
+                        </td>
                         <td id="td_imagens">
                             <a href="#" class="visualizar" onclick="modal(<?= $rsFaleConosco['id'] ?>)">
                                 <img src="imagens/visualizar.png" title="Visualizar">
@@ -175,11 +188,12 @@
                         </td>
                     </tr>
                     <?php } ?>
-                    <tbody>    
-                </table>
-            </div>
+                <tbody>
+            </table>
         </div>
-		<!-- Rodapé -->
-        <footer></footer>
-    </body>
+    </div>
+    <!-- Rodapé -->
+    <footer></footer>
+</body>
+
 </html>

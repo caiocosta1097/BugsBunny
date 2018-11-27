@@ -73,70 +73,76 @@
 <!DOCTYPE html>
 
 <html>
-    <head>
-        <title>CMS</title>
-        <link rel="stylesheet" type="text/css" href="css/style.css">
-		<meta charset="utf-8">
-    </head>
-    <body>
-        <!--  Cabeçalho  -->
-        <header>
-            <div id="caixa_cabecalho">
-				<!--  Título do CMS  -->
-                <div id="titulo_pagina">
-                    <span id="negrito">CMS</span> - Sistema de Gerenciamento do Site
-                </div>
-				<!--  Logo  -->
-                <div id="logo_pagina"></div>
+
+<head>
+    <title>CMS</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <!--  Cabeçalho  -->
+    <header>
+        <div id="caixa_cabecalho">
+            <!--  Título do CMS  -->
+            <div id="titulo_pagina">
+                <span id="negrito">CMS</span> - Sistema de Gerenciamento do Site
             </div>
-			<!--  Menu  -->
-            <div id="caixa_menu">
-                <nav id="menu_principal">
-					<!--  Itens do menu  -->
-                    <div class="itens_menu">
-                        <a href="adm_conteudo.php">
-                            <img class="imagens_menu" src="imagens/adm_conteudo.png">
-                        </a>
-                        <div class="titulo_menu">Adm. Conteúdo</div>
-                    </div>
-                    <div class="itens_menu">
-                        <a href="adm_fale_conosco.php">
-                            <img class="imagens_menu" src="imagens/adm_fale_conosco.png">
-                        </a>    
-                        <div class="titulo_menu">Adm. Fale Conosco</div>
-                    </div>
-                    <div class="itens_menu">
+            <!--  Logo  -->
+            <div id="logo_pagina"></div>
+        </div>
+        <!--  Menu  -->
+        <div id="caixa_menu">
+            <nav id="menu_principal">
+                <!--  Itens do menu  -->
+                <div class="itens_menu">
+                    <a href="adm_conteudo.php">
+                        <img class="imagens_menu" src="imagens/adm_conteudo.png">
+                    </a>
+                    <div class="titulo_menu">Adm. Conteúdo</div>
+                </div>
+                <div class="itens_menu">
+                    <a href="adm_fale_conosco.php">
+                        <img class="imagens_menu" src="imagens/adm_fale_conosco.png">
+                    </a>
+                    <div class="titulo_menu">Adm. Fale Conosco</div>
+                </div>
+                <div class="itens_menu">
+                    <a href="adm_produtos.php">
                         <img class="imagens_menu" src="imagens/adm_produtos.png">
-                       <div class="titulo_menu">Adm. Produtos</div>
-                    </div>
-                    <div class="itens_menu">
-                        <a href="adm_users.php">
-                            <img class="imagens_menu" src="imagens/adm_usuarios.png">
-                        </a>
-                       <div class="titulo_menu">Adm. Usuários</div>
-                    </div>
-                </nav>
-				<!--  Área de logout  -->
-                <div id="area_logout">
-                    <div id="boas_vindas">Bem vindo, <?= $rsUser['nome'] ?></div>
-                    <div id="logout"><a href="index.php?logout">Logout</a></div>
+                    </a>
+                    <div class="titulo_menu">Adm. Produtos</div>
                 </div>
+                <div class="itens_menu">
+                    <a href="adm_users.php">
+                        <img class="imagens_menu" src="imagens/adm_usuarios.png">
+                    </a>
+                    <div class="titulo_menu">Adm. Usuários</div>
+                </div>
+            </nav>
+            <!--  Área de logout  -->
+            <div id="area_logout">
+                <div id="boas_vindas">Bem vindo,
+                    <?= $rsUser['nome'] ?>
+                </div>
+                <div id="logout"><a href="index.php?logout">Logout</a></div>
             </div>
-        </header>
-		<!--  Div principal da página  -->
-        <div id="principal_adm_noticias">
-            <div id="titulo_adm_noticias">
-                Registros das Notícias
-            </div>
-            <div id="registros_adm_noticias">
-                <table id="tabela">
-                    <thead>
+        </div>
+    </header>
+    <!--  Div principal da página  -->
+    <div id="principal_adm_noticias">
+        <div id="titulo_adm_noticias">
+            Registros das Notícias
+        </div>
+        <div id="registros_adm_noticias">
+            <table id="tabela">
+                <thead>
                     <tr>
                         <th>Título</th>
                         <th>Opções</th>
                     </tr>
-                    </thead>
-                    <tbody>
+                </thead>
+                <tbody>
                     <?php
                 
 						// Variável que recebe o SELECT do banco
@@ -148,9 +154,11 @@
 						// Loop para pegar cada registro no SELECT e colocar em um array
                         while($rsNoticias = mysqli_fetch_array($select)){
                 
-                    ?>        
+                    ?>
                     <tr>
-                        <td><?= $rsNoticias['titulo'] ?></td>
+                        <td>
+                            <?= $rsNoticias['titulo'] ?>
+                        </td>
                         <td id="td_imagens">
                             <a href="formulario_noticias.php?id=<?= $rsNoticias['idNoticia'] ?>">
                                 <img src="imagens/editar.png" title="Editar">
@@ -174,23 +182,24 @@
                             <a href="adm_noticias.php?status=<?= $rsNoticias['status'] ?>&id=<?= $rsNoticias['idNoticia'] ?>">
                                 <img src="imagens/desativado.png" title="Ativar">
                             </a>
-                            <?php } ?>  
+                            <?php } ?>
                         </td>
                     </tr>
-                    <?php } ?>     
-                    <tbody>
-                </table>
-            </div>
-			<!-- Área do botão -->
-            <div id="area_botao">
-                <form>
-                    <a href="formulario_noticias.php">
-                        <input type="button" value="Nova notícia" class="button">
-                    </a>    
-                </form> 
-            </div>   
+                    <?php } ?>
+                <tbody>
+            </table>
         </div>
-		<!-- Rodapé -->
-        <footer></footer>
-    </body>
+        <!-- Área do botão -->
+        <div id="area_botao">
+            <form>
+                <a href="formulario_noticias.php">
+                    <input type="button" value="Nova notícia" class="button">
+                </a>
+            </form>
+        </div>
+    </div>
+    <!-- Rodapé -->
+    <footer></footer>
+</body>
+
 </html>

@@ -108,7 +108,9 @@
                     <div class="titulo_menu">Adm. Fale Conosco</div>
                 </div>
                 <div class="itens_menu">
-                    <img class="imagens_menu" src="imagens/adm_produtos.png">
+                    <a href="adm_produtos.php">
+                        <img class="imagens_menu" src="imagens/adm_produtos.png">
+                    </a>
                     <div class="titulo_menu">Adm. Produtos</div>
                 </div>
                 <div class="itens_menu">

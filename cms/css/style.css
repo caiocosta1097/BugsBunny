@@ -576,6 +576,55 @@ h1 {
 
 }
 
+/* Página ADM Produtos */
+
+#principal_adm_produtos {
+
+    width: 1200px;
+    height: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+
+}
+
+/* Página ADM Lista Produtos */
+
+#principal_adm_lista_produtos {
+
+    width: 1200px;
+    height: 450px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #fff;
+    padding-top: 50px;
+
+}
+
+#titulo_adm_lista_produtos {
+
+    width: 1200px;
+    font-family: font-kenyan;
+    font-size: 50px;
+    text-align: center;
+
+}
+
+#registros_adm_lista_produtos {
+
+    width: 500px;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    max-height: 200px;
+    overflow: auto;
+    margin-bottom: 30px;
+
+
+}
+
 /* Página ADM Users */
 
 #principal_adm_users {

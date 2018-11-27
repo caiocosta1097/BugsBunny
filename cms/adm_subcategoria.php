@@ -14,7 +14,7 @@
 
     // Variável que recebe o função com a conexão
     $conexao = conexaoBD();
-	
+
 	// Verifica se modo existe
     if(isset($_GET['modo'])){
         
@@ -25,27 +25,50 @@
         if($modo == 'excluir'){
             
             $id = $_GET['id'];
-			
-			if($idUser == $id)
-				echo "<script>alert('Não é possível excluir o usuário logado!')</script>";
-            else {
             
-				$sql = "DELETE FROM tbl_usuario WHERE idUsuario =".$id;
-			
-				// Verifica se QUERY não pôde ser executada e exibe um erro, senão atualiza a página
-				if(!mysqli_query($conexao, $sql))
-					echo "Erro: ".mysqli_errno($conexao)." - ".mysqli_error($conexao);
-				else
-					header('location:adm_usuarios.php');      
-            
-			} 
+            $sql = "DELETE FROM tbl_subcategoria WHERE idSubcategoria =".$id;
         
-		}
+            // Verifica se QUERY não pôde ser executada e exibe um erro, senão atualiza a página
+			if(!mysqli_query($conexao, $sql))
+				echo "Erro: ".mysqli_errno($conexao)." - ".mysqli_error($conexao);
+			else
+				header('location:adm_subcategoria.php');       
+            
+        } 
+        
+    }
+
+	// Verifica se status existe
+    if(isset($_GET['status'])){
+        
+		// Variável que recebe o status do registro
+        $status = $_GET['status'];
+        
+        // Verifica se status é = 0 e muda para 1
+        if($status == 0){
+            
+            $id = $_GET['id'];
+        
+            $sql = "UPDATE tbl_subcategoria SET status = 1 WHERE idSubcategoria=".$id;
+            
+        // Verifica se status é = 1 e muda para 0
+        } else if ($status == 1) {
+            
+			$id = $_GET['id'];
+        
+            $sql = "UPDATE tbl_subcategoria SET status = 0 WHERE idSubcategoria=".$id;
+            
+        }
 		
-	}	
+		// Verifica se QUERY não pôde ser executada e exibe um erro, senão atualiza a página
+        if(!mysqli_query($conexao, $sql))
+            echo "Erro: ".mysqli_errno($conexao)." - ".mysqli_error($conexao);
+		else
+			header('location:adm_subcategoria.php'); 
+        
+    }
 
 ?>
-
 
 <!DOCTYPE html>
 
@@ -107,52 +130,63 @@
         </div>
     </header>
     <!--  Div principal da página  -->
-    <div id="principal_adm_usuarios">
-        <div id="titulo_adm_usuarios">
-            Registros dos usuários
+    <div id="principal_adm_lista_produtos">
+        <div id="titulo_adm_lista_produtos">
+            Registros das Subcategorias
         </div>
-        <div id="registros_adm_usuarios">
+        <div id="registros_adm_lista_produtos">
             <table id="tabela">
                 <thead>
                     <tr>
-                        <th>Login</th>
-                        <th>Email</th>
-                        <th>Nível</th>
+                        <th>Subcategoria</th>
+                        <th>Categoria</th>
                         <th>Opções</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php
-					
+                
 						// Variável que recebe o SELECT do banco
-                         $sql = "SELECT usuario.*, nivel.* 
-                                FROM tbl_usuario as usuario, tbl_nivel_usuario as nivel 
-                                WHERE usuario.idNivel = nivel.idNivel";
+                        $sql = "SELECT * FROM tbl_subcategoria";
 
 						// Variável que executa o SELECT
                         $select  = mysqli_query($conexao, $sql);
 				
 						// Loop para pegar cada registro no SELECT e colocar em um array
-                        while($rsUsuarios = mysqli_fetch_array($select)){
+                        while($rsSubcategorias = mysqli_fetch_array($select)){
                 
                     ?>
                     <tr>
                         <td>
-                            <?= $rsUsuarios['login'] ?>
+                            <?= $rsSubcategorias['subcategoria'] ?>
                         </td>
                         <td>
-                            <?= $rsUsuarios['email'] ?>
-                        </td>
-                        <td>
-                            <?= $rsUsuarios['nomeNivel'] ?>
+                            <?= $rsSubcategorias['categoria'] ?>
                         </td>
                         <td id="td_imagens">
-                            <a href="formulario_usuario.php?id=<?= $rsUsuarios['idUsuario'] ?>">
-                                <img src="imagens/editar.png">
+                            <a href="formulario_subcategoria.php?id=<?= $rsSubcategorias['idSubcategoria'] ?>">
+                                <img src="imagens/editar.png" title="Editar">
                             </a>
-                            <a href="adm_usuarios.php?modo=excluir&id=<?= $rsUsuarios['idUsuario'] ?>">
-                                <img src="imagens/deletar.png">
+                            <a href="adm_subcategoria.php?modo=excluir&id=<?= $rsSubcategorias['idSubcategoria'] ?>">
+                                <img src="imagens/deletar.png" title="Excluir">
                             </a>
+                            <?php 
+							
+								// Variável que recebe o status do registro
+                                $status = $rsSubcategorias['status'];
+                            
+								// Verifica se o status é = 0 (ativado), senão desativa
+                                if($status == 0){
+                                    
+                            ?>
+                            <a href="adm_subcategoria.php?status=<?= $rsSubcategorias['status'] ?>&id=<?= $rsSubcategorias['idSubcategoria'] ?>">
+                                <img src="imagens/ativado.png" title="Desativar">
+                            </a>
+                            <?php } else { ?>
+                            <a href="adm_subcategoria.php?status=<?= $rsSubcategorias['status'] ?>&id=<?= $rsSubcategorias['idSubcategoria'] ?>">
+                                <img src="imagens/desativado.png" title="Ativar">
+                            </a>
+                            <?php } ?>
                         </td>
                     </tr>
                     <?php } ?>
@@ -162,8 +196,8 @@
         <!-- Área do botão -->
         <div id="area_botao">
             <form>
-                <a href="formulario_usuario.php">
-                    <input type="button" value="Novo usuário" class="button">
+                <a href="formulario_subcategoria.php">
+                    <input type="button" value="Nova subcategoria" class="button">
                 </a>
             </form>
         </div>
