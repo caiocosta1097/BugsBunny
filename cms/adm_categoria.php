@@ -130,11 +130,11 @@
         </div>
     </header>
     <!--  Div principal da página  -->
-    <div id="principal_adm_lista_produtos">
-        <div id="titulo_adm_lista_produtos">
+    <div id="principal_adm_categoria">
+        <div id="titulo_adm_categoria">
             Registros das Categorias
         </div>
-        <div id="registros_adm_lista_produtos">
+        <div id="registros_adm_categoria">
             <table id="tabela">
                 <thead>
                     <tr>
@@ -160,7 +160,7 @@
                             <?= $rsCategorias['categoria'] ?>
                         </td>
                         <td id="td_imagens">
-                            <a href="formulario_categorias.php?id=<?= $rsCategorias['idCategoria'] ?>">
+                            <a href="formulario_categoria.php?id=<?= $rsCategorias['idCategoria'] ?>">
                                 <img src="imagens/editar.png" title="Editar">
                             </a>
                             <a href="adm_categoria.php?modo=excluir&id=<?= $rsCategorias['idCategoria'] ?>">
@@ -192,7 +192,7 @@
         <!-- Área do botão -->
         <div id="area_botao">
             <form>
-                <a href="formulario_categorias.php">
+                <a href="formulario_categoria.php">
                     <input type="button" value="Nova categoria" class="button">
                 </a>
             </form>

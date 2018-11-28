@@ -1,3 +1,13 @@
+<?php
+
+    // Importando o arquivo de conexão
+    require_once('cms/conexao.php');
+
+	// Variável que recebe o função com a conexão
+    $conexao = conexaoBD();
+
+?>
+
 <!DOCTYPE html>
 
 <html lang="pt">
@@ -76,47 +86,37 @@
         <!-- Menu lateral -->
         <nav id="menu_lateral_index">
             <ul id="lista_menu_lateral">
-                <li class="itens_lista">Livros
+                <?php
+                
+				    // Variável que recebe o SELECT do banco
+                    $sql = "SELECT * FROM tbl_categoria WHERE status = 0";
+
+				    // Variável que executa o SELECT
+                    $select  = mysqli_query($conexao, $sql);
+
+				    // Loop para pegar cada registro no SELECT e colocar em um array
+                    while($rsCategoria = mysqli_fetch_array($select)){
+    
+                ?>
+                <li class="itens_lista"><?= $rsCategoria['categoria'] ?>
                     <ul class="subMenu">
-                        <li class="subMenu_itens">Informática</li>
-                        <li class="subMenu_itens">Eletrônica</li>
-                        <li class="subMenu_itens">Mecânica</li>
-                        <li class="subMenu_itens">Eletricista</li>
-                        <li class="subMenu_itens">Arquitetura</li>
-                        <li class="subMenu_itens">Construção</li>
+                        <?php
+                
+                            // Variável que recebe o SELECT do banco
+                            $sql2 = "SELECT * FROM tbl_subcategoria WHERE idCategoria = '".$rsCategoria['idCategoria']."' AND status = 0";
+
+                            // Variável que executa o SELECT
+                            $select2  = mysqli_query($conexao, $sql2);
+
+                            // Loop para pegar cada registro no SELECT e colocar em um array
+                            while($rsSubcategoria = mysqli_fetch_array($select2)){
+    
+                        ?>
+                        <li class="subMenu_itens"><?= $rsSubcategoria['subcategoria'] ?></li>
+                        <?php } ?>
                     </ul>
                 </li>
-                <li class="itens_lista">Revistas
-                    <ul class="subMenu">
-                        <li class="subMenu_itens">Automóveis</li>
-                        <li class="subMenu_itens">Games</li>
-                        <li class="subMenu_itens">Esportes</li>
-                        <li class="subMenu_itens">Negócios</li>
-                        <li class="subMenu_itens">Automóveis</li>
-                    </ul>
-                </li>
-                <li class="itens_lista">Jornais
-                    <ul class="subMenu">
-                        <li class="subMenu_itens">Geral</li>
-                        <li class="subMenu_itens">Esportes</li>
-                        <li class="subMenu_itens">Empregos</li>
-                        <li class="subMenu_itens">Classificados</li>
-                    </ul>
-                </li>
-                <li class="itens_lista">Brinquedos
-                    <ul class="subMenu">
-                        <li class="subMenu_itens">Jogos</li>
-                        <li class="subMenu_itens">Colecionáveis</li>
-                        <li class="subMenu_itens">Educativos</li>
-                    </ul>
-                </li>
-                <li class="itens_lista">Midias
-                    <ul class="subMenu">
-                        <li class="subMenu_itens">CDs</li>
-                        <li class="subMenu_itens">Blu-Rays</li>
-                        <li class="subMenu_itens">Games</li>
-                    </ul>
-                </li>
+                <?php } ?>
             </ul>
         </nav>
         <!-- Área de conteúdo -->

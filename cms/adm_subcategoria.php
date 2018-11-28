@@ -130,11 +130,11 @@
         </div>
     </header>
     <!--  Div principal da página  -->
-    <div id="principal_adm_lista_produtos">
-        <div id="titulo_adm_lista_produtos">
+    <div id="principal_adm_subcategoria">
+        <div id="titulo_adm_subcategoria">
             Registros das Subcategorias
         </div>
-        <div id="registros_adm_lista_produtos">
+        <div id="registros_adm_subcategoria">
             <table id="tabela">
                 <thead>
                     <tr>
@@ -147,7 +147,10 @@
                     <?php
                 
 						// Variável que recebe o SELECT do banco
-                        $sql = "SELECT * FROM tbl_subcategoria";
+                        $sql = "SELECT subcategoria.*, categoria.* 
+                                FROM tbl_subcategoria as subcategoria, tbl_categoria as categoria 
+                                WHERE subcategoria.idCategoria = categoria.idCategoria
+                                ORDER BY categoria.idCategoria";
 
 						// Variável que executa o SELECT
                         $select  = mysqli_query($conexao, $sql);

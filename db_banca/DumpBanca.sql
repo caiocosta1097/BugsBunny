@@ -29,7 +29,7 @@ CREATE TABLE `tbl_categoria` (
   `categoria` varchar(50) NOT NULL,
   `status` int(11) NOT NULL,
   PRIMARY KEY (`idCategoria`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -38,6 +38,7 @@ CREATE TABLE `tbl_categoria` (
 
 LOCK TABLES `tbl_categoria` WRITE;
 /*!40000 ALTER TABLE `tbl_categoria` DISABLE KEYS */;
+INSERT INTO `tbl_categoria` VALUES (1,'Livros',0),(2,'Revistas',0),(3,'Jornais',0),(4,'Brinquedos',0),(5,'Mídias',0);
 /*!40000 ALTER TABLE `tbl_categoria` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -285,7 +286,7 @@ CREATE TABLE `tbl_subcategoria` (
   PRIMARY KEY (`idSubcategoria`),
   KEY `FK_tbl_subcategoria_tbl_categoria_idx` (`idCategoria`),
   CONSTRAINT `FK_tbl_subcategoria_tbl_categoria` FOREIGN KEY (`idCategoria`) REFERENCES `tbl_categoria` (`idcategoria`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -294,6 +295,7 @@ CREATE TABLE `tbl_subcategoria` (
 
 LOCK TABLES `tbl_subcategoria` WRITE;
 /*!40000 ALTER TABLE `tbl_subcategoria` DISABLE KEYS */;
+INSERT INTO `tbl_subcategoria` VALUES (1,'Informática',1,0),(2,'CDs',5,0),(3,'Eletrônica',1,0),(4,'Mecânica',1,0),(5,'Eletricista',1,0),(6,'Arquitetura',1,0),(7,'Construção',1,0),(8,'Automóveis',2,0),(9,'Games',2,0),(10,'Esportes',2,0),(11,'Negócios',2,0),(12,'Geral',3,0),(13,'Esportes',3,0),(14,'Empregos',3,0),(15,'Classificados',3,0),(16,'Jogos',4,0),(17,'Colecionáveis',4,0),(18,'Educativos',4,0),(19,'Blu-Rays',5,0),(20,'Games',5,0);
 /*!40000 ALTER TABLE `tbl_subcategoria` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -337,4 +339,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-11-27 13:21:43
+-- Dump completed on 2018-11-28 18:58:14
