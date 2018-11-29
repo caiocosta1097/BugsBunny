@@ -71,19 +71,19 @@
             <div id="opcoes_conteudo">
                 <div class="itens_opcoes">
                     <a href="adm_lista_produtos.php">
-                        <img class="imagens_opcoes" src="imagens/adm_usuario.png">
+                        <img class="imagens_opcoes" src="imagens/adm_lista_produtos.png">
                     </a>
                     <div class="titulo_opcoes">Adm. Produtos</div>
                 </div>
                 <div class="itens_opcoes">
                     <a href="adm_categoria.php">
-                        <img class="imagens_opcoes" src="imagens/adm_nivel_usuario.png">
+                        <img class="imagens_opcoes" src="imagens/adm_categoria.png">
                     </a>
                     <div class="titulo_opcoes">Categorias</div>
                 </div>
 				<div class="itens_opcoes">
                     <a href="adm_subcategoria.php">
-                        <img class="imagens_opcoes" src="imagens/adm_usuario.png">
+                        <img class="imagens_opcoes" src="imagens/adm_subcategoria.png">
                     </a>
                     <div class="titulo_opcoes">Subcategorias</div>
                 </div>

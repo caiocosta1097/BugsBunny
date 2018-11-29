@@ -1,15 +1,15 @@
 CREATE DATABASE  IF NOT EXISTS `db_banca_inf3m` /*!40100 DEFAULT CHARACTER SET utf8 */;
 USE `db_banca_inf3m`;
--- MySQL dump 10.13  Distrib 8.0.12, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 5.7.9, for Win64 (x86_64)
 --
 -- Host: localhost    Database: db_banca_inf3m
 -- ------------------------------------------------------
--- Server version	8.0.12
+-- Server version	5.6.10-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
- SET NAMES utf8 ;
+/*!40101 SET NAMES utf8 */;
 /*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
@@ -23,7 +23,7 @@ USE `db_banca_inf3m`;
 
 DROP TABLE IF EXISTS `tbl_categoria`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tbl_categoria` (
   `idCategoria` int(11) NOT NULL AUTO_INCREMENT,
   `categoria` varchar(50) NOT NULL,
@@ -48,15 +48,15 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `tbl_celebridade`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tbl_celebridade` (
   `idCelebridade` int(11) NOT NULL AUTO_INCREMENT,
-  `nome` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nome` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `dtNasci` date NOT NULL,
-  `profissao` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `naturalidade` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `foto` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `biografia` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `profissao` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `naturalidade` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `foto` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `biografia` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `status` int(11) NOT NULL,
   PRIMARY KEY (`idCelebridade`)
 ) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -78,7 +78,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `tbl_fale_conosco`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tbl_fale_conosco` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(100) NOT NULL,
@@ -111,7 +111,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `tbl_nivel_usuario`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tbl_nivel_usuario` (
   `idNivel` int(11) NOT NULL AUTO_INCREMENT,
   `nomeNivel` varchar(45) NOT NULL,
@@ -137,7 +137,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `tbl_nossas_bancas`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tbl_nossas_bancas` (
   `idBanca` int(11) NOT NULL AUTO_INCREMENT,
   `local` varchar(45) NOT NULL,
@@ -165,7 +165,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `tbl_noticias`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tbl_noticias` (
   `idNoticia` int(11) NOT NULL AUTO_INCREMENT,
   `titulo` varchar(255) NOT NULL,
@@ -191,20 +191,17 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `tbl_produto`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tbl_produto` (
   `idProduto` int(11) NOT NULL AUTO_INCREMENT,
   `produto` varchar(50) NOT NULL,
   `descricao` varchar(255) NOT NULL,
   `preco` double NOT NULL,
-  `idCategoria` int(11) NOT NULL,
   `idSubcategoria` int(11) NOT NULL,
   `status` int(11) NOT NULL,
   `foto` varchar(100) NOT NULL,
   PRIMARY KEY (`idProduto`),
-  KEY `FK_tbl_produto_tbl_categoria_idx` (`idCategoria`),
   KEY `FK_tbl_produto_tbl_subcategoria_idx` (`idSubcategoria`),
-  CONSTRAINT `FK_tbl_produto_tbl_categoria` FOREIGN KEY (`idCategoria`) REFERENCES `tbl_categoria` (`idcategoria`),
   CONSTRAINT `FK_tbl_produto_tbl_subcategoria` FOREIGN KEY (`idSubcategoria`) REFERENCES `tbl_subcategoria` (`idsubcategoria`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -224,11 +221,11 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `tbl_promocoes`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tbl_promocoes` (
   `idPromocao` int(11) NOT NULL AUTO_INCREMENT,
-  `promocao` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `foto` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `promocao` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `foto` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `status` int(11) NOT NULL,
   PRIMARY KEY (`idPromocao`)
 ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -250,12 +247,12 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `tbl_sobre`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tbl_sobre` (
   `idSobre` int(11) NOT NULL AUTO_INCREMENT,
-  `historia` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `foto` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `dataVersao` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `historia` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `foto` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `dataVersao` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
   `status` int(11) NOT NULL,
   PRIMARY KEY (`idSobre`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -277,7 +274,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `tbl_subcategoria`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tbl_subcategoria` (
   `idSubcategoria` int(11) NOT NULL AUTO_INCREMENT,
   `subcategoria` varchar(50) NOT NULL,
@@ -285,7 +282,7 @@ CREATE TABLE `tbl_subcategoria` (
   `status` int(11) NOT NULL,
   PRIMARY KEY (`idSubcategoria`),
   KEY `FK_tbl_subcategoria_tbl_categoria_idx` (`idCategoria`),
-  CONSTRAINT `FK_tbl_subcategoria_tbl_categoria` FOREIGN KEY (`idCategoria`) REFERENCES `tbl_categoria` (`idcategoria`)
+  CONSTRAINT `FK_tbl_subcategoria_tbl_categoria` FOREIGN KEY (`idCategoria`) REFERENCES `tbl_categoria` (`idCategoria`)
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -305,7 +302,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `tbl_usuario`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tbl_usuario` (
   `idUsuario` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(100) NOT NULL,
@@ -316,7 +313,7 @@ CREATE TABLE `tbl_usuario` (
   PRIMARY KEY (`idUsuario`),
   UNIQUE KEY `login_UNIQUE` (`login`),
   KEY `FK_tbl_usuario_tbl_nivel_usuario_idx` (`idNivel`),
-  CONSTRAINT `FK_tbl_usuario_tbl_nivel_usuario` FOREIGN KEY (`idNivel`) REFERENCES `tbl_nivel_usuario` (`idnivel`)
+  CONSTRAINT `FK_tbl_usuario_tbl_nivel_usuario` FOREIGN KEY (`idNivel`) REFERENCES `tbl_nivel_usuario` (`idNivel`)
 ) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -339,4 +336,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-11-28 18:58:14
+-- Dump completed on 2018-11-29 11:05:30

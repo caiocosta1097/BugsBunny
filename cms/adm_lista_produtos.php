@@ -164,7 +164,7 @@
                             <?= 'R$'.$rsProdutos['preco'] ?>
                         </td>
                         <td id="td_imagens">
-                            <a href="formulario_produtos.php?id=<?= $rsProdutos['idProduto'] ?>">
+                            <a href="formulario_produto.php?id=<?= $rsProdutos['idProduto'] ?>">
                                 <img src="imagens/editar.png" title="Editar">
                             </a>
                             <a href="adm_lista_produtos.php?modo=excluir&id=<?= $rsProdutos['idProduto'] ?>">
@@ -196,7 +196,7 @@
         <!-- Área do botão -->
         <div id="area_botao">
             <form>
-                <a href="formulario_produtos.php">
+                <a href="formulario_produto.php">
                     <input type="button" value="Novo produto" class="button">
                 </a>
             </form>
