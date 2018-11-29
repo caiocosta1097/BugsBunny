@@ -14,34 +14,6 @@
 
     // Variável que recebe a função com a conexão
     $conexao = conexaoBD();
-
-	// Verifica se a variável de sessão existe, senão redireciona para home
-    if(isset($_SESSION['idUser'])){
-        
-		// Variável que recebe o id do user
-        $idUser = $_SESSION['idUser'];
-
-		// Variável que recebe o user do banco
-        $sql = "SELECT * FROM tbl_usuario WHERE idUsuario =".$idUser;
-
-		// Variável que executa o SELECT
-        $select  = mysqli_query($conexao, $sql);
-			
-			// Verifica se retorna algum registro e coloca em um array
-            if($rsUser = mysqli_fetch_array($select))
-                $nomeUser = $rsUser['nome'];
-
-			// Verifica se logout existe, encerra a variável de sessão e redireciona para home
-            if(isset($_GET['logout'])){
-
-                session_destroy();
-
-                header('location:../index.php');
-
-            }
-        
-    }else
-        header('location:../index.php');
 	
 	// Variável que recebe o título da página
     $tituloPagina = "Cadastrar usuário";

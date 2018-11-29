@@ -140,6 +140,7 @@
                     <tr>
                         <th>Produto</th>
                         <th>Preço</th>
+                        <th>Categoria</th>
                         <th>Opções</th>
                     </tr>
                 </thead>
@@ -147,7 +148,10 @@
                     <?php
                 
 						// Variável que recebe o SELECT do banco
-                        $sql = "SELECT * FROM tbl_produto";
+                        $sql = "SELECT produto.*, categoria.* 
+                                FROM tbl_produto as produto, tbl_categoria as categoria, tbl_subcategoria as subcategoria
+                                WHERE produto.idSubcategoria = subcategoria.idSubcategoria
+                                AND categoria.idCategoria = subcategoria.idCategoria";
 
 						// Variável que executa o SELECT
                         $select  = mysqli_query($conexao, $sql);
@@ -162,6 +166,9 @@
                         </td>
                         <td>
                             <?= 'R$'.$rsProdutos['preco'] ?>
+                        </td>
+                        <td>
+                            <?= $rsProdutos['categoria'] ?>
                         </td>
                         <td id="td_imagens">
                             <a href="formulario_produto.php?id=<?= $rsProdutos['idProduto'] ?>">

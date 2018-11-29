@@ -16,7 +16,7 @@
     $conexao = conexaoBD();
 	
 	// Variável que recebe o título da página
-    $tituloPagina = "Cadastrar promoção";
+    $tituloPagina = "Cadastrar produto";
 
 	// Botão começa com salvar
     $botao = "Salvar";
@@ -28,10 +28,10 @@
     if(isset($_GET['id'])){
         
 		// Variável que recebe o id do registro
-        $idPromocao = $_GET['id'];
+        $idProduto = $_GET['id'];
         
 		// Titulo da página muda
-        $tituloPagina = "Atualizar promoção";
+        $tituloPagina = "Atualizar produto";
         
 		// Botão da página muda
         $botao = "Atualizar";
@@ -40,19 +40,22 @@
         $caixa_foto = "";
         
 		// Inicia uma variável de sessão que recebe o id do registro
-        $_SESSION['idPromocao'] = $idPromocao;
+        $_SESSION['idProduto'] = $idProduto;
         
 		// Variável que recebe o registro do banco
-        $sql = "SELECT * FROM tbl_promocoes WHERE idPromocao =".$idPromocao;
+        $sql = "SELECT * FROM tbl_produto WHERE idProduto =".$idProduto;
 
 		// Variável que executa o SELECT
         $select  = mysqli_query($conexao, $sql);
 
 		// Verifica se retorna algum registro e coloca em um array
-        if($rsPromocao = mysqli_fetch_array($select)){
+        if($rsProduto = mysqli_fetch_array($select)){
             
-            $promocao = $rsPromocao['promocao'];
-            $foto = $rsPromocao['foto'];
+            $foto = $rsProduto['foto'];
+            $produto = $rsProduto['produto'];
+            $idSubcategoria = $rsProduto['idSubcategoria'];
+            $preco = $rsProduto['preco'];
+            $descricao = $rsProduto['descricao'];
             
 			// Inicia uma variável de sessão que recebe o caminho da foto
             $_SESSION['foto'] = $foto;
@@ -66,21 +69,36 @@
         
 		// Pega todos os valores inseridos no formulário e coloca em variáveis
         $foto = $_POST['txtFoto'];
-        $promocao = $_POST['txtPromocao'];
+        $produto = $_POST['txtProduto'];
+        $idSubcategoria = $_POST['slt_subcategoria'];
+        $preco = $_POST['txtPreco'];
+        $descricao = $_POST['txtDescricao'];
         
 		// Verifica se o botão é pra salvar e faz um INSERT no banco, senão faz um UPDATE
-        if($_POST['btnSalvar'] == "Salvar")
-			$sql = "INSERT INTO tbl_promocoes (foto, promocao, status) VALUES ('".$foto."', '".$promocao."', 0)";
-		
-		else{
+        if($_POST['btnSalvar'] == "Salvar"){
+			
+			$sql = "INSERT INTO tbl_produto (foto, produto, idSubcategoria, preco, descricao, status) 
+                    VALUES ('".$foto."', 
+                            '".$produto."',
+                            '".$idSubcategoria."', 
+                            '".$preco."',
+                            '".$descricao."', 
+                            0)";
+			
+		}else{
             
 			// Verifica se a caixa da foto ficou vazia e coloca o caminho da foto
             if($foto == "")
                 $foto = $_SESSION['foto'];
             
             
-            $sql = "UPDATE tbl_promocoes SET promocao = '".$promocao."', foto = '".$foto."'
-                    WHERE idPromocao =".$_SESSION['idPromocao']; 
+            $sql = "UPDATE tbl_produto 
+                    SET foto = '".$foto."', 
+                    produto = '".$produto."',
+                    idSubcategoria = '".$idSubcategoria."',
+                    preco = '".$preco."',
+                    descricao = '".$descricao."'
+                    WHERE idProduto =".$_SESSION['idProduto']; 
             
         }
 		
@@ -88,7 +106,7 @@
 		if(!mysqli_query($conexao, $sql))
 			echo "Erro: ".mysqli_errno($conexao)." - ".mysqli_error($conexao);
 		else
-			header('location:adm_promocoes.php');
+			header('location:adm_lista_produtos.php');
         
     }
 
@@ -116,13 +134,43 @@
 				// conseguir realizar o upload da foto sem o click de um botão
 				$('#frmFoto').ajaxForm({
 							
-					target:'#fotoPromocao'
+					target:'#fotoCelebridade'
 							
 				}).submit();  
                 
             });
+            
+            carregarSubcategorias();
+            
+            
+            $('#slt_categoria').live('change', function(){
+             
+                carregarSubcategorias();
                 
+            });
+            
         });
+        
+        function carregarSubcategorias(){
+            
+            var id =  $('#slt_categoria').val();
+                
+            $.getJSON('consulta_subcategorias.php?idCategoria=' + id, function(dados) {
+                 
+                if (dados.length > 0){
+                        
+                    var option = null;
+                    $.each(dados, function(i, obj){
+                        option += '<option value="'+obj.idSubcategoria+'">'+obj.subcategoria+'</option>';
+                    })
+    
+                }
+                   
+                $('#slt_subcategoria').html(option).show();
+                   
+            });
+            
+        }
             
     </script>
 
@@ -178,11 +226,11 @@
         </div>
     </header>
     <!--  Div principal da página  -->
-    <div id="principal_form_adm_promocoes">
-        <div id="titulo_form_adm_promocoes">
+    <div id="principal_form_celebridade">
+        <div id="titulo_form_adm_celebridade">
             <?= $tituloPagina ?>
         </div>
-        <div id="caixa_form_adm_promocoes">
+        <div id="caixa_form_adm_celebridade">
             <table class="tabela_formulario">
                 <tr>
                     <form id="frmFoto" action="upload.php" method="post" enctype="multipart/form-data">
@@ -193,28 +241,87 @@
                             <input name="fileFoto" id="txtUpload" class="dados" type="file" required>
                         </td>
                     </form>
-                    <td rowspan="2" width="50%">
-                        <div id="fotoPromocao">
-                            <img src="<?= $foto ?>" <?=$caixa_foto ?>>
+                    <td rowspan="6" width="50%">
+                        <div id="fotoCelebridade">
+                            <img src="<?= $foto ?>" <?=$caixa_foto?>>
                         </div>
                     </td>
                 </tr>
-                <form name="frm_conteudo" action="formulario_promocoes.php" method="post">
+                <form name="frm_conteudo" action="formulario_produto.php" method="post">
                     <tr>
+
                         <td class="td_esquerda">
-                            <label>Promoção</label>
+                            <label>Produto</label>
                         </td>
 
                         <td>
-                            <input maxlength="30" name="txtPromocao" class="dados" type="text" value="<?= @$promocao ?>" required>
+                            <input maxlength="100" name="txtProduto" class="dados" type="text" value="<?= @$produto ?>" required>
                             <input name="txtFoto" id="txtFoto" class="dados" type="hidden">
+                        </td>
+                    </tr>
+                    <tr>
+
+                        <td class="td_esquerda">
+                            <label>Categoria</label>
+                        </td>
+
+                        <td>
+                            <select  class="dados" id="slt_categoria">
+                                <?php
+                                    
+								// Variável que recebe o SELECT do banco onde o status = 0 (ativado)
+                                $sql = "SELECT * FROM tbl_categoria WHERE status = 0";
+
+								// Variável que executa o SELECT
+                                $select  = mysqli_query($conexao, $sql);
+                        
+								// Loop para pegar cada registro no SELECT e colocar em um array
+                                while($rsCategoria = mysqli_fetch_array($select)){
+                                
+                                    ?>
+                                <option value="<?= $rsCategoria['idCategoria'] ?>">
+                                    <?= $rsCategoria['categoria'] ?>
+                                </option>
+                                <?php } ?>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+
+                        <td class="td_esquerda">
+                            <label>Subcategoria</label>
+                        </td>
+
+                        <td>
+                            <select  class="dados" name="slt_subcategoria" id="slt_subcategoria">  
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+
+                        <td class="td_esquerda">
+                            <label>Preço</label>
+                        </td>
+
+                        <td>
+                            <input maxlength="50" name="txtPreco" class="dados" type="text" value="<?= @$preco ?>" required>
+                        </td>
+                    </tr>
+                    <tr>
+
+                        <td class="td_esquerda">
+                            <label>Descrição</label>
+                        </td>
+
+                        <td>
+                            <textarea name="txtDescricao" id="txtBiografia" class="dados" required><?= @$descricao ?></textarea>
                         </td>
                     </tr>
                     <tr>
                         <td colspan="3">
                             <div id="area_botao">
                                 <input type="submit" name="btnSalvar" value="<?= $botao ?>" class="button">
-                                <a href="adm_promocoes.php">
+                                <a href="adm_lista_produtos.php">
                                     <input type="button" value="Cancelar" class="button">
                                 </a>
                             </div>
