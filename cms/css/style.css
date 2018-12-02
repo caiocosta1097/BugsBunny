@@ -1127,7 +1127,6 @@ h1 {
 
 }
 
-
 /* Rodapé */
 
 footer {
@@ -1140,5 +1139,22 @@ footer {
     border-bottom-right-radius: 50px;
     background-color: #3b5998;
     margin-bottom: 25px;
+
+}
+
+#caixa_form_adm_celebridade #txtPreco {
+
+    width: 150px;
+
+}
+
+#fotoProduto, #fotoProduto img {
+
+    width: 300px;
+    height: 300px;
+    border-radius: 15px;
+    background-color: #f2eff2;
+    margin-left: auto;
+    margin-right: auto;
 
 }

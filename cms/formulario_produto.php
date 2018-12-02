@@ -72,6 +72,9 @@
         $produto = $_POST['txtProduto'];
         $idSubcategoria = $_POST['slt_subcategoria'];
         $preco = $_POST['txtPreco'];
+        
+        
+        
         $descricao = $_POST['txtDescricao'];
         
 		// Verifica se o botão é pra salvar e faz um INSERT no banco, senão faz um UPDATE
@@ -122,6 +125,7 @@
     <meta charset="utf-8">
     <script src="js/jquery.min.js"></script>
     <script src="js/jquery.form.js"></script>
+    <script src="js/jquery.mask.min.js"></script>
 
     <script>
 
@@ -134,7 +138,7 @@
 				// conseguir realizar o upload da foto sem o click de um botão
 				$('#frmFoto').ajaxForm({
 							
-					target:'#fotoCelebridade'
+					target:'#fotoProduto'
 							
 				}).submit();  
                 
@@ -171,6 +175,8 @@
             });
             
         }
+        
+        $('#txtPreco').mask('#.00', {reverse: true});
             
     </script>
 
@@ -242,7 +248,7 @@
                         </td>
                     </form>
                     <td rowspan="6" width="50%">
-                        <div id="fotoCelebridade">
+                        <div id="fotoProduto">
                             <img src="<?= $foto ?>" <?=$caixa_foto?>>
                         </div>
                     </td>
@@ -304,7 +310,7 @@
                         </td>
 
                         <td>
-                            <input maxlength="50" name="txtPreco" class="dados" type="text" value="<?= @$preco ?>" required>
+                            <input maxlength="50" name="txtPreco" id="txtPreco" class="dados" type="text" value="<?= @$preco ?>" required>
                         </td>
                     </tr>
                     <tr>

@@ -63,7 +63,7 @@
         </div>
     </header>
     <!--  Div principal da página  -->
-    <div id="principal_index">
+    <div id="principal_index" class="clearfix">
         <!-- Área do slider -->
         <div id="wowslider-container1">
             <div class="ws_images">
@@ -122,108 +122,33 @@
         <!-- Área de conteúdo -->
         <div id="conteudo_produtos">
             <!-- Caixas com os produtos -->
+            <?php
+                
+                $sqlProdutos = "SELECT * FROM tbl_produto WHERE status = 0";
+                
+                $selectProdutos = mysqli_query($conexao, $sqlProdutos);
+                
+                while($rsProdutos = mysqli_fetch_array($selectProdutos)){
+                
+            ?>
             <div class="caixa_produtos">
                 <div class="imagem_produto">
-
+                    <img src="cms/<?= $rsProdutos['foto'] ?>" class="imagem">
                 </div>
                 <div class="nome_produto">
-                    Nome: XXXXX
+                    Nome: <?= $rsProdutos['produto'] ?>
                 </div>
                 <div class="descricao_produto">
-                    Descrição: XXXXX
+                    Descrição: <?= $rsProdutos['descricao'] ?>
                 </div>
                 <div class="preco_produto">
-                    Preço: XXXXX
+                    Preço: R$ <?= $rsProdutos['preco'] ?>
                 </div>
                 <div class="detalhes_produto">
                     <a>Detalhes</a>
                 </div>
             </div>
-            <div class="caixa_produtos">
-                <div class="imagem_produto">
-
-                </div>
-                <div class="nome_produto">
-                    Nome: XXXXX
-                </div>
-                <div class="descricao_produto">
-                    Descrição: XXXXX
-                </div>
-                <div class="preco_produto">
-                    Preço: XXXXX
-                </div>
-                <div class="detalhes_produto">
-                    <a>Detalhes</a>
-                </div>
-            </div>
-            <div class="caixa_produtos">
-                <div class="imagem_produto">
-
-                </div>
-                <div class="nome_produto">
-                    Nome: XXXXX
-                </div>
-                <div class="descricao_produto">
-                    Descrição: XXXXX
-                </div>
-                <div class="preco_produto">
-                    Preço: XXXXX
-                </div>
-                <div class="detalhes_produto">
-                    <a>Detalhes</a>
-                </div>
-            </div>
-            <div class="caixa_produtos">
-                <div class="imagem_produto">
-
-                </div>
-                <div class="nome_produto">
-                    Nome: XXXXX
-                </div>
-                <div class="descricao_produto">
-                    Descrição: XXXXX
-                </div>
-                <div class="preco_produto">
-                    Preço: XXXXX
-                </div>
-                <div class="detalhes_produto">
-                    <a>Detalhes</a>
-                </div>
-            </div>
-            <div class="caixa_produtos">
-                <div class="imagem_produto">
-
-                </div>
-                <div class="nome_produto">
-                    Nome: XXXXX
-                </div>
-                <div class="descricao_produto">
-                    Descrição: XXXXX
-                </div>
-                <div class="preco_produto">
-                    Preço: XXXXX
-                </div>
-                <div class="detalhes_produto">
-                    <a>Detalhes</a>
-                </div>
-            </div>
-            <div class="caixa_produtos">
-                <div class="imagem_produto">
-
-                </div>
-                <div class="nome_produto">
-                    Nome: XXXXX
-                </div>
-                <div class="descricao_produto">
-                    Descrição: XXXXX
-                </div>
-                <div class="preco_produto">
-                    Preço: XXXXX
-                </div>
-                <div class="detalhes_produto">
-                    <a>Detalhes</a>
-                </div>
-            </div>
+            <?php } ?>
         </div>
     </div>
     <!-- Rodapé -->
