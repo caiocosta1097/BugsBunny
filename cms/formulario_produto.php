@@ -12,6 +12,35 @@
 	// Variável que recebe o função com o usuário autenticado
     $rsUser = verificarAutentica();
 
+    $bloqueioConteudo = null;
+    $bloqueioFaleConosco = null;
+    $bloqueioProduto = null;
+    $bloqueioUsuario = null;
+    
+    if($rsUser['idNivel'] == 21){
+        
+        $bloqueioConteudo = "";
+        $bloqueioFaleConosco = "";
+        $bloqueioProduto = "style='filter: grayscale(100%); pointer-events: none;'";
+        $bloqueioUsuario = "style='filter: grayscale(100%); pointer-events: none;'";
+        
+    }else if ($rsUser['idNivel'] == 22){
+        
+        $bloqueioConteudo = "style='filter: grayscale(100%); pointer-events: none;'";
+        $bloqueioFaleConosco = "style='filter: grayscale(100%); pointer-events: none;'";
+        $bloqueioProduto = "";
+        $bloqueioUsuario = "style='filter: grayscale(100%); pointer-events: none;'";
+        
+    } else{
+        
+        $bloqueioConteudo = "";
+        $bloqueioFaleConosco = "";
+        $bloqueioProduto = "";
+        $bloqueioUsuario = "";
+        
+    }
+
+
     // Variável que recebe o função com a conexão
     $conexao = conexaoBD();
 	
@@ -144,38 +173,49 @@
                 
             });
             
+            // Chamando método ao criar a página
             carregarSubcategorias();
             
             
             $('#slt_categoria').live('change', function(){
              
+                // Chamando o método se algum item do select for mudado
                 carregarSubcategorias();
                 
             });
             
         });
         
+        // Função para carregar um select atráves do outro
         function carregarSubcategorias(){
             
+            // Pega o id da categoria selecionada
             var id =  $('#slt_categoria').val();
-                
+            
+            // Manda uma url com o id em formato JSON
             $.getJSON('consulta_subcategorias.php?idCategoria=' + id, function(dados) {
                  
+                // Verifica se retorna algum dado com o select
                 if (dados.length > 0){
-                        
+                    
+                    // option que começa em null
                     var option = null;
+                    
+                    // Função para colocar os dados retornados em options 
                     $.each(dados, function(i, obj){
                         option += '<option value="'+obj.idSubcategoria+'">'+obj.subcategoria+'</option>';
                     })
     
                 }
                    
+                // Exibe os options no select
                 $('#slt_subcategoria').html(option).show();
                    
             });
             
         }
         
+        // Mascára de dinheiro
         $('#txtPreco').mask('#.00', {reverse: true});
             
     </script>
@@ -199,25 +239,25 @@
                 <!--  Itens do menu  -->
                 <div class="itens_menu">
                     <a href="adm_conteudo.php">
-                        <img class="imagens_menu" src="imagens/adm_conteudo.png">
+                        <img class="imagens_menu" src="imagens/adm_conteudo.png" <?=$bloqueioConteudo ?>>
                     </a>
                     <div class="titulo_menu">Adm. Conteúdo</div>
                 </div>
                 <div class="itens_menu">
                     <a href="adm_fale_conosco.php">
-                        <img class="imagens_menu" src="imagens/adm_fale_conosco.png">
+                        <img class="imagens_menu" src="imagens/adm_fale_conosco.png" <?=$bloqueioFaleConosco ?>>
                     </a>
                     <div class="titulo_menu">Adm. Fale Conosco</div>
                 </div>
                 <div class="itens_menu">
                     <a href="adm_produtos.php">
-                        <img class="imagens_menu" src="imagens/adm_produtos.png">
+                        <img class="imagens_menu" src="imagens/adm_produtos.png" <?=$bloqueioProduto ?>>
                     </a>
                     <div class="titulo_menu">Adm. Produtos</div>
                 </div>
                 <div class="itens_menu">
                     <a href="adm_users.php">
-                        <img class="imagens_menu" src="imagens/adm_usuarios.png">
+                        <img class="imagens_menu" src="imagens/adm_usuarios.png" <?=$bloqueioUsuario ?>>
                     </a>
                     <div class="titulo_menu">Adm. Usuários</div>
                 </div>
@@ -232,11 +272,11 @@
         </div>
     </header>
     <!--  Div principal da página  -->
-    <div id="principal_form_celebridade">
-        <div id="titulo_form_adm_celebridade">
+    <div id="principal_form_produto">
+        <div id="titulo_form_adm_produto">
             <?= $tituloPagina ?>
         </div>
-        <div id="caixa_form_adm_celebridade">
+        <div id="caixa_form_adm_produto">
             <table class="tabela_formulario">
                 <tr>
                     <form id="frmFoto" action="upload.php" method="post" enctype="multipart/form-data">
@@ -320,7 +360,7 @@
                         </td>
 
                         <td>
-                            <textarea name="txtDescricao" id="txtBiografia" class="dados" required><?= @$descricao ?></textarea>
+                            <textarea name="txtDescricao" id="txtDescricao" class="dados" required><?= @$descricao ?></textarea>
                         </td>
                     </tr>
                     <tr>

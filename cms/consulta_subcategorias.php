@@ -8,7 +8,7 @@
         
         $id = $_GET['idCategoria'];
         
-        $sql = "SELECT * FROM tbl_subcategoria WHERE idCategoria =" . $id;
+        $sql = "SELECT * FROM tbl_subcategoria WHERE status = 0 AND idCategoria =" . $id;
         
         $select  = mysqli_query($conexao, $sql);
         

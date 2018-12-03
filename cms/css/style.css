@@ -618,7 +618,7 @@ h1 {
 
 #registros_adm_lista_produtos {
 
-    width: 500px;
+    width: 800px;
     margin-top: 50px;
     margin-left: auto;
     margin-right: auto;
@@ -686,7 +686,7 @@ h1 {
 
 #registros_adm_subcategoria {
 
-    width: 500px;
+    width: 600px;
     margin-top: 50px;
     margin-left: auto;
     margin-right: auto;
@@ -1127,6 +1127,151 @@ h1 {
 
 }
 
+/* Formulário ADM Categorias */
+
+#principal_form_adm_categorias {
+
+    width: 1200px;
+    height: 450px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #fff;
+    padding-top: 50px;
+
+}
+
+#titulo_form_adm_categorias {
+
+    width: 1200px;
+    font-family: font-kenyan;
+    font-size: 50px;
+    text-align: center;
+
+}
+
+#caixa_form_adm_categorias {
+
+    width: 1000px;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    height: auto;
+    margin-bottom: 30px;
+
+}
+
+#caixa_form_adm_categorias .dados {
+
+    width: 300px;
+
+}
+
+/* Formulário ADM Subcategorias */
+
+#principal_form_adm_subcategorias {
+
+    width: 1200px;
+    height: 450px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #fff;
+    padding-top: 50px;
+
+}
+
+#titulo_form_adm_subcategorias {
+
+    width: 1200px;
+    font-family: font-kenyan;
+    font-size: 50px;
+    text-align: center;
+
+}
+
+#caixa_form_adm_subcategorias {
+
+    width: 1000px;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    height: auto;
+    margin-bottom: 30px;
+
+}
+
+#caixa_form_adm_subcategorias .dados {
+
+    width: 300px;
+
+}
+
+/* Formulário ADM Celebridade */
+
+#principal_form_produto {
+	
+
+    width: 1200px;
+    height: auto;
+    padding-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #fff;
+    padding-bottom: 30px;
+
+}
+
+#titulo_form_adm_produto {
+
+    width: 1200px;
+    font-family: font-kenyan;
+    font-size: 50px;
+    text-align: center;
+
+}
+
+#caixa_form_adm_produto {
+
+    width: 1000px;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    height: auto;
+    margin-bottom: 30px;
+
+}
+
+#caixa_form_adm_produto .dados {
+
+    width: 400px;
+
+}
+
+#caixa_form_adm_produto #txtPreco {
+
+    width: 150px;
+
+}
+
+#caixa_form_adm_produto #txtDescricao{
+
+    height: 100px;
+    max-width: 400px;
+    max-height: 100px;
+
+}
+
+#fotoProduto, #fotoProduto img {
+
+    width: 300px;
+    height: 300px;
+    border-radius: 15px;
+    background-color: #f2eff2;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+
 /* Rodapé */
 
 footer {
@@ -1139,22 +1284,5 @@ footer {
     border-bottom-right-radius: 50px;
     background-color: #3b5998;
     margin-bottom: 25px;
-
-}
-
-#caixa_form_adm_celebridade #txtPreco {
-
-    width: 150px;
-
-}
-
-#fotoProduto, #fotoProduto img {
-
-    width: 300px;
-    height: 300px;
-    border-radius: 15px;
-    background-color: #f2eff2;
-    margin-left: auto;
-    margin-right: auto;
 
 }

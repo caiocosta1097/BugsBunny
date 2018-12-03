@@ -315,7 +315,7 @@ CREATE TABLE `tbl_usuario` (
   UNIQUE KEY `login_UNIQUE` (`login`),
   KEY `FK_tbl_usuario_tbl_nivel_usuario_idx` (`idNivel`),
   CONSTRAINT `FK_tbl_usuario_tbl_nivel_usuario` FOREIGN KEY (`idNivel`) REFERENCES `tbl_nivel_usuario` (`idnivel`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -324,7 +324,7 @@ CREATE TABLE `tbl_usuario` (
 
 LOCK TABLES `tbl_usuario` WRITE;
 /*!40000 ALTER TABLE `tbl_usuario` DISABLE KEYS */;
-INSERT INTO `tbl_usuario` VALUES (4,'Caio da Costa Carmo','admin','21232f297a57a5a743894a0e4a801fc3','caio.costacarmo@gmail.com',10);
+INSERT INTO `tbl_usuario` VALUES (4,'Caio da Costa Carmo','admin','21232f297a57a5a743894a0e4a801fc3','caio.costacarmo@gmail.com',10),(20,'David Bitencourt','david97','55fc5b709962876903785fd64a6961e5','david@gmail.com',21),(21,'Igor Feitosa','igorTeste','c2d53eab1c3c169cc789ba7581fc7cfa','igor_feitosa@gmail.com',22);
 /*!40000 ALTER TABLE `tbl_usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -337,4 +337,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-12-02 17:33:05
+-- Dump completed on 2018-12-03 15:47:50
