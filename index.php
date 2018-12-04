@@ -6,6 +6,28 @@
 	// Variável que recebe o função com a conexão
     $conexao = conexaoBD();
 
+    // Variável que recebe o SELECT do banco
+    $sqlProdutos = "SELECT * FROM tbl_produto WHERE status = 0 ORDER BY RAND()";
+
+    // Verifica se modo existe
+    if(isset($_GET['modo'])){
+        
+        $modo = $_GET['modo'];
+        
+        $id = $_GET['id'];
+        
+        if($modo == "categoria")
+            $sqlProdutos = "SELECT produto.*
+                            FROM tbl_produto AS produto, tbl_subcategoria as subcategoria, tbl_categoria as categoria
+                            WHERE subcategoria.idCategoria = '".$id."'
+                            AND categoria.idCategoria = '".$id."'
+                            AND subcategoria.idSubcategoria = produto.idSubcategoria";
+        
+        else if($modo == "subcategoria")
+            $sqlProdutos = "SELECT * FROM tbl_produto WHERE status = 0 AND idSubcategoria =".$id;
+        
+    }
+
 ?>
 
 <!DOCTYPE html>
@@ -89,33 +111,41 @@
                 <?php
                 
 				    // Variável que recebe o SELECT do banco
-                    $sql = "SELECT * FROM tbl_categoria WHERE status = 0";
+                    $sqlCategoria = "SELECT * FROM tbl_categoria WHERE status = 0";
 
 				    // Variável que executa o SELECT
-                    $select  = mysqli_query($conexao, $sql);
+                    $selectCategoria  = mysqli_query($conexao, $sqlCategoria);
 
 				    // Loop para pegar cada registro no SELECT e colocar em um array
-                    while($rsCategoria = mysqli_fetch_array($select)){
+                    while($rsCategoria = mysqli_fetch_array($selectCategoria)){
     
                 ?>
-                <li class="itens_lista"><?= $rsCategoria['categoria'] ?>
-                    <ul class="subMenu">
-                        <?php
+                <a href="index.php?modo=categoria&id=<?= $rsCategoria['idCategoria'] ?>">
+                    <li class="itens_lista">
+                        <?= $rsCategoria['categoria'] ?>
+                        <ul class="subMenu">
+                            <?php
                 
-                            // Variável que recebe o SELECT do banco
-                            $sql2 = "SELECT * FROM tbl_subcategoria WHERE idCategoria = '".$rsCategoria['idCategoria']."' AND status = 0";
+                                // Variável que recebe o SELECT do banco
+                                $sqlSubcategoria = "SELECT * FROM tbl_subcategoria 
+                                                    WHERE idCategoria = '".$rsCategoria['idCategoria']."' AND status = 0";
 
-                            // Variável que executa o SELECT
-                            $select2  = mysqli_query($conexao, $sql2);
+                                // Variável que executa o SELECT
+                                $selectSubcategoria  = mysqli_query($conexao, $sqlSubcategoria);
 
-                            // Loop para pegar cada registro no SELECT e colocar em um array
-                            while($rsSubcategoria = mysqli_fetch_array($select2)){
+                                // Loop para pegar cada registro no SELECT e colocar em um array
+                                while($rsSubcategoria = mysqli_fetch_array($selectSubcategoria)){
     
-                        ?>
-                        <li class="subMenu_itens"><?= $rsSubcategoria['subcategoria'] ?></li>
-                        <?php } ?>
-                    </ul>
-                </li>
+                            ?>
+                            <a href="index.php?modo=subcategoria&id=<?= $rsSubcategoria['idSubcategoria'] ?>">
+                                <li class="subMenu_itens">
+                                    <?= $rsSubcategoria['subcategoria'] ?>
+                                </li>
+                            </a>
+                            <?php } ?>
+                        </ul>
+                    </li>
+                </a>
                 <?php } ?>
             </ul>
         </nav>
@@ -123,8 +153,6 @@
         <div id="conteudo_produtos">
             <!-- Caixas com os produtos -->
             <?php
-                
-                $sqlProdutos = "SELECT * FROM tbl_produto WHERE status = 0 ORDER BY RAND()";
                 
                 $selectProdutos = mysqli_query($conexao, $sqlProdutos);
                 
@@ -136,16 +164,14 @@
                     <img src="cms/<?= $rsProdutos['foto'] ?>" alt="<?= $rsProdutos['produto'] ?>" title="<?= $rsProdutos['produto'] ?>" class="imagem">
                 </div>
                 <div class="nome_produto">
-                    Nome: <?= $rsProdutos['produto'] ?>
-                </div>
-                <div class="descricao_produto">
-                    Descrição: <?= $rsProdutos['descricao'] ?>
+                    <?= $rsProdutos['produto'] ?>
                 </div>
                 <div class="preco_produto">
-                    Preço: R$ <?= str_replace(".", ",", $rsProdutos['preco']) ?>
+                    R$
+                    <?= str_replace(".", ",", $rsProdutos['preco']) ?>
                 </div>
                 <div class="detalhes_produto">
-                    <a>Detalhes</a>
+                    Confira
                 </div>
             </div>
             <?php } ?>

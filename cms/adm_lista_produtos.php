@@ -180,7 +180,8 @@
                         $sql = "SELECT produto.*, categoria.idCategoria, categoria.categoria   
                                 FROM tbl_produto as produto, tbl_categoria as categoria, tbl_subcategoria as subcategoria
                                 WHERE produto.idSubcategoria = subcategoria.idSubcategoria
-                                AND categoria.idCategoria = subcategoria.idCategoria";
+                                AND categoria.idCategoria = subcategoria.idCategoria
+                                ORDER BY categoria.idCategoria";
                     
 
 						// Variável que executa o SELECT
@@ -195,7 +196,7 @@
                             <?= $rsProdutos['produto'] ?>
                         </td>
                         <td>
-                            <?= 'R$'.$rsProdutos['preco'] ?>
+                            R$ <?= $rsProdutos['preco'] ?>
                         </td>
                         <td>
                             <?= $rsProdutos['categoria'] ?>

@@ -176,7 +176,7 @@
                     <?php
                 
 						// Variável que recebe o SELECT do banco
-                        $sql = "SELECT subcategoria.*, categoria.idCategoria 
+                        $sql = "SELECT subcategoria.*, categoria.idCategoria, categoria.categoria
                                 FROM tbl_subcategoria as subcategoria, tbl_categoria as categoria 
                                 WHERE subcategoria.idCategoria = categoria.idCategoria
                                 ORDER BY categoria.idCategoria";

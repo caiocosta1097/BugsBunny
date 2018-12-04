@@ -277,7 +277,7 @@ footer {
 
 #conteudo_produtos {
 
-    width: 85%;
+    width: 89%;
     height: auto;
     float: left;
     border-left: 6px solid #3b5998;
@@ -286,10 +286,10 @@ footer {
 
 .caixa_produtos {
 
-    height: 350px;
-    width: 350px;
+    height: 385px;
+    width: 385px;
     float: left;
-    margin-left: 55px;
+    margin-left: 50px;
     margin-top: 20px;
     font-family: arial;
     font-weight: bold;
@@ -303,50 +303,65 @@ footer {
 .imagem_produto {
 
     width: 100%;
-    height: 60%;
+    height: 200px;
     text-align: center;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
 
 }
 
-.imagem{
-    
+.imagem {
+
     width: 200px;
     height: 200px;
-    
-}
 
-.nome_produto {
-
-    width: 100%;
-    height: 10%;
-    padding-left: 10px;
 
 }
 
-.descricao_produto {
+.nome_produto{
 
-    width: 340px;
-    height: 10%;
-    padding-left: 10px;
+    width: 98%;
+    font-size: 1.3em;
+    text-align: center;
+    margin-top: 30px;
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
-
+    padding-left: 1%;
+    padding-right: 1%;
+    
 }
 
 .preco_produto {
 
     width: 100%;
-    height: 10%;
-    padding-left: 10px;
+    font-size: 1.2em;
+    text-align: center;
+    margin-top: 10px;
 
 }
 
 .detalhes_produto {
 
-    height: 10%;
-    text-align: right;
-    margin-right: 30px;
+    width: 75%;
+    height: 35px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    border: solid 1px;
+    border-radius: 10px;
+    cursor: pointer;
+    padding-top: 10px;
+    font-size: 22px;
+    text-align: center;
+
+}
+
+.detalhes_produto:hover {
+
+    background-color: #3b5998;
+    transition: 0.5s;
+    color: #fff;
 
 }
 
@@ -572,7 +587,7 @@ footer {
 .produto_promocao {
 
     width: 100%;
-    font-size: 18px;
+    font-size: 1.3em;
     text-align: center;
     margin-top: 25px;
     
@@ -581,7 +596,7 @@ footer {
 .preco {
 
     width: 100%;
-    font-size: 15px;
+    font-size: 1em;
     text-align: center;
     margin-top: 10px;
     text-decoration: line-through;
@@ -591,7 +606,7 @@ footer {
 .desconto {
 
     width: 100%;
-    font-size: 20px;
+    font-size: 1.3em;
     text-align: center;
     margin-top: 10px;
 
