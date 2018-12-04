@@ -203,15 +203,15 @@
 								// Loop para pegar cada registro no SELECT e colocar em um array
                                 while($rsNivel = mysqli_fetch_array($select)){
                                 
+                                // Declara uma variável pra receber o selected    
+                                $selected = "";    
+                                    
 								// Verifica se o id do nível é o mesmo do usuario e seleciona
                                 if($rsNivel['idNivel'] == $idNivel )
 									$selected = "selected";
-                                            
-								else
-									$selected = "";
-
+									
                                     ?>
-                                <option value="<?= $rsNivel['idNivel'] ?>" <?=@$selected ?>>
+                                <option value="<?= $rsNivel['idNivel'] ?>" <?=$selected ?>>
                                     <?= $rsNivel['nomeNivel'] ?>
                                 </option>
                                 <?php } ?>

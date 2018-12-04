@@ -50,9 +50,6 @@
 	// Botão começa com salvar
     $botao = "Salvar";
 
-	// Caixa da foto começa escondida
-    $caixa_foto = "hidden";
-
 	// Verifica se id existe
     if(isset($_GET['id'])){
         
@@ -64,9 +61,6 @@
         
 		// Botão da página muda
         $botao = "Atualizar";
-        
-		// Caixa da foto aparece
-        $caixa_foto = "";
         
 		// Inicia uma variável de sessão que recebe o id do registro
         $_SESSION['idPromocao'] = $idPromocao;
@@ -80,11 +74,8 @@
 		// Verifica se retorna algum registro e coloca em um array
         if($rsPromocao = mysqli_fetch_array($select)){
             
-            $promocao = $rsPromocao['promocao'];
-            $foto = $rsPromocao['foto'];
-            
-			// Inicia uma variável de sessão que recebe o caminho da foto
-            $_SESSION['foto'] = $foto;
+            $idProduto = $rsPromocao['idProduto'];
+            $desconto = $rsPromocao['desconto'];
             
         }
         
@@ -94,21 +85,16 @@
     if(isset($_POST['btnSalvar'])){
         
 		// Pega todos os valores inseridos no formulário e coloca em variáveis
-        $foto = $_POST['txtFoto'];
-        $promocao = $_POST['txtPromocao'];
+        $idProduto = $_POST['slt_produto'];
+        $desconto = $_POST['slt_desconto'];
         
 		// Verifica se o botão é pra salvar e faz um INSERT no banco, senão faz um UPDATE
         if($_POST['btnSalvar'] == "Salvar")
-			$sql = "INSERT INTO tbl_promocoes (foto, promocao, status) VALUES ('".$foto."', '".$promocao."', 0)";
+			$sql = "INSERT INTO tbl_promocoes (idProduto, desconto, status) VALUES ('".$idProduto."', '".$desconto."', 0)";
 		
 		else{
             
-			// Verifica se a caixa da foto ficou vazia e coloca o caminho da foto
-            if($foto == "")
-                $foto = $_SESSION['foto'];
-            
-            
-            $sql = "UPDATE tbl_promocoes SET promocao = '".$promocao."', foto = '".$foto."'
+            $sql = "UPDATE tbl_promocoes SET idProduto = '".$idProduto."', desconto = '".$desconto."'
                     WHERE idPromocao =".$_SESSION['idPromocao']; 
             
         }
@@ -135,24 +121,39 @@
     <script src="js/jquery.form.js"></script>
 
     <script>
-
+            
         $(document).ready(function(){
-                
-            // Verifica se algum upload foi feito           
-            $('#txtUpload').live('change', function(){
-                
-				// Forçando um submit no formulário do fileUpload para
-				// conseguir realizar o upload da foto sem o click de um botão
-				$('#frmFoto').ajaxForm({
-							
-					target:'#fotoPromocao'
-							
-				}).submit();  
+            
+          
+            foto();
+            
+             $('#slt_produto').live('change', function(){
+             
+                foto();
                 
             });
-                
-        });
+        
+            function foto(){
             
+                var id = $('#slt_produto').val();
+            
+                $.ajax({
+                
+                    type: "POST",
+                    url: "foto.php",
+                    data: {idProduto: id},
+                    success: function(callback) {
+
+                        $('#fotoPromocao').html(callback);
+                        
+                    }
+                
+                })
+            
+            };     
+            
+        });
+        
     </script>
 
 </head>
@@ -213,30 +214,60 @@
         </div>
         <div id="caixa_form_adm_promocoes">
             <table class="tabela_formulario">
-                <tr>
-                    <form id="frmFoto" action="upload.php" method="post" enctype="multipart/form-data">
-                        <td class="td_esquerda">
-                            <label>Imagem</label>
-                        </td>
-                        <td>
-                            <input name="fileFoto" id="txtUpload" class="dados" type="file" required>
-                        </td>
-                    </form>
-                    <td rowspan="2" width="50%">
-                        <div id="fotoPromocao">
-                            <img src="<?= $foto ?>" <?=$caixa_foto ?>>
-                        </div>
-                    </td>
-                </tr>
                 <form name="frm_conteudo" action="formulario_promocoes.php" method="post">
                     <tr>
                         <td class="td_esquerda">
-                            <label>Promoção</label>
+                            <label>Produto</label>
                         </td>
-
                         <td>
-                            <input maxlength="30" name="txtPromocao" class="dados" type="text" value="<?= @$promocao ?>" required>
-                            <input name="txtFoto" id="txtFoto" class="dados" type="hidden">
+                            <select class="dados" name="slt_produto" id="slt_produto">
+                                <?php
+                                
+                                    $sql = "SELECT * FROM tbl_produto";
+                             
+                                    $select = mysqli_query($conexao, $sql);
+                             
+                                    while($rsProdutos = mysqli_fetch_array($select)){
+                                        
+                                        $selected = "";
+
+                                        if($rsProdutos['idProduto'] == $idProduto)
+                                            $selected = "selected";
+                                    
+                                ?>
+                                <option value="<?= $rsProdutos['idProduto'] ?>" <?=  $selected?>>
+                                    <?= $rsProdutos['produto'] ?>
+                                </option>
+                                <?php } ?>
+                            </select>
+                        </td>
+                        <td rowspan="2" width="50%">
+                            <div id="fotoPromocao">
+                                
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="td_esquerda">
+                            <label>Desconto</label>
+                        </td>
+                        <td>
+                            <select class="dados" name="slt_desconto">
+                                <?php
+
+                                    for($i = 5; $i <= 100; $i += 5){
+                                        
+                                        $selected = "";
+
+                                        if($i == $desconto)
+                                            $selected = "selected";    
+
+                                ?>
+                                <option value="<?= $i ?>" <?=  $selected?>>
+                                <?= $i ?>%
+                                </option>
+                                <?php } ?>
+                            </select>
                         </td>
                     </tr>
                     <tr>

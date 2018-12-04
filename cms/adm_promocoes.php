@@ -166,7 +166,9 @@
             <table id="tabela">
                 <thead>
                     <tr>
+                        <th>Produto</th>
                         <th>Promoção</th>
+                        <th>Desconto</th>
                         <th>Opções</th>
                     </tr>
                 </thead>
@@ -174,7 +176,9 @@
                     <?php
                 
 						// Variável que recebe o SELECT do banco
-                        $sql = "SELECT * FROM tbl_promocoes";
+                        $sql = "SELECT promocao.*, produto.produto, produto.preco 
+                                FROM tbl_promocoes as promocao, tbl_produto as produto
+                                WHERE promocao.idProduto = produto.idProduto";
 
 						// Variável que executa o SELECT
                         $select  = mysqli_query($conexao, $sql);
@@ -185,7 +189,13 @@
                     ?>
                     <tr>
                         <td>
-                            <?= $rsPromocoes['promocao'] ?>
+                            <?= $rsPromocoes['produto'] ?>
+                        </td>
+                        <td>
+                            R$ <?= $rsPromocoes['preco'] - ($rsPromocoes['preco'] * $rsPromocoes['desconto'] / 100)?>
+                        </td>
+                        <td>
+                            <?= $rsPromocoes['desconto'] ?>%
                         </td>
                         <td id="td_imagens">
                             <a href="formulario_promocoes.php?id=<?= $rsPromocoes['idPromocao'] ?>">

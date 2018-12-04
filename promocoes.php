@@ -89,7 +89,9 @@
                 <?php
                 
 					// Variável que recebe o SELECT do banco onde o status = 0 (ativado)
-                    $sql = "SELECT * FROM tbl_promocoes WHERE status = 0";
+                    $sql = "SELECT promocao.*, produto.*
+                                FROM tbl_promocoes as promocao, tbl_produto as produto
+                                WHERE promocao.idProduto = produto.idProduto AND promocao.status = 0";
 
 					// Variável que executa o SELECT
                     $select  = mysqli_query($conexao, $sql);
@@ -101,13 +103,17 @@
                 <!-- Caixas com os produtos em promoção -->
                 <div class="caixa_produtos_promocao">
                     <div class="imagem_produto_promocao">
-                        <img src="cms/<?= $rsPromocoes['foto'] ?>" alt="<?= $rsPromocoes['promocao'] ?>" title="<?= $rsPromocoes['promocao'] ?>" class="imagens_promocao">
+                        <img src="cms/<?= $rsPromocoes['foto'] ?>" alt="<?= $rsPromocoes['produto'] ?>" title="<?= $rsPromocoes['produto'] ?>" class="imagens_promocao">
                     </div>
-                    <div class="desconto">
-                        <p>
-                            <?= $rsPromocoes['promocao'] ?>
-                        </p>
-                    </div>
+                        <div class="produto_promocao">
+                            <?= $rsPromocoes['produto'] ?>
+                        </div>
+                        <div class="preco">
+                           R$ <?= str_replace(".", ",", $rsPromocoes['preco']) ?>
+                        </div>
+                        <div class="desconto">
+                            R$ <?= str_replace(".", ",", $rsPromocoes['preco'] - ($rsPromocoes['preco'] * $rsPromocoes['desconto'] / 100)) ?>
+                        </div>
                     <div class="detalhes_promocao">
                         Confira
                     </div>

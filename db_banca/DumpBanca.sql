@@ -1,15 +1,15 @@
 CREATE DATABASE  IF NOT EXISTS `db_banca_inf3m` /*!40100 DEFAULT CHARACTER SET utf8 */;
 USE `db_banca_inf3m`;
--- MySQL dump 10.13  Distrib 8.0.13, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 5.7.9, for Win64 (x86_64)
 --
 -- Host: localhost    Database: db_banca_inf3m
 -- ------------------------------------------------------
--- Server version	8.0.13
+-- Server version	5.6.10-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
- SET NAMES utf8 ;
+/*!40101 SET NAMES utf8 */;
 /*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
@@ -23,7 +23,7 @@ USE `db_banca_inf3m`;
 
 DROP TABLE IF EXISTS `tbl_categoria`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tbl_categoria` (
   `idCategoria` int(11) NOT NULL AUTO_INCREMENT,
   `categoria` varchar(50) NOT NULL,
@@ -48,15 +48,15 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `tbl_celebridade`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tbl_celebridade` (
   `idCelebridade` int(11) NOT NULL AUTO_INCREMENT,
-  `nome` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nome` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `dtNasci` date NOT NULL,
-  `profissao` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `naturalidade` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `foto` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `biografia` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `profissao` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `naturalidade` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `foto` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `biografia` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `status` int(11) NOT NULL,
   PRIMARY KEY (`idCelebridade`)
 ) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -78,7 +78,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `tbl_fale_conosco`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tbl_fale_conosco` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(100) NOT NULL,
@@ -111,7 +111,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `tbl_nivel_usuario`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tbl_nivel_usuario` (
   `idNivel` int(11) NOT NULL AUTO_INCREMENT,
   `nomeNivel` varchar(45) NOT NULL,
@@ -137,7 +137,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `tbl_nossas_bancas`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tbl_nossas_bancas` (
   `idBanca` int(11) NOT NULL AUTO_INCREMENT,
   `local` varchar(45) NOT NULL,
@@ -165,7 +165,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `tbl_noticias`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tbl_noticias` (
   `idNoticia` int(11) NOT NULL AUTO_INCREMENT,
   `titulo` varchar(255) NOT NULL,
@@ -191,12 +191,12 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `tbl_produto`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tbl_produto` (
   `idProduto` int(11) NOT NULL AUTO_INCREMENT,
   `produto` varchar(50) NOT NULL,
   `descricao` text NOT NULL,
-  `preco` double NOT NULL,
+  `preco` decimal(7,2) NOT NULL,
   `idSubcategoria` int(11) NOT NULL,
   `status` int(11) NOT NULL,
   `foto` varchar(100) NOT NULL,
@@ -212,7 +212,7 @@ CREATE TABLE `tbl_produto` (
 
 LOCK TABLES `tbl_produto` WRITE;
 /*!40000 ALTER TABLE `tbl_produto` DISABLE KEYS */;
-INSERT INTO `tbl_produto` VALUES (2,'Dois a Dois','Com uma carreira bem-sucedida, uma linda esposa e uma adorável filha de 6 anos, Russell Green tem uma vida de dar inveja. Ele está tão certo de que essa paz reinará para sempre que não percebe quando a situação começa a sair dos trilhos.\r\n\r\nEm questão de meses, Russ perde o emprego e a confiança da esposa, que se afasta dele e se vê obrigada a voltar a trabalhar. Precisando lutar para se adaptar a uma nova realidade, ele se desdobra para cuidar da filhinha, London, e começa a reinventar a vida profissional e afetiva ¿ e a se abrir para antigas e novas emoções.\r\n\r\nLançando-se nesse universo desconhecido, Russ embarca com London numa jornada ao mesmo tempo assustadora e gratificante, que testará suas habilidades e seu equilíbrio emocional além do que ele poderia ter imaginado. Em Dois a dois, Nicholas Sparks conta a história de um homem que precisa se redescobrir e buscar qualidades que nem desconfiava possuir para lutar pelo que é mais importante na vida: aqueles que amamos.',23.62,1,0,'arquivos/1e212f1808b1f6167471c8396b262d84.jpg'),(3,'Vade Mecum Tradicional','Pioneira na exemplar técnica desenvolvida de atualização de Códigos e Legislação, como comprova o avançado número de suas edições e versões, a Editora Saraiva apresenta a edição aumentada e atualizada de sua principal obra: o Vade Mecum Saraiva. Com novo projeto gráfico, conta com o acréscimo de mais de 120 diplomas (entre leis, decretos, regimentos internos etc.) em relação à edição anterior. Assim, passa a reunir as normas mais importantes do ordenamento jurídico brasileiro.',57.9,1,0,'arquivos/e98dad7a0f8dbd8cb55d1b15e571ecfa.jpg'),(4,'A Sutil Arte de Ligar o F*da-se','Coaching, autoajuda, desenvolvimento pessoal, mentalização positiva sem querer desprezar o valor de nada disso, a grande verdade é que às vezes nos sentimos quase sufocados diante da pressão infinita por parecermos otimistas o tempo todo. É um pecado social se deixar abater quando as coisas não vão bem. Ninguém pode fracassar simplesmente, sem aprender nada com isso. Não dá mais. É insuportável. E é aí que entra a revolucionária e sutil arte de ligar o foda-se.\r\nMark Manson usa toda a sua sagacidade de escritor e seu olhar crítico para propor um novo caminho rumo a uma vida melhor, mais coerente com a realidade e consciente dos nossos limites. E ele faz isso da melhor maneira. Como um verdadeiro amigo, Mark se senta ao seu lado e diz, olhando nos seus olhos: você não é tão especial. Ele conta umas piadas aqui, dá uns exemplos inusitados ali, joga umas verdades na sua cara e pronto, você já se sente muito mais alerta e capaz de enfrentar esse mundo cão. Para os céticos e os descrentes, mas também para os amantes do gênero, enfim uma abordagem franca e inteligente que vai ajudar você a descobrir o que é realmente importante na sua vida, e f*da-se o resto. Livre-se agora da felicidade maquiada e superficial e abrace esta arte verdadeiramente transformadora. ',23.92,1,0,'arquivos/51710bd88c4dfb5aae7f795788948545.jpg'),(5,'O Milagre da Manhã','Conheça o método simples e eficaz que vai proporcionar a vida dos sonhos ¿ antes das 8 horas da manhã!\r\n\r\nHal Elrod explica os benefícios de acordar cedo e desenvolver todo o nosso potencial e as nossas habilidades. O milagre da manhã permite que o leitor alcance níveis de sucesso jamais imaginados, tanto na vida pessoal quanto profissional. \r\n\r\nA mudança de hábitos e a nova rotina matinal proposta por Hal vai proporcionar melhorias significativas na saúde, na felicidade, nos relacionamentos, nas finanças, na espiritualidade ou quaisquer outras áreas que necessitem ser aprimoradas. ',27.92,1,0,'arquivos/bf29a32783255e56b43575e5b912f44b.jpg'),(6,'Kit As Crônicas de Gelo e Fogo','Quando Eddard Stark, lorde do castelo de Winterfell, aceita a prestigiada posição de Mão do Rei oferecida pelo velho amigo, o rei Robert Baratheon, não descon a que sua vida está prestes a ruir em sucessivas tragédias. Sabe-se que Lorde Stark aceitou a proposta porque descon a que o dono anterior do título fora envenenado pela manipuladora rainha - uma cruel mulher do clã Lannister. E sua intenção é proteger o rei. Mas ter como inimigo os Lannister pode ser fatal: a ambição dessa família pelo poder parece não ter limites e o rei corre grande perigo. Agora, sozinho na corte, Eddard percebe que não só o rei está em apuros, mas também ele e toda a sua família. Quem vencerá a guerra dos tronos?',59.99,1,0,'arquivos/646c8cfb0220f9b0aaae89f8daa77747.jpg'),(7,'Detroit Become Human - PS4','Detroit Become Human.',89.5,20,0,'arquivos/29e728397b034376145e220880698d25.jpg'),(8,'Red Dead Redemption 2 - Xbox One','Estados Unidos, 1899. O fim da era do velho oeste começou, e as autoridades estão caçando as últimas gangues de fora da lei que restam. ',238.88,20,0,'arquivos/e144e30296183ab9c88a8c5a84fc362c.jpg'),(9,'FIFA 19 - PS4','Feito com Frostbite, EA SPORTS FIFA 19 entrega uma experiência campeã dentro e fora do campo. \r\nDo aspecto tático à cada toque técnico, Controle O Campo em cada momento com novos elementos de gameplay no EA SPORTS FIFA 19. O novíssimo Sistema Ativo de Toque permite controle mais próximo, Táticas Dinâmicas possibilitam configurações de equipe mais profundas e acessíveis, Batalhas 50/50 permitem maior fisicalidade e mais habilidade do usuário nas disputas por bolas perdidas, Finalizações Cadenciadas eleva o controle do usuário atacando, e a evolução da Tecnologia Real Player Motion continua a melhorar as personalidades dos jogadores com animações autênticas e realistas.',229.9,20,0,'arquivos/1fb25e2a0c0a7f271947a57955b03258.jpg');
+INSERT INTO `tbl_produto` VALUES (2,'Dois a Dois','Com uma carreira bem-sucedida, uma linda esposa e uma adorável filha de 6 anos, Russell Green tem uma vida de dar inveja. Ele está tão certo de que essa paz reinará para sempre que não percebe quando a situação começa a sair dos trilhos.\r\n\r\nEm questão de meses, Russ perde o emprego e a confiança da esposa, que se afasta dele e se vê obrigada a voltar a trabalhar. Precisando lutar para se adaptar a uma nova realidade, ele se desdobra para cuidar da filhinha, London, e começa a reinventar a vida profissional e afetiva ¿ e a se abrir para antigas e novas emoções.\r\n\r\nLançando-se nesse universo desconhecido, Russ embarca com London numa jornada ao mesmo tempo assustadora e gratificante, que testará suas habilidades e seu equilíbrio emocional além do que ele poderia ter imaginado. Em Dois a dois, Nicholas Sparks conta a história de um homem que precisa se redescobrir e buscar qualidades que nem desconfiava possuir para lutar pelo que é mais importante na vida: aqueles que amamos.',23.62,1,0,'arquivos/1e212f1808b1f6167471c8396b262d84.jpg'),(3,'Vade Mecum Tradicional','Pioneira na exemplar técnica desenvolvida de atualização de Códigos e Legislação, como comprova o avançado número de suas edições e versões, a Editora Saraiva apresenta a edição aumentada e atualizada de sua principal obra: o Vade Mecum Saraiva. Com novo projeto gráfico, conta com o acréscimo de mais de 120 diplomas (entre leis, decretos, regimentos internos etc.) em relação à edição anterior. Assim, passa a reunir as normas mais importantes do ordenamento jurídico brasileiro.',57.90,1,0,'arquivos/e98dad7a0f8dbd8cb55d1b15e571ecfa.jpg'),(4,'A Sutil Arte de Ligar o F*da-se','Coaching, autoajuda, desenvolvimento pessoal, mentalização positiva sem querer desprezar o valor de nada disso, a grande verdade é que às vezes nos sentimos quase sufocados diante da pressão infinita por parecermos otimistas o tempo todo. É um pecado social se deixar abater quando as coisas não vão bem. Ninguém pode fracassar simplesmente, sem aprender nada com isso. Não dá mais. É insuportável. E é aí que entra a revolucionária e sutil arte de ligar o foda-se.\r\nMark Manson usa toda a sua sagacidade de escritor e seu olhar crítico para propor um novo caminho rumo a uma vida melhor, mais coerente com a realidade e consciente dos nossos limites. E ele faz isso da melhor maneira. Como um verdadeiro amigo, Mark se senta ao seu lado e diz, olhando nos seus olhos: você não é tão especial. Ele conta umas piadas aqui, dá uns exemplos inusitados ali, joga umas verdades na sua cara e pronto, você já se sente muito mais alerta e capaz de enfrentar esse mundo cão. Para os céticos e os descrentes, mas também para os amantes do gênero, enfim uma abordagem franca e inteligente que vai ajudar você a descobrir o que é realmente importante na sua vida, e f*da-se o resto. Livre-se agora da felicidade maquiada e superficial e abrace esta arte verdadeiramente transformadora. ',23.92,1,0,'arquivos/51710bd88c4dfb5aae7f795788948545.jpg'),(5,'O Milagre da Manhã','Conheça o método simples e eficaz que vai proporcionar a vida dos sonhos ¿ antes das 8 horas da manhã!\r\n\r\nHal Elrod explica os benefícios de acordar cedo e desenvolver todo o nosso potencial e as nossas habilidades. O milagre da manhã permite que o leitor alcance níveis de sucesso jamais imaginados, tanto na vida pessoal quanto profissional. \r\n\r\nA mudança de hábitos e a nova rotina matinal proposta por Hal vai proporcionar melhorias significativas na saúde, na felicidade, nos relacionamentos, nas finanças, na espiritualidade ou quaisquer outras áreas que necessitem ser aprimoradas. ',27.92,1,0,'arquivos/bf29a32783255e56b43575e5b912f44b.jpg'),(6,'Kit As Crônicas de Gelo e Fogo','Quando Eddard Stark, lorde do castelo de Winterfell, aceita a prestigiada posição de Mão do Rei oferecida pelo velho amigo, o rei Robert Baratheon, não descon a que sua vida está prestes a ruir em sucessivas tragédias. Sabe-se que Lorde Stark aceitou a proposta porque descon a que o dono anterior do título fora envenenado pela manipuladora rainha - uma cruel mulher do clã Lannister. E sua intenção é proteger o rei. Mas ter como inimigo os Lannister pode ser fatal: a ambição dessa família pelo poder parece não ter limites e o rei corre grande perigo. Agora, sozinho na corte, Eddard percebe que não só o rei está em apuros, mas também ele e toda a sua família. Quem vencerá a guerra dos tronos?',59.99,1,0,'arquivos/646c8cfb0220f9b0aaae89f8daa77747.jpg'),(7,'Detroit Become Human - PS4','Detroit Become Human.',89.50,20,0,'arquivos/29e728397b034376145e220880698d25.jpg'),(8,'Red Dead Redemption 2 - Xbox One','Estados Unidos, 1899. O fim da era do velho oeste começou, e as autoridades estão caçando as últimas gangues de fora da lei que restam. ',238.88,20,0,'arquivos/e144e30296183ab9c88a8c5a84fc362c.jpg'),(9,'FIFA 19 - PS4','Feito com Frostbite, EA SPORTS FIFA 19 entrega uma experiência campeã dentro e fora do campo. \r\nDo aspecto tático à cada toque técnico, Controle O Campo em cada momento com novos elementos de gameplay no EA SPORTS FIFA 19. O novíssimo Sistema Ativo de Toque permite controle mais próximo, Táticas Dinâmicas possibilitam configurações de equipe mais profundas e acessíveis, Batalhas 50/50 permitem maior fisicalidade e mais habilidade do usuário nas disputas por bolas perdidas, Finalizações Cadenciadas eleva o controle do usuário atacando, e a evolução da Tecnologia Real Player Motion continua a melhorar as personalidades dos jogadores com animações autênticas e realistas.',229.90,20,0,'arquivos/1fb25e2a0c0a7f271947a57955b03258.jpg');
 /*!40000 ALTER TABLE `tbl_produto` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -222,14 +222,16 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `tbl_promocoes`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tbl_promocoes` (
   `idPromocao` int(11) NOT NULL AUTO_INCREMENT,
-  `promocao` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `foto` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `idProduto` int(11) NOT NULL,
+  `desconto` int(11) NOT NULL,
   `status` int(11) NOT NULL,
-  PRIMARY KEY (`idPromocao`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  PRIMARY KEY (`idPromocao`),
+  KEY `FK_tbl_promocoes_tbl_produto_idx` (`idProduto`),
+  CONSTRAINT `FK_tbl_promocoes_tbl_produto` FOREIGN KEY (`idProduto`) REFERENCES `tbl_produto` (`idProduto`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -238,7 +240,7 @@ CREATE TABLE `tbl_promocoes` (
 
 LOCK TABLES `tbl_promocoes` WRITE;
 /*!40000 ALTER TABLE `tbl_promocoes` DISABLE KEYS */;
-INSERT INTO `tbl_promocoes` VALUES (10,'Blu-rays com 50% de desconto','arquivos/e26d82e32f047346d3d375c0c213dd58.png',0),(12,'Livros com até 70% OFF','arquivos/4735951856e8dbc833c305c124372be3.png',0);
+INSERT INTO `tbl_promocoes` VALUES (14,9,30,0);
 /*!40000 ALTER TABLE `tbl_promocoes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -248,12 +250,12 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `tbl_sobre`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tbl_sobre` (
   `idSobre` int(11) NOT NULL AUTO_INCREMENT,
-  `historia` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `foto` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `dataVersao` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `historia` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `foto` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `dataVersao` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
   `status` int(11) NOT NULL,
   PRIMARY KEY (`idSobre`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -275,7 +277,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `tbl_subcategoria`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tbl_subcategoria` (
   `idSubcategoria` int(11) NOT NULL AUTO_INCREMENT,
   `subcategoria` varchar(50) NOT NULL,
@@ -283,7 +285,7 @@ CREATE TABLE `tbl_subcategoria` (
   `status` int(11) NOT NULL,
   PRIMARY KEY (`idSubcategoria`),
   KEY `FK_tbl_subcategoria_tbl_categoria_idx` (`idCategoria`),
-  CONSTRAINT `FK_tbl_subcategoria_tbl_categoria` FOREIGN KEY (`idCategoria`) REFERENCES `tbl_categoria` (`idcategoria`)
+  CONSTRAINT `FK_tbl_subcategoria_tbl_categoria` FOREIGN KEY (`idCategoria`) REFERENCES `tbl_categoria` (`idCategoria`)
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -303,7 +305,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `tbl_usuario`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tbl_usuario` (
   `idUsuario` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(100) NOT NULL,
@@ -314,7 +316,7 @@ CREATE TABLE `tbl_usuario` (
   PRIMARY KEY (`idUsuario`),
   UNIQUE KEY `login_UNIQUE` (`login`),
   KEY `FK_tbl_usuario_tbl_nivel_usuario_idx` (`idNivel`),
-  CONSTRAINT `FK_tbl_usuario_tbl_nivel_usuario` FOREIGN KEY (`idNivel`) REFERENCES `tbl_nivel_usuario` (`idnivel`)
+  CONSTRAINT `FK_tbl_usuario_tbl_nivel_usuario` FOREIGN KEY (`idNivel`) REFERENCES `tbl_nivel_usuario` (`idNivel`)
 ) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -337,4 +339,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-12-03 15:47:50
+-- Dump completed on 2018-12-04 11:10:07

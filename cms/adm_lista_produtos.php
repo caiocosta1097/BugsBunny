@@ -177,7 +177,7 @@
                     <?php
                 
 						// Variável que recebe o SELECT do banco
-                        $sql = "SELECT produto.*, categoria.idCategoria 
+                        $sql = "SELECT produto.*, categoria.idCategoria, categoria.categoria   
                                 FROM tbl_produto as produto, tbl_categoria as categoria, tbl_subcategoria as subcategoria
                                 WHERE produto.idSubcategoria = subcategoria.idSubcategoria
                                 AND categoria.idCategoria = subcategoria.idCategoria";

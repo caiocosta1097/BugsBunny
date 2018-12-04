@@ -19,6 +19,8 @@
             );
 	   }
 	
-	echo(json_encode($subCategorias));
+	   echo(json_encode($subCategorias));
         
     }
+
+?>

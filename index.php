@@ -124,7 +124,7 @@
             <!-- Caixas com os produtos -->
             <?php
                 
-                $sqlProdutos = "SELECT * FROM tbl_produto WHERE status = 0";
+                $sqlProdutos = "SELECT * FROM tbl_produto WHERE status = 0 ORDER BY RAND()";
                 
                 $selectProdutos = mysqli_query($conexao, $sqlProdutos);
                 
@@ -133,7 +133,7 @@
             ?>
             <div class="caixa_produtos">
                 <div class="imagem_produto">
-                    <img src="cms/<?= $rsProdutos['foto'] ?>" class="imagem">
+                    <img src="cms/<?= $rsProdutos['foto'] ?>" alt="<?= $rsProdutos['produto'] ?>" title="<?= $rsProdutos['produto'] ?>" class="imagem">
                 </div>
                 <div class="nome_produto">
                     Nome: <?= $rsProdutos['produto'] ?>
@@ -142,7 +142,7 @@
                     Descrição: <?= $rsProdutos['descricao'] ?>
                 </div>
                 <div class="preco_produto">
-                    Preço: R$ <?= $rsProdutos['preco'] ?>
+                    Preço: R$ <?= str_replace(".", ",", $rsProdutos['preco']) ?>
                 </div>
                 <div class="detalhes_produto">
                     <a>Detalhes</a>
