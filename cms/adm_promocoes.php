@@ -192,7 +192,7 @@
                             <?= $rsPromocoes['produto'] ?>
                         </td>
                         <td>
-                            R$ <?= $rsPromocoes['preco'] - ($rsPromocoes['preco'] * $rsPromocoes['desconto'] / 100)?>
+                            R$ <?= number_format($rsPromocoes['preco'] - ($rsPromocoes['preco'] * $rsPromocoes['desconto'] / 100), 2, ',', '.') ?>
                         </td>
                         <td>
                             <?= $rsPromocoes['desconto'] ?>%

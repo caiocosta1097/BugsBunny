@@ -231,7 +231,7 @@ CREATE TABLE `tbl_promocoes` (
   PRIMARY KEY (`idPromocao`),
   KEY `FK_tbl_promocoes_tbl_produto_idx` (`idProduto`),
   CONSTRAINT `FK_tbl_promocoes_tbl_produto` FOREIGN KEY (`idProduto`) REFERENCES `tbl_produto` (`idproduto`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -240,7 +240,7 @@ CREATE TABLE `tbl_promocoes` (
 
 LOCK TABLES `tbl_promocoes` WRITE;
 /*!40000 ALTER TABLE `tbl_promocoes` DISABLE KEYS */;
-INSERT INTO `tbl_promocoes` VALUES (14,9,30,0);
+INSERT INTO `tbl_promocoes` VALUES (14,9,30,0),(15,23,15,0),(16,20,5,0),(17,18,55,0),(18,11,20,0);
 /*!40000 ALTER TABLE `tbl_promocoes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -339,4 +339,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-12-04 19:16:12
+-- Dump completed on 2018-12-05 14:37:24

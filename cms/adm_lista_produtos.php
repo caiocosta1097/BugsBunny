@@ -196,7 +196,7 @@
                             <?= $rsProdutos['produto'] ?>
                         </td>
                         <td>
-                            R$ <?= $rsProdutos['preco'] ?>
+                            R$ <?= number_format($rsProdutos['preco'], 2, ',', '.') ?>
                         </td>
                         <td>
                             <?= $rsProdutos['categoria'] ?>

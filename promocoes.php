@@ -18,9 +18,49 @@
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="engine1/style.css" />
     <script src="engine1/jquery.js"></script>
+    <script src="js/jquery.js"></script>
+
+    <script>
+        $(document).ready(function() {
+
+            // Function para abrir a janela modal     
+            $(".visualizar").click(function() {
+
+                $("#container").fadeIn(1100);
+
+            });
+
+        });
+
+        // Função para receber o ID do registro e fazer o callback na modal
+        function modal(idRegistro) {
+
+            $.ajax({
+
+                type: "POST",
+                url: "modal_promocao.php",
+                data: {
+                    idRegistro: idRegistro
+                },
+                success: function(callback) {
+
+                    $('#modal').html(callback);
+
+                }
+
+            })
+
+        };
+
+    </script>
 </head>
 
 <body>
+    <div id="container">
+        <div id="modal">
+
+        </div>
+    </div>
     <!--  Cabeçalho  -->
     <header>
         <div id="caixa_cabecalho">
@@ -109,12 +149,12 @@
                             <?= $rsPromocoes['produto'] ?>
                         </div>
                         <div class="preco">
-                           R$ <?= str_replace(".", ",", $rsPromocoes['preco']) ?>
+                           R$ <?= number_format($rsPromocoes['preco'], 2, ',', '.') ?>
                         </div>
                         <div class="desconto">
-                            R$ <?= str_replace(".", ",", $rsPromocoes['preco'] - ($rsPromocoes['preco'] * $rsPromocoes['desconto'] / 100)) ?>
+                            R$ <?= number_format($rsPromocoes['preco'] - ($rsPromocoes['preco'] * $rsPromocoes['desconto'] / 100) , 2, ',', '.') ?>
                         </div>
-                    <div class="detalhes_promocao">
+                    <div class="detalhes_promocao visualizar" onclick="modal(<?= $rsPromocoes['idPromocao'] ?>)">
                         Confira
                     </div>
                 </div>
