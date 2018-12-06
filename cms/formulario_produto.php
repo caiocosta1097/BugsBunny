@@ -72,7 +72,11 @@
         $_SESSION['idProduto'] = $idProduto;
         
 		// Variável que recebe o registro do banco
-        $sql = "SELECT * FROM tbl_produto WHERE idProduto =".$idProduto;
+        $sql = "SELECT produto.*, categoria.idCategoria 
+        FROM tbl_produto AS produto, tbl_categoria AS categoria, tbl_subcategoria AS subcategoria 
+        WHERE categoria.idCategoria = subcategoria.idCategoria
+        AND produto.idSubcategoria = subcategoria.idSubcategoria
+        AND produto.idProduto =".$idProduto;
 
 		// Variável que executa o SELECT
         $select  = mysqli_query($conexao, $sql);
@@ -83,6 +87,7 @@
             $foto = $rsProduto['foto'];
             $produto = $rsProduto['produto'];
             $idSubcategoria = $rsProduto['idSubcategoria'];
+            $idCategoria = $rsProduto['idCategoria'];
             $preco = $rsProduto['preco'];
             $descricao = $rsProduto['descricao'];
             
@@ -192,6 +197,8 @@
             // Pega o id da categoria selecionada
             var id =  $('#slt_categoria').val();
             
+            var idSubcategoria = "<?= $idSubcategoria ?>"
+            
             // Manda uma url com o id em formato JSON
             $.getJSON('consulta_subcategorias.php?idCategoria=' + id, function(dados) {
                  
@@ -203,7 +210,17 @@
                     
                     // Função para colocar os dados retornados em options 
                     $.each(dados, function(i, obj){
-                        option += '<option value="'+obj.idSubcategoria+'">'+obj.subcategoria+'</option>';
+                        
+                        if(obj.idSubcategoria == idSubcategoria){
+                            
+                            option += '<option selected value="'+obj.idSubcategoria+'">'+obj.subcategoria+'</option>';
+                            
+                        } else{
+                            
+                            option += '<option value="'+obj.idSubcategoria+'">'+obj.subcategoria+'</option>';
+                            
+                        }
+                        
                     })
     
                 }
@@ -323,9 +340,15 @@
                         
 								// Loop para pegar cada registro no SELECT e colocar em um array
                                 while($rsCategoria = mysqli_fetch_array($select)){
+                                    
+                                    
+                                    $selected = "";
+                                    
+                                    if($rsCategoria['idCategoria'] == $idCategoria)
+                                        $selected = "selected";
                                 
                                     ?>
-                                <option value="<?= $rsCategoria['idCategoria'] ?>">
+                                <option value="<?= $rsCategoria['idCategoria'] ?>" <?= $selected ?>>
                                     <?= $rsCategoria['categoria'] ?>
                                 </option>
                                 <?php } ?>
