@@ -1,48 +1,51 @@
 <?php
 
     // Iniciando uma sessão
-    session_start();
+session_start();
 
 	// Importando o arquivo de autenticação
-    require_once('../verificar_autenticacao.php');
+require_once('../verificar_autenticacao.php');
+
+    // Importanto o arquivo para preencher o html
+require_once('itens_menu.php');
 
     // Importando o arquivo de conexão
-    require_once('conexao.php');
+require_once('conexao.php');
 
 	// Variável que recebe o função com o usuário autenticado
-    $rsUser = verificarAutentica();
+$rsUser = verificarAutentica();
 
     // Variável que recebe o função com a conexão
-    $conexao = conexaoBD();
-	
+$conexao = conexaoBD();
+
 	// Verifica se modo existe
-    if(isset($_GET['modo'])){
-        
+if(isset($_GET['modo'])){
+    
 		// Variável que recebe o modo
-        $modo = $_GET['modo'];
-        
+    $modo = $_GET['modo'];
+    
 		// Verifica se o modo = 'excluir' e deleta o registro
-        if($modo == 'excluir'){
-            
-            $id = $_GET['id'];
-			
-			if($idUser == $id)
-				echo "<script>alert('Não é possível excluir o usuário logado!')</script>";
-            else {
-            
-				$sql = "DELETE FROM tbl_usuario WHERE idUsuario =".$id;
-			
-				// Verifica se QUERY não pôde ser executada e exibe um erro, senão atualiza a página
-				if(!mysqli_query($conexao, $sql))
-					echo "Erro: ".mysqli_errno($conexao)." - ".mysqli_error($conexao);
-				else
-					header('location:adm_usuarios.php');      
-            
-			} 
+    if($modo == 'excluir'){
         
-		}
-		
-	}	
+        $id = $_GET['id'];
+        
+        if($idUser == $id)
+            echo "<script>alert('Não é possível excluir o usuário logado!')</script>";
+        else {
+            
+            $sql = "DELETE FROM tbl_usuario WHERE idUsuario =".$id;
+            
+				// Verifica se QUERY não pôde ser executada e exibe um erro, senão atualiza a página
+            if(!mysqli_query($conexao, $sql))
+               echo "Erro: ".mysqli_errno($conexao)." - ".mysqli_error($conexao);
+           else
+               header('location:adm_usuarios.php');      
+           
+       } 
+       
+   }
+   
+}	
 
 ?>
 
@@ -71,70 +74,47 @@
         <!--  Menu  -->
         <div id="caixa_menu">
             <nav id="menu_principal">
-                <!--  Itens do menu  -->
-                <div class="itens_menu">
-                    <a href="adm_conteudo.php">
-                        <img class="imagens_menu" src="imagens/adm_conteudo.png">
-                    </a>
-                    <div class="titulo_menu">Adm. Conteúdo</div>
-                </div>
-                <div class="itens_menu">
-                    <a href="adm_fale_conosco.php">
-                        <img class="imagens_menu" src="imagens/adm_fale_conosco.png">
-                    </a>
-                    <div class="titulo_menu">Adm. Fale Conosco</div>
-                </div>
-                <div class="itens_menu">
-                    <a href="adm_produtos.php">
-                        <img class="imagens_menu" src="imagens/adm_produtos.png">
-                    </a>
-                    <div class="titulo_menu">Adm. Produtos</div>
-                </div>
-                <div class="itens_menu">
-                    <a href="adm_users.php">
-                        <img class="imagens_menu" src="imagens/adm_usuarios.png">
-                    </a>
-                    <div class="titulo_menu">Adm. Usuários</div>
-                </div>
-            </nav>
-            <!--  Área de logout  -->
-            <div id="area_logout">
-                <div id="boas_vindas">Bem vindo,
-                    <?= $rsUser['nome'] ?>
-                </div>
-                <div id="logout"><a href="index.php?logout">Logout</a></div>
+             <!--  Função que preenche os itens do menu  -->
+             <?php itens_menu($rsUser['idNivel']); ?>
+         </nav>
+         <!--  Área de logout  -->
+         <div id="area_logout">
+            <div id="boas_vindas">Bem vindo,
+                <?= $rsUser['nome'] ?>
             </div>
+            <div id="logout"><a href="index.php?logout">Logout</a></div>
         </div>
-    </header>
-    <!--  Div principal da página  -->
-    <div id="principal_adm_usuarios">
-        <div id="titulo_adm_usuarios">
-            Registros dos usuários
-        </div>
-        <div id="registros_adm_usuarios">
-            <table id="tabela">
-                <thead>
-                    <tr>
-                        <th>Login</th>
-                        <th>Email</th>
-                        <th>Nível</th>
-                        <th>Opções</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-					
+    </div>
+</header>
+<!--  Div principal da página  -->
+<div id="principal_adm_usuarios">
+    <div id="titulo_adm_usuarios">
+        Registros dos usuários
+    </div>
+    <div id="registros_adm_usuarios">
+        <table id="tabela">
+            <thead>
+                <tr>
+                    <th>Login</th>
+                    <th>Email</th>
+                    <th>Nível</th>
+                    <th>Opções</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                
 						// Variável que recebe o SELECT do banco
-                         $sql = "SELECT usuario.*, nivel.* 
-                                FROM tbl_usuario as usuario, tbl_nivel_usuario as nivel 
-                                WHERE usuario.idNivel = nivel.idNivel";
+                $sql = "SELECT usuario.*, nivel.* 
+                FROM tbl_usuario as usuario, tbl_nivel_usuario as nivel 
+                WHERE usuario.idNivel = nivel.idNivel";
 
 						// Variável que executa o SELECT
-                        $select  = mysqli_query($conexao, $sql);
-				
-						// Loop para pegar cada registro no SELECT e colocar em um array
-                        while($rsUsuarios = mysqli_fetch_array($select)){
+                $select  = mysqli_query($conexao, $sql);
                 
+						// Loop para pegar cada registro no SELECT e colocar em um array
+                while($rsUsuarios = mysqli_fetch_array($select)){
+                    
                     ?>
                     <tr>
                         <td>
@@ -155,21 +135,21 @@
                             </a>
                         </td>
                     </tr>
-                    <?php } ?>
+                <?php } ?>
                 <tbody>
-            </table>
+                </table>
+            </div>
+            <!-- Área do botão -->
+            <div id="area_botao">
+                <form>
+                    <a href="formulario_usuario.php">
+                        <input type="button" value="Novo usuário" class="button">
+                    </a>
+                </form>
+            </div>
         </div>
-        <!-- Área do botão -->
-        <div id="area_botao">
-            <form>
-                <a href="formulario_usuario.php">
-                    <input type="button" value="Novo usuário" class="button">
-                </a>
-            </form>
-        </div>
-    </div>
-    <!-- Rodapé -->
-    <footer></footer>
-</body>
+        <!-- Rodapé -->
+        <footer></footer>
+    </body>
 
-</html>
+    </html>

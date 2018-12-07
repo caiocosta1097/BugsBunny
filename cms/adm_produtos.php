@@ -1,124 +1,75 @@
 <?php
 
-    // Iniciando uma sessão
-    session_start();
+// Iniciando uma sessão
+session_start();
 
-	// Importando o arquivo de autenticação
-    require_once('../verificar_autenticacao.php');
+// Importando o arquivo de autenticação
+require_once('../verificar_autenticacao.php');
 
-	// Variável que recebe o função com o usuário autenticado
-    $rsUser = verificarAutentica();
+// Importanto o arquivo para preencher o html
+require_once('itens_menu.php');
 
-    $bloqueioConteudo = null;
-    $bloqueioFaleConosco = null;
-    $bloqueioProduto = null;
-    $bloqueioUsuario = null;
-    
-    if($rsUser['idNivel'] == 21){
-        
-        $bloqueioConteudo = "";
-        $bloqueioFaleConosco = "";
-        $bloqueioProduto = "style='filter: grayscale(100%); pointer-events: none;'";
-        $bloqueioUsuario = "style='filter: grayscale(100%); pointer-events: none;'";
-        
-    }else if ($rsUser['idNivel'] == 22){
-        
-        $bloqueioConteudo = "style='filter: grayscale(100%); pointer-events: none;'";
-        $bloqueioFaleConosco = "style='filter: grayscale(100%); pointer-events: none;'";
-        $bloqueioProduto = "";
-        $bloqueioUsuario = "style='filter: grayscale(100%); pointer-events: none;'";
-        
-    } else{
-        
-        $bloqueioConteudo = "";
-        $bloqueioFaleConosco = "";
-        $bloqueioProduto = "";
-        $bloqueioUsuario = "";
-        
-    }
-
+// Variável que recebe o função com o usuário autenticado
+$rsUser = verificarAutentica();
 
 ?>
 
 <!DOCTYPE html>
 
 <html>
-    <head>
-        <title>CMS</title>
-        <link rel="stylesheet" type="text/css" href="css/style.css">
-        <meta charset="utf-8">
-    </head>
-    <body>
-        <!--  Cabeçalho  -->
-        <header>
-            <div id="caixa_cabecalho">
-				<!--  Título do CMS  -->
-                <div id="titulo_pagina">
-                    <span id="negrito">CMS</span> - Sistema de Gerenciamento do Site
-                </div>
-				<!--  Logo  -->
-                <div id="logo_pagina"></div>
+<head>
+    <title>CMS</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <meta charset="utf-8">
+</head>
+<body>
+    <!--  Cabeçalho  -->
+    <header>
+        <div id="caixa_cabecalho">
+            <!--  Título do CMS  -->
+            <div id="titulo_pagina">
+                <span id="negrito">CMS</span> - Sistema de Gerenciamento do Site
             </div>
-			<!--  Menu  -->
-            <div id="caixa_menu">
-                <nav id="menu_principal">
-					<!--  Itens do menu  -->
-                    <div class="itens_menu">
-                        <a href="adm_conteudo.php">
-                            <img class="imagens_menu" src="imagens/adm_conteudo.png" <?= $bloqueioConteudo ?>>
-                        </a>
-                        <div class="titulo_menu">Adm. Conteúdo</div>
-                    </div>
-                    <div class="itens_menu">
-                        <a href="adm_fale_conosco.php">
-                            <img class="imagens_menu" src="imagens/adm_fale_conosco.png" <?= $bloqueioFaleConosco ?>>
-                        </a>    
-                        <div class="titulo_menu">Adm. Fale Conosco</div>
-                    </div>
-                    <div class="itens_menu">
-						<a href="adm_produtos.php">
-							<img class="imagens_menu" src="imagens/adm_produtos.png" <?= $bloqueioProduto ?>>
-						</a>
-                       <div class="titulo_menu">Adm. Produtos</div>
-                    </div>
-                    <div class="itens_menu">
-                        <a href="adm_users.php">
-                            <img class="imagens_menu" src="imagens/adm_usuarios.png" <?= $bloqueioUsuario ?>>
-                        </a>
-                       <div class="titulo_menu">Adm. Usuários</div>
-                    </div>
-                </nav>
-				<!--  Área de logout  -->
-                <div id="area_logout">
-                    <div id="boas_vindas">Bem vindo, <?= $rsUser['nome'] ?></div>
-                    <div id="logout"><a href="index.php?logout">Logout</a></div>
-                </div>
-            </div>
-        </header>
-		<!--  Div principal da página  -->
-        <div id="principal_adm_produtos">
-            <div id="opcoes_conteudo">
-                <div class="itens_opcoes">
-                    <a href="adm_lista_produtos.php">
-                        <img class="imagens_opcoes" src="imagens/adm_lista_produtos.png">
-                    </a>
-                    <div class="titulo_opcoes">Adm. Produtos</div>
-                </div>
-                <div class="itens_opcoes">
-                    <a href="adm_categoria.php">
-                        <img class="imagens_opcoes" src="imagens/adm_categoria.png">
-                    </a>
-                    <div class="titulo_opcoes">Categorias</div>
-                </div>
-				<div class="itens_opcoes">
-                    <a href="adm_subcategoria.php">
-                        <img class="imagens_opcoes" src="imagens/adm_subcategoria.png">
-                    </a>
-                    <div class="titulo_opcoes">Subcategorias</div>
-                </div>
-            </div>
+            <!--  Logo  -->
+            <div id="logo_pagina"></div>
         </div>
-		<!-- Rodapé -->
-        <footer></footer>
-    </body>
+        <!--  Menu  -->
+        <div id="caixa_menu">
+            <nav id="menu_principal">
+               <!--  Função que preenche os itens do menu  -->
+               <?php itens_menu($rsUser['idNivel']); ?>
+           </nav>
+           <!--  Área de logout  -->
+           <div id="area_logout">
+            <div id="boas_vindas">Bem vindo, <?= $rsUser['nome'] ?></div>
+            <div id="logout"><a href="index.php?logout">Logout</a></div>
+        </div>
+    </div>
+</header>
+<!--  Div principal da página  -->
+<div id="principal_adm_produtos">
+    <div id="opcoes_conteudo">
+        <div class="itens_opcoes">
+            <a href="adm_lista_produtos.php">
+                <img class="imagens_opcoes" src="imagens/adm_lista_produtos.png">
+            </a>
+            <div class="titulo_opcoes">Adm. Produtos</div>
+        </div>
+        <div class="itens_opcoes">
+            <a href="adm_categoria.php">
+                <img class="imagens_opcoes" src="imagens/adm_categoria.png">
+            </a>
+            <div class="titulo_opcoes">Categorias</div>
+        </div>
+        <div class="itens_opcoes">
+            <a href="adm_subcategoria.php">
+                <img class="imagens_opcoes" src="imagens/adm_subcategoria.png">
+            </a>
+            <div class="titulo_opcoes">Subcategorias</div>
+        </div>
+    </div>
+</div>
+<!-- Rodapé -->
+<footer></footer>
+</body>
 </html>

@@ -1,13 +1,16 @@
 <?php
 
-    // Iniciando uma sessão
-    session_start();
+// Iniciando uma sessão
+session_start();
 
-	// Importando o arquivo de autenticação
-    require_once('../verificar_autenticacao.php');
+// Importando o arquivo de autenticação
+require_once('../verificar_autenticacao.php');
 
-	// Variável que recebe o função com o usuário autenticado
-    $rsUser = verificarAutentica();
+// Importanto o arquivo para preencher o html
+require_once('itens_menu.php');
+
+// Variável que recebe o função com o usuário autenticado
+$rsUser = verificarAutentica();
 
 ?>
 
@@ -35,31 +38,8 @@
         <!--  Menu  -->
         <div id="caixa_menu">
             <nav id="menu_principal">
-                <!--  Itens do menu  -->
-                <div class="itens_menu">
-                    <a href="adm_conteudo.php">
-                        <img class="imagens_menu" src="imagens/adm_conteudo.png">
-                    </a>
-                    <div class="titulo_menu">Adm. Conteúdo</div>
-                </div>
-                <div class="itens_menu">
-                    <a href="adm_fale_conosco.php">
-                        <img class="imagens_menu" src="imagens/adm_fale_conosco.png">
-                    </a>
-                    <div class="titulo_menu">Adm. Fale Conosco</div>
-                </div>
-                <div class="itens_menu">
-                    <a href="adm_produtos.php">
-                        <img class="imagens_menu" src="imagens/adm_produtos.png">
-                    </a>
-                    <div class="titulo_menu">Adm. Produtos</div>
-                </div>
-                <div class="itens_menu">
-                    <a href="adm_users.php">
-                        <img class="imagens_menu" src="imagens/adm_usuarios.png">
-                    </a>
-                    <div class="titulo_menu">Adm. Usuários</div>
-                </div>
+                <!--  Função que preenche os itens do menu  -->
+                <?php itens_menu($rsUser['idNivel']); ?>
             </nav>
             <!--  Área de logout  -->
             <div id="area_logout">

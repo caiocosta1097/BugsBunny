@@ -16,10 +16,10 @@
 
         }else if ($idNivel == 22){
 
-            $bloqueioConteudo = "style= filter: grayscale(100%); pointer-events: none;";
-            $bloqueioFaleConosco = "style= filter: grayscale(100%); pointer-events: none;";
+            $bloqueioConteudo = "style= 'filter: grayscale(100%); pointer-events: none;'";
+            $bloqueioFaleConosco = "style= 'filter: grayscale(100%); pointer-events: none;'";
             $bloqueioProduto = "";
-            $bloqueioUsuario = "style= filter: grayscale(100%); pointer-events: none;";
+            $bloqueioUsuario = "style= 'filter: grayscale(100%); pointer-events: none;'";
 
         } else{
 

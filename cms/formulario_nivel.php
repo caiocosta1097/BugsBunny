@@ -1,105 +1,80 @@
 <?php
 
-    // Iniciando uma sessão
-    session_start();
+// Iniciando uma sessão
+session_start();
 
-	// Importando o arquivo de autenticação
-    require_once('../verificar_autenticacao.php');
+// Importando o arquivo de autenticação
+require_once('../verificar_autenticacao.php');
 
-    // Importando o arquivo de conexão
-    require_once('conexao.php');
+// Importanto o arquivo para preencher o html
+require_once('itens_menu.php');
 
-	// Variável que recebe o função com o usuário autenticado
-    $rsUser = verificarAutentica();
+// Importando o arquivo de conexão
+require_once('conexao.php');
 
-    // Variável que recebe o função com a conexão
-    $conexao = conexaoBD();
+// Variável que recebe o função com o usuário autenticado
+$rsUser = verificarAutentica();
 
-	// Verifica se a variável de sessão existe, senão redireciona para home
-    if(isset($_SESSION['idUser'])){
-        
-		// Variável que recebe o id do user
-        $idUser = $_SESSION['idUser'];
+// Variável que recebe o função com a conexão
+$conexao = conexaoBD();
 
-		// Variável que recebe o user do banco
-        $sql = "SELECT * FROM tbl_usuario WHERE idUsuario =".$idUser;
+// Variável que recebe o título da página
+$tituloPagina = "Cadastrar nível";
 
-		// Variável que executa o SELECT
-        $select  = mysqli_query($conexao, $sql);
-			
-			// Verifica se retorna algum registro e coloca em um array
-            if($rsUser = mysqli_fetch_array($select))
-                $nomeUser = $rsUser['nome'];
+// Botão começa com salvar
+$botao = "Salvar";
 
-			// Verifica se logout existe, encerra a variável de sessão e redireciona para home
-            if(isset($_GET['logout'])){
+// Verifica se id existe
+if(isset($_GET['id'])){
 
-                session_destroy();
+	// Variável que recebe o id do registro
+    $idNivel = $_GET['id'];
 
-                header('location:../index.php');
+	// Titulo da página muda
+    $tituloPagina = "Atualizar nível";
 
-            }
-        
-    }else
-        header('location:../index.php');
-	
-	// Variável que recebe o título da página
-    $tituloPagina = "Cadastrar nível";
+	// Botão da página muda
+    $botao = "Atualizar";
 
-	// Botão começa com salvar
-    $botao = "Salvar";
+	// Inicia uma variável de sessão que recebe o id do registro
+    $_SESSION['idNivel'] = $idNivel;
 
-	// Verifica se id existe
-    if(isset($_GET['id'])){
-        
-		// Variável que recebe o id do registro
-        $idNivel = $_GET['id'];
-        
-		// Titulo da página muda
-        $tituloPagina = "Atualizar nível";
-        
-		// Botão da página muda
-        $botao = "Atualizar";
-        
-		// Inicia uma variável de sessão que recebe o id do registro
-        $_SESSION['idNivel'] = $idNivel;
-        
-		// Variável que recebe o registro do banco
-        $sql = "SELECT * FROM tbl_nivel_usuario WHERE idNivel =".$idNivel;
+	// Variável que recebe o registro do banco
+    $sql = "SELECT * FROM tbl_nivel_usuario WHERE idNivel =".$idNivel;
 
-		// Variável que executa o SELECT
-        $select  = mysqli_query($conexao, $sql);
+	// Variável que executa o SELECT
+    $select  = mysqli_query($conexao, $sql);
 
-		// Verifica se retorna algum registro e coloca em um array
-        if($rsNivel = mysqli_fetch_array($select))
-			$nivel = $rsNivel['nomeNivel'];
-     
+	// Verifica se retorna algum registro e coloca em um array
+    if($rsNivel = mysqli_fetch_array($select))
+        $nivel = $rsNivel['nomeNivel'];
+
+}
+
+// Verifica se o submit foi clicado
+if(isset($_POST['btnSalvar'])){
+
+	// Pega todos os valores inseridos no formulário e coloca em variáveis
+    $nivel = $_POST['txtNivel'];
+
+	// Verifica se o botão é pra salvar e faz um INSERT no banco, senão faz um UPDATE
+    if($_POST['btnSalvar'] == "Salvar"){
+
+     $sql = "INSERT INTO tbl_nivel_usuario (nomeNivel, status) VALUES ('".$nivel."', 0)";
+
+    }else{
+
+        $sql = "UPDATE tbl_nivel_usuario SET nomeNivel = '".$nivel."' WHERE idNivel =".$_SESSION['idNivel'];
+
     }
-	
-	// Verifica se o submit foi clicado
-    if(isset($_POST['btnSalvar'])){
-        
-		// Pega todos os valores inseridos no formulário e coloca em variáveis
-        $nivel = $_POST['txtNivel'];
-        
-		// Verifica se o botão é pra salvar e faz um INSERT no banco, senão faz um UPDATE
-        if($_POST['btnSalvar'] == "Salvar"){
-			
-			$sql = "INSERT INTO tbl_nivel_usuario (nomeNivel, status) VALUES ('".$nivel."', 0)";
-			
-		}else{
-            
-            $sql = "UPDATE tbl_nivel_usuario SET nomeNivel = '".$nivel."' WHERE idNivel =".$_SESSION['idNivel'];
-            
-        }
-		
-		// Verifica se QUERY não pôde ser executada e exibe um erro, senão atualiza a página
-		if(!mysqli_query($conexao, $sql))
-			echo "Erro: ".mysqli_errno($conexao)." - ".mysqli_error($conexao);
-		else
-			header('location:adm_nivel_usuario.php');
-        
-    }
+
+    // Verifica se QUERY não pôde ser executada e exibe um erro, senão atualiza a página
+    if(!mysqli_query($conexao, $sql))
+        echo "Erro: ".mysqli_errno($conexao)." - ".mysqli_error($conexao);
+    else
+        header('location:adm_nivel_usuario.php');
+
+}
 
 ?>
 
@@ -128,31 +103,8 @@
         <!--  Menu  -->
         <div id="caixa_menu">
             <nav id="menu_principal">
-                <!--  Itens do menu  -->
-                <div class="itens_menu">
-                    <a href="adm_conteudo.php">
-                        <img class="imagens_menu" src="imagens/adm_conteudo.png">
-                    </a>
-                    <div class="titulo_menu">Adm. Conteúdo</div>
-                </div>
-                <div class="itens_menu">
-                    <a href="adm_fale_conosco.php">
-                        <img class="imagens_menu" src="imagens/adm_fale_conosco.png">
-                    </a>
-                    <div class="titulo_menu">Adm. Fale Conosco</div>
-                </div>
-                <div class="itens_menu">
-                    <a href="adm_produtos.php">
-                        <img class="imagens_menu" src="imagens/adm_produtos.png">
-                    </a>
-                    <div class="titulo_menu">Adm. Produtos</div>
-                </div>
-                <div class="itens_menu">
-                    <a href="adm_users.php">
-                        <img class="imagens_menu" src="imagens/adm_usuarios.png">
-                    </a>
-                    <div class="titulo_menu">Adm. Usuários</div>
-                </div>
+                <!--  Função que preenche os itens do menu  -->
+                <?php itens_menu($rsUser['idNivel']); ?>
             </nav>
             <!--  Área de logout  -->
             <div id="area_logout">

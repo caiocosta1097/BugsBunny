@@ -1,16 +1,16 @@
 <?php
 
-    // Iniciando uma sessão
-    session_start();
+// Iniciando uma sessão
+session_start();
 
-	// Importando o arquivo de autenticação
-    require_once('../verificar_autenticacao.php');
+// Importando o arquivo de autenticação
+require_once('../verificar_autenticacao.php');
 
-    // Importanto o arquivo para preencher o html
-    require_once('itens_menu.php');
+// Importanto o arquivo para preencher o html
+require_once('itens_menu.php');
 
-	// Variável que recebe o função com o usuário autenticado
-    $rsUser = verificarAutentica();
+// Variável que recebe o função com o usuário autenticado
+$rsUser = verificarAutentica();
 
 ?>
 
