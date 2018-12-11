@@ -364,3 +364,13 @@
 		display: none
 	}
 }
+
+@media screen and (max-device-width: 500px){
+
+	#wowslider-container1, .ws_bullets{
+
+		display: none;
+
+	}
+
+}

@@ -69,6 +69,12 @@ header {
 
 }
 
+#navigation{
+
+    display: none;
+
+}
+
 .itens_menu {
 
     width: auto;
@@ -246,13 +252,13 @@ footer {
 }
 
 .itens_lista:hover, .subMenu_itens:hover{
-    
+
     background-color: #273b63;
     
 }
 
 .subMenu{
-    
+
     opacity: 0;
     overflow: hidden;
     width: 0;
@@ -267,7 +273,7 @@ footer {
 }
 
 .itens_lista:hover .subMenu{
-    
+
     width: 100%;
     opacity: 1;
     overflow: visible;
@@ -366,14 +372,14 @@ footer {
 }
 
 #container{
-    
+
     width: 100%;
     height: 100%;
     padding-top: 2%;
     background-color: rgba(0,0,0,0.5);
     position: fixed;
     z-index: 999;
-   display: none;
+    display: none;
 
 }
 
@@ -403,7 +409,7 @@ footer {
     background: #f1f1f1; 
 
 }
- 
+
 ::-webkit-scrollbar-thumb {
 
     background: #888; 
@@ -934,5 +940,258 @@ table {
     margin-top: 25px;
     margin-left: auto;
     margin-right: auto;
+
+}
+
+@media screen and (max-device-width: 500px){
+
+    header{
+
+        height: 200px;
+
+    }
+
+    #caixa_cabecalho{
+
+        width: 100%;
+
+    }
+
+    #logo_Banca {
+
+        width: 250px;
+        height: 100%;
+        background-image: url(../imagens/logo.png);
+        background-size: 220px 220px;
+        background-position: center;
+        background-repeat: no-repeat;
+        float: left;
+        margin-left: 28%;
+
+    }
+
+    #principal_index{
+
+        width: 100%;
+        padding-top: 200px;
+
+    }
+
+    #menu_principal, #login, #social, #menu_lateral_index{
+
+        display: none;
+
+    }
+
+    #conteudo_produtos{
+
+        width: 80%;
+        border: 0px;
+        padding-left: 10%;
+        padding-right: 10%;
+        margin: 0;
+
+    }
+
+    .caixa_produtos {
+
+        height: 600px;
+        width: 100%;
+        margin: 0;
+        margin-top: 30px;
+        font-family: arial;
+        font-weight: bold;
+        font-size: 16px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+    }
+
+    .imagem_produto {
+
+        width: 100%;
+        height: 350px;
+        text-align: center;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+
+    }
+
+    .imagem {
+
+        width: 350px;
+        height: 350px;
+
+
+    }
+
+    .nome_produto{
+
+        width: 98%;
+        font-size: 2em;
+        text-align: center;
+        margin-top: 30px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        padding-left: 1%;
+        padding-right: 1%;
+
+    }
+
+    .preco_produto {
+
+        width: 100%;
+        font-size: 1.9em;
+        text-align: center;
+        margin-top: 10px;
+
+    }
+
+    .detalhes_produto {
+
+        width: 75%;
+        height: 42px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 20px;
+        border: solid 1px;
+        border-radius: 10px;
+        cursor: pointer;
+        padding-top: 10px;
+        font-size: 1.9em;
+        text-align: center;
+
+    }
+
+    .detalhes_produto:hover {
+
+        background-color: #3b5998;
+        transition: 0.5s;
+        color: #fff;
+
+    }
+
+    #navigation{
+
+        display: block;
+        float: left;
+
+    }
+
+    #caixa_menu_mobile{
+
+        display: block;
+        position: relative;
+        top: 50px;
+        left: 50px;
+
+        z-index: 1;
+
+        -webkit-user-select: none;
+        user-select: none;
+
+    }
+
+    #caixa_menu_mobile input{
+      display: block;
+      width: 40px;
+      height: 32px;
+      position: absolute;
+      top: -7px;
+      left: -5px;
+      cursor: pointer;
+      opacity: 0; /* hide this */
+      z-index: 2; /* and place it over the hamburger */
+      -webkit-touch-callout: none;
+
+  }
+
+  #caixa_menu_mobile span{
+      display: block;
+      width: 66px;
+      height: 8px;
+      margin-bottom: 5px;
+      position: relative;
+
+      background: #cdcdcd;
+      border-radius: 3px;
+
+      z-index: 1;
+
+      transform-origin: 4px 0px;
+
+      transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+      background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+      opacity 0.55s ease;
+  }
+
+  #caixa_menu_mobile span:first-child{
+      transform-origin: 0% 0%;
+  }
+
+  #caixa_menu_mobile span:nth-last-child(2){
+      transform-origin: 0% 100%;
+  }
+
+  #caixa_menu_mobile input:checked ~ span{
+      opacity: 1;
+      transform: rotate(30deg) translate(-2px, -1px);
+      background: #232323;
+  }
+
+  #caixa_menu_mobile input:checked ~ span:nth-last-child(3){
+      opacity: 0;
+      transform: rotate(0deg) scale(0.2, 0.2);
+  }
+
+/*
+ * Ohyeah and the last one should go the other direction
+ */
+ #caixa_menu_mobile input:checked ~ span:nth-last-child(2){
+  transform: rotate(-30deg) translate(0, -1px);
+}
+
+#menu_mobile{
+  position: absolute;
+  width: 350px;
+  margin: -100px 0 0 -50px;
+  padding: 50px;
+  padding-top: 125px;
+  background: #ededed;
+  list-style-type: none;
+  -webkit-font-smoothing: antialiased;
+  transform-origin: 0% 0%;
+  transform: translate(-100%, 0);
+  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+}
+
+#menu_mobile li{
+  padding: 10px 0;
+  font-size: 2em;
+  font-family: font-caviarDreams, monospace;
+  cursor: pointer;
+}
+
+#menu_mobile li:hover{
+
+    text-shadow: 0 0 8px #fff;
+
+}
+
+/*
+ * And let's slide it in from the left
+ */
+ #caixa_menu_mobile input:checked ~ ul{
+  transform: none;
+}
+
+#modal{
+
+    width: 95%;
+
+}
+
 
 }
