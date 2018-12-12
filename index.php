@@ -99,13 +99,13 @@ if(isset($_GET['modo'])){
                     <span></span>
                     <span></span>
                     <ul id="menu_mobile">
-                      <a href="#"><li>Home</li></a>
-                      <a href="#"><li>Notícias</li></a>
-                      <a href="#"><li>Sobre a Banca</li></a>
-                      <a href="#"><li>Promoções</li></a>
-                      <a href="#"><li>Nossas Bancas</li></a>
-                      <a href="#"><li>Celebridade do mês</li></a>
-                      <a href="#"><li>Fale Conosco</li></a>
+                      <a href="index.php"><li>Home</li></a>
+                      <a href="noticias.php"><li>Notícias</li></a>
+                      <a href="sobre.php"><li>Sobre a Banca</li></a>
+                      <a href="promocoes.php"><li>Promoções</li></a>
+                      <a href="nossas_bancas.php"><li>Nossas Bancas</li></a>
+                      <a href="celebridade_do_mes.php"><li>Celebridade do mês</li></a>
+                      <a href="fale_conosco.php"><li>Fale Conosco</li></a>
                   </ul>
               </div>
           </nav>
@@ -232,6 +232,55 @@ if(isset($_GET['modo'])){
             <?php } ?>
         </ul>
     </nav>
+    <nav role="navigation" id="navigation">
+        <div id="caixa_menu_mobile">
+            <input type="checkbox" />
+            <span></span>
+            <span></span>
+            <span></span>
+            <ul id="menu_mobile">
+                <?php
+
+                    // Variável que recebe o SELECT do banco
+                $sqlCategoria = "SELECT * FROM tbl_categoria WHERE status = 0";
+
+                    // Variável que executa o SELECT
+                $selectCategoria  = mysqli_query($conexao, $sqlCategoria);
+
+                    // Loop para pegar cada registro no SELECT e colocar em um array
+                while($rsCategoria = mysqli_fetch_array($selectCategoria)){
+
+                    ?>
+                    <a href="index.php?modo=categoria&id=<?= $rsCategoria['idCategoria'] ?>">
+                        <li>
+                            <?= $rsCategoria['categoria'] ?>
+                            <ul id="submenu">
+                                <?php
+
+                                // Variável que recebe o SELECT do banco
+                                $sqlSubcategoria = "SELECT * FROM tbl_subcategoria 
+                                WHERE idCategoria = '".$rsCategoria['idCategoria']."' AND status = 0";
+
+                                // Variável que executa o SELECT
+                                $selectSubcategoria  = mysqli_query($conexao, $sqlSubcategoria);
+
+                                // Loop para pegar cada registro no SELECT e colocar em um array
+                                while($rsSubcategoria = mysqli_fetch_array($selectSubcategoria)){
+
+                                    ?>
+                                    <a href="index.php?modo=subcategoria&id=<?= $rsSubcategoria['idSubcategoria'] ?>">
+                                        <li>
+                                            <?= $rsSubcategoria['subcategoria'] ?>
+                                        </li>
+                                    </a>
+                                <?php } ?>
+                            </ul>
+                        </li>
+                    </a>
+                <?php } ?>
+            </ul>
+        </div>
+    </nav>
     <!-- Área de conteúdo -->
     <div id="conteudo_produtos">
         <!-- Caixas com os produtos -->
@@ -266,6 +315,14 @@ if(isset($_GET['modo'])){
 <footer>
     <div id="conteudo_footer">
         © 2018 Bugs Bunny - A banca digital. Todos os direitos reservados.
+    </div>
+    <div id="conteudo_footer_mobile">
+        <h1> © 2018 Bugs Bunny - A banca digital. </h1>
+        <div id="social_mobile">
+            <img src="imagens/facebook.png" alt="Facebook" title="Facebook" class="imagens_social">
+            <img src="imagens/instagram.png" alt="Instagram" title="Instagram" class="imagens_social">
+            <img src="imagens/twitter.png" alt="Twitter" title="Twitter" class="imagens_social">
+        </div>
     </div>
 </footer>
 </body>

@@ -206,6 +206,18 @@ footer {
 
 }
 
+#conteudo_footer_mobile {
+
+    display: none;
+
+}
+
+#social_mobile{
+
+    display: none;
+
+}
+
 /* Página Index */
 
 #principal_index {
@@ -977,7 +989,7 @@ table {
 
     }
 
-    #menu_principal, #login, #social, #menu_lateral_index{
+    #menu_principal, #login, #social, #menu_lateral_index, #conteudo_footer{
 
         display: none;
 
@@ -990,6 +1002,7 @@ table {
         padding-left: 10%;
         padding-right: 10%;
         margin: 0;
+        margin-top: 50px;
 
     }
 
@@ -1127,6 +1140,12 @@ table {
       opacity 0.55s ease;
   }
 
+  #principal_index #caixa_menu_mobile span{
+
+    background-color: #000;
+
+  }
+
   #caixa_menu_mobile span:first-child{
       transform-origin: 0% 0%;
   }
@@ -1159,7 +1178,7 @@ table {
   margin: -100px 0 0 -50px;
   padding: 50px;
   padding-top: 125px;
-  background: #ededed;
+  background: #fff;
   list-style-type: none;
   -webkit-font-smoothing: antialiased;
   transform-origin: 0% 0%;
@@ -1169,9 +1188,18 @@ table {
 
 #menu_mobile li{
   padding: 10px 0;
-  font-size: 2em;
+  font-size: 35px;
   font-family: font-caviarDreams, monospace;
-  cursor: pointer;
+  
+}
+
+#submenu li{
+
+    padding: 10px 0;
+    font-size: 30px;
+    font-family: font-caviarDreams, monospace;
+    list-style-type: none;
+
 }
 
 #menu_mobile li:hover{
@@ -1190,8 +1218,44 @@ table {
 #modal{
 
     width: 95%;
+    min-height: 70%;
 
 }
 
+footer{
+
+    height: 210px;
+
+}
+
+#social_mobile{
+
+    display: block;
+    width: 64px;
+    float: right;
+    height: auto;
+
+}
+
+#conteudo_footer_mobile{
+
+    display: block;
+
+}
+
+#conteudo_footer_mobile h1 {
+
+    display: inline-block;
+    padding: 0px;
+    margin: 0px;
+    text-align: center;
+    font-family: font-caviarDreams, monospace;
+    font-size: 35px;
+    font-weight: bold;
+    color: #fff;
+    margin-top: 80px;
+    margin-left: 140px;
+
+}
 
 }
