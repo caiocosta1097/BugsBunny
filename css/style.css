@@ -251,7 +251,7 @@ footer {
 .itens_lista, .subMenu_itens{
 
     list-style-type: none;
-    width: 97%;
+    width: 100%;
     text-align: center;
     height: 23px;
     background-color: #3b5998;
@@ -493,7 +493,7 @@ footer {
 .imagens_conteudo {
 
     width: 100%;
-    height: 210px;
+    height: 100%;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
 
@@ -502,8 +502,7 @@ footer {
 .titulo_noticia {
 
     width: 414px;
-    height: 115px;
-    padding-top: 4%;
+    height: 40%;
     font-family: arial;
     font-size: 27px;
     font-weight: bold;
@@ -982,10 +981,11 @@ table {
 
     }
 
-    #principal_index{
+    #principal_index, #principal_noticias{
 
         width: 100%;
         padding-top: 200px;
+        height: auto;
 
     }
 
@@ -995,7 +995,7 @@ table {
 
     }
 
-    #conteudo_produtos{
+    #conteudo_produtos, #conteudo_noticias{
 
         width: 80%;
         border: 0px;
@@ -1010,7 +1010,7 @@ table {
 
         height: 600px;
         width: 100%;
-        margin: 0;
+        margin: 0px;
         margin-top: 30px;
         font-family: arial;
         font-weight: bold;
@@ -1085,6 +1085,41 @@ table {
         color: #fff;
 
     }
+    
+    .noticia {
+
+    width: 100%;
+    height: 600px;
+    margin-top: 30px;
+    background-color: #fff;
+    cursor: pointer;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-left: 0px;
+
+    }
+    
+    .noticia:hover {
+
+    transform: none;
+
+    }
+
+    
+    .titulo_noticia {
+
+    width: 96%;
+    height: 40%;
+    font-family: arial;
+    font-size: 50px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    padding-left: 2%;
+    padding-right: 2%;
+
+}
+
 
     #navigation{
 
@@ -1256,6 +1291,12 @@ footer{
     margin-top: 80px;
     margin-left: 140px;
 
+}
+    
+.clearfix:after {
+    content: "";
+    display: block;
+    clear: both;
 }
 
 }

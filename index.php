@@ -42,6 +42,7 @@ if(isset($_GET['modo'])){
 <head>
     <title>Bugs Bunny - A banca digital</title>
     <meta charset="utf-8">
+    <meta name="theme-color" content="#3b5998">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="engine1/style.css" />
     <script src="engine1/jquery.js"></script>

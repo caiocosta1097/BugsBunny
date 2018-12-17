@@ -146,7 +146,7 @@ CREATE TABLE `tbl_nossas_bancas` (
   `telefone` varchar(20) NOT NULL,
   `status` int(11) NOT NULL,
   PRIMARY KEY (`idBanca`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -155,7 +155,7 @@ CREATE TABLE `tbl_nossas_bancas` (
 
 LOCK TABLES `tbl_nossas_bancas` WRITE;
 /*!40000 ALTER TABLE `tbl_nossas_bancas` DISABLE KEYS */;
-INSERT INTO `tbl_nossas_bancas` VALUES (8,'Tatuapé','Avenida Cantagalo, 666','Tatuapé','(11) 4789-5829',0);
+INSERT INTO `tbl_nossas_bancas` VALUES (8,'Tatuapé','Avenida Cantagalo, 666','Tatuapé','(11) 4789-5829',0),(10,'Jardim América','Avenida Europa, 20','Jardim América','(11) 3086-2831',0),(11,'Consolação','Viaduto Nove de Julho, 185','Consolação','(11) 3231-3458',0),(12,'Mooca','Rua Visconde de Laguna, 220','Mooca','(11) 2291-9074',0),(13,'Vila Mariana','Avenida Lins Vasconcelos, 1601','Vila Mariana','(11) 2274-4743',0);
 /*!40000 ALTER TABLE `tbl_nossas_bancas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -329,14 +329,6 @@ LOCK TABLES `tbl_usuario` WRITE;
 INSERT INTO `tbl_usuario` VALUES (4,'Caio da Costa Carmo','admin','21232f297a57a5a743894a0e4a801fc3','caio.costacarmo@gmail.com',10),(20,'David Bitencourt','david97','55fc5b709962876903785fd64a6961e5','david@gmail.com',21),(21,'Igor Feitosa','igorTeste','c2d53eab1c3c169cc789ba7581fc7cfa','igor_feitosa@gmail.com',22);
 /*!40000 ALTER TABLE `tbl_usuario` ENABLE KEYS */;
 UNLOCK TABLES;
-
---
--- Dumping events for database 'db_banca_inf3m'
---
-
---
--- Dumping routines for database 'db_banca_inf3m'
---
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -347,4 +339,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-12-11 12:23:15
+-- Dump completed on 2018-12-17 11:54:10
