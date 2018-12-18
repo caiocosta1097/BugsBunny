@@ -982,7 +982,7 @@ table {
 
     }
 
-    #principal_index, #principal_noticias, #principal_sobre{
+    #principal_index, #principal_noticias, #principal_sobre, #principal_promocoes{
 
         width: 100%;
         padding-top: 200px;
@@ -996,7 +996,7 @@ table {
 
     }
 
-    #conteudo_produtos, #conteudo_noticias{
+    #conteudo_produtos, #conteudo_noticias, #conteudo_promocoes{
 
         width: 80%;
         border: 0px;
@@ -1183,6 +1183,106 @@ table {
 
 }
 
+#produtos_promocao {
+
+    width: 100%;
+    min-height: 500px;
+    height: auto;
+
+}
+
+.caixa_produtos_promocao {
+
+    height: 650px;
+    width: 100%;
+    float: none;
+    margin-left: 0px;
+    margin-top: 20px;
+    font-family: arial;
+    font-weight: bold;
+    font-size: 16px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+
+.imagem_produto_promocao {
+
+    width: 100%;
+    height: 350px;
+    text-align: center;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+
+}
+
+.imagens_promocao {
+
+    width: 350px;
+    height: 350px;
+
+
+}
+
+.produto_promocao {
+
+    width: 98%;
+    font-size: 2.1em;
+    text-align: center;
+    margin-top: 30px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    padding-left: 1%;
+    padding-right: 1%;
+    
+}
+
+.preco {
+
+    width: 100%;
+    font-size: 1.8em;
+    text-align: center;
+    margin-top: 20px;
+    text-decoration: line-through;
+
+}
+
+.desconto {
+
+    width: 100%;
+    font-size: 2em;
+    text-align: center;
+    margin-top: 15px;
+    font-weight: bold;
+
+}
+
+.detalhes_promocao {
+
+    width: 75%;
+    height: 45px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 25px;
+    border: solid 1px;
+    border-radius: 10px;
+    cursor: pointer;
+    padding-top: 10px;
+    font-size: 2em;
+    text-align: center;
+
+}
+
+.detalhes_promocao:hover {
+
+    background-color: #3b5998;
+    transition: 0.5s;
+    color: #fff;
+
+}
+
 
     #navigation{
 
@@ -1322,7 +1422,7 @@ table {
 
 footer{
 
-    height: 210px;
+    height: 194px;
 
 }
 
@@ -1332,6 +1432,12 @@ footer{
     width: 64px;
     float: right;
     height: auto;
+
+}
+    
+.imagens_social {
+
+    float: left;
 
 }
 

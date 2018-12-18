@@ -15,6 +15,7 @@
 <head>
     <title>Bugs Bunny - A banca digital</title>
     <meta charset="utf-8">
+    <meta name="theme-color" content="#3b5998">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="engine1/style.css" />
     <script src="engine1/jquery.js"></script>
@@ -65,6 +66,23 @@
     <!--  Cabeçalho  -->
     <header>
         <div id="caixa_cabecalho">
+            <nav role="navigation" id="navigation">
+                <div id="caixa_menu_mobile">
+                    <input type="checkbox" />
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <ul id="menu_mobile">
+                      <a href="index.php"><li>Home</li></a>
+                      <a href="noticias.php"><li>Notícias</li></a>
+                      <a href="sobre.php"><li>Sobre a Banca</li></a>
+                      <a href="promocoes.php"><li>Promoções</li></a>
+                      <a href="nossas_bancas.php"><li>Nossas Bancas</li></a>
+                      <a href="celebridade_do_mes.php"><li>Celebridade do mês</li></a>
+                      <a href="fale_conosco.php"><li>Fale Conosco</li></a>
+                  </ul>
+              </div>
+          </nav>
             <!-- Logo -->
             <div id="logo_Banca"></div>
             <!-- Menu -->
@@ -168,6 +186,14 @@
         <div id="conteudo_footer">
             © 2018 Bugs Bunny - A banca digital. Todos os direitos reservados.
         </div>
+        <div id="conteudo_footer_mobile">
+        <h1> © 2018 Bugs Bunny - A banca digital. </h1>
+        <div id="social_mobile">
+            <img src="imagens/facebook.png" alt="Facebook" title="Facebook" class="imagens_social">
+            <img src="imagens/instagram.png" alt="Instagram" title="Instagram" class="imagens_social">
+            <img src="imagens/twitter.png" alt="Twitter" title="Twitter" class="imagens_social">
+        </div>
+    </div>
     </footer>
 </body>
 
