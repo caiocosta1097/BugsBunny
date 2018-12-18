@@ -398,7 +398,7 @@ footer {
 #modal{
 
     width: 1000px;
-    max-height: 650px;
+    max-height: 750px;
     overflow: auto;
     background-color: #fff;
     margin-left: auto;
@@ -539,6 +539,7 @@ footer {
     margin-right: auto;
     margin-top: 50px;
     padding-bottom: 50px;
+    padding-top: 30px;
 
 }
 
@@ -981,7 +982,7 @@ table {
 
     }
 
-    #principal_index, #principal_noticias{
+    #principal_index, #principal_noticias, #principal_sobre{
 
         width: 100%;
         padding-top: 200px;
@@ -1001,10 +1002,24 @@ table {
         border: 0px;
         padding-left: 10%;
         padding-right: 10%;
-        margin: 0;
+        margin: 0px;
         margin-top: 50px;
 
     }
+    
+    #conteudo_historia {
+
+    width: 85%;
+    padding-left: 5%;
+    padding-right: 5%;
+    font-family: verdana;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-top: 50px;
+    padding-bottom: 30px;
+
+}
 
     .caixa_produtos {
 
@@ -1018,6 +1033,7 @@ table {
         background-color: #fff;
         border-radius: 10px;
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        float: none;
 
     }
 
@@ -1096,6 +1112,7 @@ table {
     border-radius: 10px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     margin-left: 0px;
+    float: none;
 
     }
     
@@ -1117,6 +1134,52 @@ table {
     align-items: center;
     padding-left: 2%;
     padding-right: 2%;
+
+}
+
+#imagem_banca {
+
+    width: 100%;
+    min-height: 450px;
+    display: flex;
+    align-items: center;
+    margin-top: 50px;
+    padding: 0px;
+    float: none;
+
+}
+
+#imagemBanca {
+
+    width: 100%;
+    height: 450px;
+    border-radius: 10px;
+
+}
+
+#historia_banca {
+
+    width: 100%;
+    height: auto;
+    margin-top: 50px;
+    float: none;
+
+}
+
+.titulo_pagina {
+
+    width: 100%;
+    font-family: font-signatra, Lucida Calligraphy;
+    font-size: 100px;
+    text-align: center;
+    font-weight: bold;
+
+}
+
+.paragrafo {
+
+    font-size: 25px;
+    text-align: justify;
 
 }
 

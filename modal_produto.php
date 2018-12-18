@@ -49,18 +49,16 @@ if ($rsProduto = mysqli_fetch_array($select)) {
 
 	#fechar_modal{
 
-		width: 20px;
-		height: 30px;
 		margin-top: 15px;
 		text-align: center;
 		font-family: arial;
-		font-size: 20px;
+		font-size: 50px;
 		color: #aaaaaa;
 		font-weight: bold;
 		transition: 0.5s;
 		float: right;
 		text-decoration: none;
-		padding-right: 10px;
+		padding-right: 30px;
 
 	}
 

@@ -27,6 +27,7 @@
             $(".visualizar").click(function() {
 
                 $("#container").fadeIn(1100);
+                $("html, body").css({"overflow": "hidden"});
 
             });
 
