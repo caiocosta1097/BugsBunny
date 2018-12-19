@@ -726,7 +726,9 @@ footer {
     border-radius: 10px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     background-color: #fff;
+    margin-top: 50px;
     padding-bottom: 50px;
+    padding-top: 30px;
 
 }
 
@@ -982,7 +984,7 @@ table {
 
     }
 
-    #principal_index, #principal_noticias, #principal_sobre, #principal_promocoes{
+    #principal_index, #principal_noticias, #principal_sobre, #principal_promocoes, #principal_nossas_bancas{
 
         width: 100%;
         padding-top: 200px;
@@ -1280,6 +1282,73 @@ table {
     background-color: #3b5998;
     transition: 0.5s;
     color: #fff;
+
+}
+
+#conteudo_bancas {
+
+    width: 95%;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    background-color: #fff;
+    padding-bottom: 50px;
+    
+
+}
+
+.caixa_bancas {
+
+    width: 95%;
+    height: 260px;
+    text-align: center;
+    border-bottom: solid 5px #3b5998;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-top: 50px;
+    padding-top: 20px;
+
+}
+
+.subtitulo {
+
+    font-family: verdana;
+    font-size: 35px;
+    text-align: center;
+    padding-left: 1%;
+    padding-right: 1%;
+
+}
+
+.localizacao {
+
+    font-family: arial;
+    font-size: 50px;
+    font-weight: bold;
+
+}
+
+.endereco {
+
+    font-family: arial;
+    font-size: 35px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    padding-left: 1%;
+    padding-right: 1%;
+
+}
+
+.telefone {
+
+    font-family: arial;
+    font-size: 35px;
 
 }
 
