@@ -20,32 +20,32 @@ $conexao = conexaoBD();
 
 	// Verifica se modo existe
 if(isset($_GET['modo'])){
-    
+
 		// Variável que recebe o modo
     $modo = $_GET['modo'];
-    
+
 		// Verifica se o modo = 'excluir' e deleta o registro
     if($modo == 'excluir'){
-        
+
         $id = $_GET['id'];
-        
-        if($idUser == $id)
+
+        if($rsUser['idUsuario'] == $id)
             echo "<script>alert('Não é possível excluir o usuário logado!')</script>";
         else {
-            
+
             $sql = "DELETE FROM tbl_usuario WHERE idUsuario =".$id;
-            
+
 				// Verifica se QUERY não pôde ser executada e exibe um erro, senão atualiza a página
             if(!mysqli_query($conexao, $sql))
                echo "Erro: ".mysqli_errno($conexao)." - ".mysqli_error($conexao);
            else
-               header('location:adm_usuarios.php');      
-           
-       } 
-       
+               header('location:adm_usuarios.php');
+
+       }
+
    }
-   
-}	
+
+}
 
 ?>
 
@@ -103,18 +103,18 @@ if(isset($_GET['modo'])){
             </thead>
             <tbody>
                 <?php
-                
+
 						// Variável que recebe o SELECT do banco
-                $sql = "SELECT usuario.*, nivel.* 
-                FROM tbl_usuario as usuario, tbl_nivel_usuario as nivel 
+                $sql = "SELECT usuario.*, nivel.*
+                FROM tbl_usuario as usuario, tbl_nivel_usuario as nivel
                 WHERE usuario.idNivel = nivel.idNivel";
 
 						// Variável que executa o SELECT
                 $select  = mysqli_query($conexao, $sql);
-                
+
 						// Loop para pegar cada registro no SELECT e colocar em um array
                 while($rsUsuarios = mysqli_fetch_array($select)){
-                    
+
                     ?>
                     <tr>
                         <td>
